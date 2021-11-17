@@ -5,12 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="800">
+        Title="LoginWindow" Height="450" Width="800" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="None" Topmost="True">
     <Grid>
-        <Image x:Name="ImgLogo" HorizontalAlignment="Center" Height="100" Margin="0,-200,0,0" VerticalAlignment="Center" Width="100" Source="/Resources/Logo.png"/>
-        <TextBox x:Name="PbPassword" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Center" Width="120"/>
-        <TextBox x:Name="TbUsername" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Gebruikersnaam" VerticalAlignment="Center" Width="120"/>
-        <Button x:Name="BtnLogin" Content="Login" HorizontalAlignment="Center" Margin="0,256,0,0" VerticalAlignment="Top" Height="23" Width="120" Click="BtnLogin_Click"/>
+        <Image x:Name="ImgLogo" HorizontalAlignment="Center" Height="200" VerticalAlignment="Center" Width="200" Source="/Resources/Logo.png" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-100"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <TextBox x:Name="TbUsername" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Gebruikersnaam" VerticalAlignment="Center" Width="200" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="25"/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <TextBox x:Name="PbPassword" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="50"/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <Button x:Name="BtnLogin" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="200" Click="BtnLogin_Click" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="75"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
 
     </Grid>
 </Window>

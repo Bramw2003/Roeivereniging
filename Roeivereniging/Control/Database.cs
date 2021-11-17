@@ -1,8 +1,17 @@
 ﻿using System;
 using System.Data.SqlClient;
 
+
 namespace Control
 {
+    public enum BoatType
+    {
+        Boot1,
+        Boot2,
+        Boot3,
+        Boot4,
+        Boot5,
+    }
     public static class Database
     {
         public static SqlConnection connection;
@@ -15,25 +24,52 @@ namespace Control
             builder.InitialCatalog = "Roeivereniging";
             connection = new SqlConnection(builder.ConnectionString);
         }
-        public static bool Login(string username, string password)
+        public static bool UserLogin(string username, string password)
         {
             Init();
-            String sql = "SELECT PWDCOMPARE(@password, [Password]) FROM[Roeivereniging].[dbo].[User] WHERE Username = @username";
+            String sql = "SELECT PWDCOMPARE(@password, [password]) FROM[Roeivereniging].[dbo].[LID] WHERE [username] = @username";
 
             using (SqlCommand command = new SqlCommand(sql, Database.connection))
             {
                 command.Parameters.AddWithValue("username", username);
                 command.Parameters.AddWithValue("password", password);
                 connection.Open();
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        return reader.GetInt32(0) == 1;
-                    }
-                }
+                return (int)command.ExecuteScalar() == 1;
+            }
+        }
+
+        public static bool ReserveBoat()
+        {
+            Init();
+            String sql = "SELECT PWDCOMPARE(@password, [password]) FROM[Roeivereniging].[dbo].[LID] WHERE [username] = @username";
+
+            using (SqlCommand command = new SqlCommand(sql, Database.connection))
+            {
+                //command.Parameters.AddWithValue("username", username);
+                //command.Parameters.AddWithValue("password", password);
+                connection.Open();
+                return (int)command.ExecuteScalar() == 1;
             }
             return false;
+        }
+
+        public static bool AddBoat(string name, BoatType type)
+        {
+            Init();
+            string sql = "INSERT INTO boat(name, typesID) VALUES (@name, @type)";
+            SqlCommand command = new SqlCommand(sql, Database.connection);
+            command.Parameters.AddWithValue("name", name);
+            command.Parameters.AddWithValue("type", type);
+            return command.ExecuteNonQuery() == 1;
+        }
+        public static bool AddType(int capacity, bool steer)
+        {
+            Init();
+            string sql = "INSERT INTO types(capacity, steer) VALUES ( @capacity, @steer);";
+            SqlCommand command = new SqlCommand(sql, Database.connection);
+            command.Parameters.AddWithValue("capacity", capacity);
+            command.Parameters.AddWithValue("steer", steer);
+            return command.ExecuteNonQuery() == 1;
         }
     }
 }

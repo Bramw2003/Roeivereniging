@@ -395,3 +395,4 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
+Roeivereniging/View/obj/

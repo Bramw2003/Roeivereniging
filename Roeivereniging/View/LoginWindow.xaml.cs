@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Control;
+
 namespace View
 {
     /// <summary>
@@ -27,8 +28,13 @@ namespace View
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (Database.Login(TbUsername.Text, PbPassword.Text)){
-                TbUsername.Text = "YES";
+            if (TbUsername.Text != "" && PbPassword.Text != "" && PbPassword.Text != null)
+            {
+                if (Database.UserLogin(TbUsername.Text, PbPassword.Text))
+                {
+                    this.Close();
+                    TbUsername.Text = "YES";
+                }
             }
         }
     }
