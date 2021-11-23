@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace Model
@@ -79,10 +80,7 @@ namespace Model
             if (OpenConnection())
             {
                 var a = command.ExecuteNonQuery();
-                if (a != null)
-                {
-                    result = (int)a == 1;
-                }
+                result = a == 1;
                 command.Dispose();
                 connection.Close();
             }
@@ -123,7 +121,7 @@ namespace Model
         /// Tries to reserve a boat
         /// </summary>
         /// <returns></returns>
-        public static bool ReserveBoat()
+        public static bool ReserveBoat(int id, DateTime date, DateTime endTime)
         {
             Init();
             String sql = "SELECT PWDCOMPARE(@password, [password]) FROM[Roeivereniging].[dbo].[LID] WHERE [username] = @username";
@@ -139,6 +137,7 @@ namespace Model
                 return result;
             }
         }
+
         /// <summary>
         /// Tries to create a new boat in the database
         /// </summary>
@@ -157,6 +156,45 @@ namespace Model
                 return command.ExecuteNonQuery() == 1;
             }
             return false;
+        }
+        public static Boat GetBoatByID(int id)
+        {
+            Init();
+            String sql = "SELECT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling] FROM [boat] JOIN[types] ON[types].[ID] =[boat].[typesID] WHERE[boat].[ID] = @id";
+            Boat n = null;
+            SqlCommand command = new SqlCommand(sql, Database.connection);
+            command.Parameters.AddWithValue("id", id);
+            if (OpenConnection())
+            {
+                var a = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
+                while (a.Read())
+                {
+                    n = new Boat(a.GetInt32(0), a.GetString(1), a.GetInt32(2), a.GetInt32(3), a.GetBoolean(4), a.GetBoolean(5));
+                }
+                command.Dispose();
+                connection.Close();
+            }
+            return n;
+
+        }
+        public static List<Boat> GetBoatAll()
+        {
+            Init();
+            String sql = "SELECT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling] FROM [boat] JOIN[types] ON[types].[ID] =[boat].[typesID]";
+            List<Boat> list = new List<Boat>();
+            SqlCommand command = new SqlCommand(sql, Database.connection);
+            if (OpenConnection())
+            {
+                var a = command.ExecuteReader();
+                while (a.Read())
+                {
+                    Boat n = new Boat(a.GetInt32(0), a.GetString(1), a.GetInt32(2), a.GetInt32(3), a.GetBoolean(4), a.GetBoolean(5));
+                    list.Add(n);
+                }
+                command.Dispose();
+                connection.Close();
+            }
+            return list;
         }
 
         /// <summary>
@@ -177,15 +215,6 @@ namespace Model
                 return command.ExecuteNonQuery() == 1;
             }
             return false;
-        }
-        public static bool AddReservation()
-        {
-            Init();
-            string sql = "INSERT INTO types(capacity, steer) VALUES ( @capacity, @steer);";
-            SqlCommand command = new SqlCommand(sql, Database.connection);
-            //command.Parameters.AddWithValue("capacity", capacity);
-            //command.Parameters.AddWithValue("steer", steer);
-            return command.ExecuteNonQuery() == 1;
         }
 
 
