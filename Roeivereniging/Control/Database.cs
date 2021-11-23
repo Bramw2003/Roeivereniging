@@ -16,7 +16,7 @@ namespace Control
         public static void Init()
         {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "localhost";
+            builder.DataSource = "127.0.0.1";
             builder.UserID = "sa";
             builder.Password = "#7mBzd*EN";
             builder.InitialCatalog = "Roeivereniging";
@@ -45,7 +45,7 @@ namespace Control
         public static bool UserLogin(string username, string password)
         {
             Init();
-            String sql = "SELECT TOP(1) PWDCOMPARE(@password, [password]) FROM[Roeivereniging].[dbo].[LID] WHERE [username] = @username";
+            String sql = "SELECT TOP(1) PWDCOMPARE(@password, [password]) FROM [LID] WHERE [username] = @username";
             bool result = false;
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("username", username);
@@ -71,7 +71,22 @@ namespace Control
         /// <returns></returns>
         public static bool UserExist(string username)
         {
-            return true;
+            Init();
+            String sql = "SELECT TOP(1) * FROM [LID] WHERE [username] = @username";
+            bool result = false;
+            SqlCommand command = new SqlCommand(sql, Database.connection);
+            command.Parameters.AddWithValue("username", username);
+            if (OpenConnection())
+            {
+                var a = command.ExecuteNonQuery();
+                if (a != null)
+                {
+                    result = (int)a == 1;
+                }
+                command.Dispose();
+                connection.Close();
+            }
+            return result;
         }
 
         /// <summary>
@@ -91,7 +106,7 @@ namespace Control
             if (name == null || name == "") return false;
             if (birthday == null) return false;
 
-            String sql = "SELECT PWDCOMPARE(@password, [password]) FROM[Roeivereniging].[dbo].[LID] WHERE [username] = @username";
+            String sql = "SELECT PWDCOMPARE(@password, [password]) FROM [Roeivereniging].[dbo].[LID] WHERE [username] = @username";
             using (SqlCommand command = new SqlCommand(sql, Database.connection))
             {
                 //command.Parameters.AddWithValue("username", username);
