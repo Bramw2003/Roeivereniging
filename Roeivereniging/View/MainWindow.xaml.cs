@@ -9,7 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using Model;
 namespace View
 {
     /// <summary>
@@ -24,7 +24,10 @@ namespace View
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Frame.Content = new ReservePage();
+            var a = Database.GetBoatAll();
+            var ReservePage = new ReservePage();
+            Frame.Content = ReservePage;
+            ReservePage.LbBoats.ItemsSource = a;
             LoginWindow loginWindow = new LoginWindow();
 
             loginWindow.ShowDialog();
