@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 
-namespace Control
+namespace Model
 {
     public enum BoatType
     {           // https://nl.wikipedia.org/wiki/Roeiboot#Naar_bouwtype
@@ -187,5 +187,7 @@ namespace Control
             //command.Parameters.AddWithValue("steer", steer);
             return command.ExecuteNonQuery() == 1;
         }
+
+
     }
 }
