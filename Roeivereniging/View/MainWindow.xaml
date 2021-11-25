@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" ResizeMode="CanResize" WindowState="Maximized" Loaded="Window_Loaded">
     <Grid>
-        <Frame Name="Frame"/>
+        <StackPanel x:Name="Header" Orientation="Horizontal" Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <Button x:Name="BtnReserveer" Content="Reserveer" MinWidth="100"></Button>
+            <Button x:Name="BtnReserveringen" Content="Geschiedenis" MinWidth="100" Margin="10,0,0,0" Click="BtnReserveringen_Click"></Button>
+        </StackPanel>
+        <Frame Name="Frame" Margin="0,50,0,0" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
