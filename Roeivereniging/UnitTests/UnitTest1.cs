@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using Control;
+using Model;
 namespace UnitTests
 {
     public class Tests

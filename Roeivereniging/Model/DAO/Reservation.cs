@@ -68,8 +68,11 @@ namespace Model.DAO
                 command.Parameters.AddWithValue("endtime", endTime.ToString("HH:mm:ss"));
                 command.Parameters.AddWithValue("memberid", member.GetId());
                 command.Parameters.AddWithValue("date", date.Date);
-                bool result = (int)command.ExecuteScalar() == 1;
-                command.Dispose();
+                bool result = false;
+                if (Database.OpenConnection())
+                {
+                    result = (int)command.ExecuteNonQuery() == 1;
+                }
                 Database.connection.Close();
                 return result;
             }

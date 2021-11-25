@@ -18,6 +18,8 @@ namespace View
     public partial class MainWindow : Window
     {
         public static Member currentMember { get; set; }
+        private ReservePage ReservePage = new ReservePage();
+        private History HistoryPage = new History();
         public MainWindow()
         {
             InitializeComponent();
@@ -26,7 +28,6 @@ namespace View
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var a = Model.DAO.Boat.GetBoatAll();
-            var ReservePage = new ReservePage();
             Frame.Content = ReservePage;
             ReservePage.LbBoats.ItemsSource = a;
 #if !DEBUG
@@ -60,8 +61,13 @@ namespace View
 
         private void BtnReserveringen_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Content = new History();
+            Frame.Content = HistoryPage;
 
+        }
+
+        private void BtnReserveer_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = ReservePage;
         }
     }
 }

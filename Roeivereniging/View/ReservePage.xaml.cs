@@ -42,9 +42,6 @@ namespace View
             UpdateLbBoats();
         }
 
-        private void Date_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-        }
 
         private void Date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -56,6 +53,21 @@ namespace View
             {
                 var date = (DateTime)Date.SelectedDate;
                 LbBoats.ItemsSource = Database.GetAvailableBoats(date, (DateTime)StartTime.Value, (DateTime)EndTime.Value);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (Date.SelectedDate != null && StartTime.Value != null && EndTime.Value != null && LbBoats.SelectedItem != null)
+            {
+                DateTime startTime = (DateTime)StartTime.Value.Value;
+                DateTime endTime = (DateTime)StartTime.Value.Value;
+
+                TimeSpan a = new TimeSpan(startTime.Hour,startTime.Minute, startTime.Second);
+                DateTime date = (DateTime)Date.SelectedDate.Value.Date + a;
+                TimeSpan b = new TimeSpan(endTime.Hour, endTime.Minute, endTime.Second);
+                DateTime end = (DateTime)Date.SelectedDate.Value.Date + b;
+                MessageBox.Show(Model.DAO.Reservation.ReserveBoat((Boat)LbBoats.SelectedItem, date, end, MainWindow.currentMember).ToString());
             }
         }
     }
