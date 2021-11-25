@@ -21,6 +21,9 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="History.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="ReservePage.xaml">
       <SubType>Designer</SubType>
     </Page>

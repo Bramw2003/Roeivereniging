@@ -39,6 +39,28 @@ namespace View
 #else
             currentMember = Model.DAO.Member.GetByUsername("admin");
 #endif
+            // More Anti-Cheese
+            if(currentMember == null){this.Close();}
+
+            if (currentMember.IsAdmin())
+            {
+                Button adminButton = new Button();
+                adminButton.Content = "admin";
+                adminButton.MinWidth = 100;
+                adminButton.Margin = new Thickness(10, 0, 0, 0);
+                adminButton.Click += AdminButton_Click;
+                this.Header.Children.Add(adminButton);
+            }
+        }
+
+        private void AdminButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void BtnReserveringen_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = new History();
 
         }
     }
