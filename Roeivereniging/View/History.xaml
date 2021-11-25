@@ -14,12 +14,12 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Type" Width="50" DisplayMemberBinding="{Binding boat.type}" />
-                        <GridViewColumn Header="Naam" Width="120" DisplayMemberBinding="{Binding boat.name}" />
-                        <GridViewColumn Header="Stuur" Width="150" DisplayMemberBinding="{Binding boat.steer}" />
-                        <GridViewColumn Header="Scullen" Width="150" DisplayMemberBinding="{Binding boat.sculling}"/>
+                        <GridViewColumn Header="Naam" Width="auto" DisplayMemberBinding="{Binding boat.name}" />
+                        <!--<GridViewColumn Header="Stuur" Width="50" DisplayMemberBinding="{Binding boat.steer}" />-->
+                        <!--<GridViewColumn Header="Scullen" Width="75" DisplayMemberBinding="{Binding boat.sculling}"/>-->
                         <GridViewColumn Header="Datum" Width="auto" DisplayMemberBinding="{Binding Date}"></GridViewColumn>
-                        <GridViewColumn Header="Start tijd" Width="auto" DisplayMemberBinding="{Binding StartTime}"></GridViewColumn>
-                        <GridViewColumn Header="Eind tijd" Width="auto" DisplayMemberBinding="{Binding EndTime}"></GridViewColumn>
+                        <GridViewColumn Header="Start tijd" Width="75" DisplayMemberBinding="{Binding StartTime}"></GridViewColumn>
+                        <GridViewColumn Header="Eind tijd" Width="75" DisplayMemberBinding="{Binding EndTime}"></GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
