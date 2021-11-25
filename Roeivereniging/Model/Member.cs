@@ -31,6 +31,7 @@ namespace Model
         public bool IsRepair() { return _repair; }
         public bool IsExaminator() { return _examinator; }
         public string GetUsername() { return _username; }
+        public int GetId() { return _id; }
         #endregion
 
         #region Setters

@@ -6,7 +6,7 @@ namespace Model
 {
     public class Boat
     {
-        private int _id;
+        public int id { get; }
         public string name { get; }
         public string type { get; }
         public int capacity { get; }
@@ -16,7 +16,7 @@ namespace Model
 
         public Boat(int id, string name, int capacity, int category, bool steer, bool sculling)
         {
-            _id = id;
+            this.id = id;
             this.name = name;
             type = "";
             _category = (BoatType)category;
@@ -46,7 +46,7 @@ namespace Model
         }
         public String ToString()
         {
-            return $"id:\t{_id}\t name:\t{name}\tcapacity:\t{capacity}\tsteer:\t{steer}\tsculling:\t{sculling}";
+            return $"id:\t{id}\t name:\t{name}\tcapacity:\t{capacity}\tsteer:\t{steer}\tsculling:\t{sculling}";
         }
 
     }
