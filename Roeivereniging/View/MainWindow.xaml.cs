@@ -17,6 +17,7 @@ namespace View
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static Member currentMember { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -24,13 +25,21 @@ namespace View
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var a = Database.GetBoatAll();
+            var a = Model.DAO.Boat.GetBoatAll();
             var ReservePage = new ReservePage();
             Frame.Content = ReservePage;
             ReservePage.LbBoats.ItemsSource = a;
+#if !DEBUG
             LoginWindow loginWindow = new LoginWindow();
+            // Anti-Cheese
+            if (!(bool)loginWindow.ShowDialog())
+            {
+                this.Close();
+            }
+#else
+            currentMember = Model.DAO.Member.GetByUsername("admin");
+#endif
 
-            loginWindow.ShowDialog();
         }
     }
 }

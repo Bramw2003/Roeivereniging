@@ -32,8 +32,8 @@ namespace View
             {
                 if (Database.UserLogin(TbUsername.Text, PbPassword.Text))
                 {
+                    this.DialogResult = true;
                     this.Close();
-                    TbUsername.Text = "YES";
                 }
             }
         }
