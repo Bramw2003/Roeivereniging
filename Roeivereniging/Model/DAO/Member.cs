@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
@@ -29,7 +29,7 @@ namespace Model.DAO
         }
         public static Model.Member GetById(int id)
         {
-            string sql = "SELECT TOP(1)[ID],[name],[birthday],[admin],[repair],[examinator]FROM[LID] WHERE ID = @id";
+            string sql = "SELECT TOP(1)[ID],[name],[birthday],[admin],[repair],[examinator],[username]FROM[LID] WHERE ID = @id";
             Model.Member member = null;
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("id", id);
@@ -38,7 +38,7 @@ namespace Model.DAO
                 var a = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
                 while (a.Read())
                 {
-                    member = new Model.Member(a.GetInt32(0), a.GetString(1), id, a.GetDateTime(2), a.GetBoolean(3), a.GetBoolean(4), a.GetBoolean(5));
+                    member = new Model.Member(a.GetInt32(0), a.GetString(1), a.GetString(6), a.GetDateTime(2), a.GetBoolean(3), a.GetBoolean(4), a.GetBoolean(5));
 
                 }
                 command.Dispose();
