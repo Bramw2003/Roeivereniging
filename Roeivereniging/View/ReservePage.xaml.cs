@@ -61,7 +61,7 @@ namespace View
             if (Date.SelectedDate != null && StartTime.Value != null && EndTime.Value != null && LbBoats.SelectedItem != null)
             {
                 DateTime startTime = (DateTime)StartTime.Value.Value;
-                DateTime endTime = (DateTime)StartTime.Value.Value;
+                DateTime endTime = (DateTime)EndTime.Value.Value;
 
                 TimeSpan a = new TimeSpan(startTime.Hour,startTime.Minute, startTime.Second);
                 DateTime date = (DateTime)Date.SelectedDate.Value.Date + a;
