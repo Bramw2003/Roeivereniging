@@ -196,7 +196,30 @@ namespace Model
             }
             return list;
         }
-
+        public static List<Boat> GetAvailableBoats(DateTime date, DateTime start, DateTime end)
+        {
+            List<Boat> boats = new List<Boat>();
+            string sql = "SELECT DISTINCT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling] FROM [boat] LEFT JOIN reservations AS r ON r.boatID = boat.ID JOIN types ON types.ID = boat.typesID WHERE(r.[date] != @date OR r.[date] IS NULL) OR(r.starttime NOT BETWEEN @starttime and @endtime) AND(r.endtime NOT BETWEEN @starttime and @endtime) OR(starttime is NULL AND endtime is null)";
+            List<Boat> list = new List<Boat>();
+            SqlCommand command = new SqlCommand(sql, Database.connection);
+            var st = start.AddSeconds(1).ToString("HH:mm:ss");
+            var et = end.AddSeconds(-1).ToString("HH:mm:ss");
+            command.Parameters.AddWithValue("starttime", st);
+            command.Parameters.AddWithValue("endtime", et);
+            command.Parameters.AddWithValue("date", date);
+            if (OpenConnection())
+            {
+                var a = command.ExecuteReader();
+                while (a.Read())
+                {
+                    Boat n = new Boat(a.GetInt32(0), a.GetString(1), a.GetInt32(2), a.GetInt32(3), a.GetBoolean(4), a.GetBoolean(5));
+                    list.Add(n);
+                }
+                command.Dispose();
+                connection.Close();
+            }
+             return list;
+        }
         /// <summary>
         /// Adds a type of boat to the database
         /// </summary>
