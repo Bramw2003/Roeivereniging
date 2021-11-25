@@ -1,0 +1,28 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      x:Class="View.History"
+      mc:Ignorable="d"
+      Title="History" Height="938" Width="1669" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid Margin="0,0,0,0">
+            <ListView  x:Name="LbReservations" d:ItemsSource="{d:SampleData ItemCount=50} " FontSize="16">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Type" Width="50" DisplayMemberBinding="{Binding boat.type}" />
+                        <GridViewColumn Header="Naam" Width="120" DisplayMemberBinding="{Binding boat.name}" />
+                        <GridViewColumn Header="Stuur" Width="150" DisplayMemberBinding="{Binding boat.steer}" />
+                        <GridViewColumn Header="Scullen" Width="150" DisplayMemberBinding="{Binding boat.sculling}"/>
+                        <GridViewColumn Header="Datum" Width="auto" DisplayMemberBinding="{Binding Date}"></GridViewColumn>
+                        <GridViewColumn Header="Start tijd" Width="auto" DisplayMemberBinding="{Binding StartTime}"></GridViewColumn>
+                        <GridViewColumn Header="Eind tijd" Width="auto" DisplayMemberBinding="{Binding EndTime}"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+    </Grid>
+</Page>
