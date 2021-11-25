@@ -121,22 +121,7 @@ namespace Model
         /// Tries to reserve a boat
         /// </summary>
         /// <returns></returns>
-        public static bool ReserveBoat(int id, DateTime date, DateTime endTime)
-        {
-            Init();
-            String sql = "SELECT PWDCOMPARE(@password, [password]) FROM[Roeivereniging].[dbo].[LID] WHERE [username] = @username";
-
-            using (SqlCommand command = new SqlCommand(sql, Database.connection))
-            {
-                //command.Parameters.AddWithValue("username", username);
-                //command.Parameters.AddWithValue("password", password);
-
-                bool result = (int)command.ExecuteScalar() == 1;
-                connection.Close();
-                command.Dispose();
-                return result;
-            }
-        }
+        
 
         /// <summary>
         /// Tries to create a new boat in the database
