@@ -17,7 +17,18 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <TextBox x:Name="TbUsername" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Gebruikersnaam" VerticalAlignment="Center" Width="200" RenderTransformOrigin="0.5,0.5">
+        <Label x:Name="TbUsernamePlaceholder" Panel.ZIndex="1" Content="Gebruikersnaam" Margin="0,0,105,0" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Opacity="0.75" HorizontalContentAlignment="Left" Padding="0,0,0,0" IsHitTestVisible="False">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="25"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox x:Name="TbUsername" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" RenderTransformOrigin="0.5,0.5" TextChanged="TbUsername_TextChanged" IsKeyboardFocusedChanged="TbUsername_IsKeyboardFocusedChanged">
+
             <TextBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -27,7 +38,17 @@
                 </TransformGroup>
             </TextBox.RenderTransform>
         </TextBox>
-        <TextBox x:Name="PbPassword" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" RenderTransformOrigin="0.5,0.5">
+        <Label x:Name="PbPasswordPlaceholder" Panel.ZIndex="1" Content="Wachtwoord" Margin="0,0,125,0" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Opacity="0.75" HorizontalContentAlignment="Left" Padding="0,0,0,0"  IsHitTestVisible="False">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="50"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox x:Name="PbPassword" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" RenderTransformOrigin="0.5,0.5" IsKeyboardFocusedChanged="PbPassword_IsKeyboardFocusedChanged" KeyUp="PbPassword_KeyUp">
             <TextBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

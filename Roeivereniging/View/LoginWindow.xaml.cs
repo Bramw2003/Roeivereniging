@@ -32,9 +32,53 @@ namespace View
             {
                 if (Database.UserLogin(TbUsername.Text, PbPassword.Text))
                 {
+                    MainWindow.currentMember = Model.DAO.Member.GetByUsername(TbUsername.Text);
                     this.DialogResult = true;
                     this.Close();
                 }
+            }
+        }
+
+        private void TbUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TbUsername_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (TbUsername.IsKeyboardFocused)
+            {
+                TbUsernamePlaceholder.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                if(TbUsername.Text == "")
+                {
+                    TbUsernamePlaceholder.Visibility = Visibility.Visible;
+                }
+            }
+        }
+
+        private void PbPassword_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (PbPassword.IsKeyboardFocused)
+            {
+                PbPasswordPlaceholder.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                if (PbPassword.Text == "")
+                {
+                    PbPasswordPlaceholder.Visibility = Visibility.Visible;
+                }
+            }
+        }
+
+        private void PbPassword_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                BtnLogin_Click(null,null);
             }
         }
     }
