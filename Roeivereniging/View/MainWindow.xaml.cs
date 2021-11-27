@@ -20,6 +20,7 @@ namespace View
         public static Member currentMember { get; set; }
         private ReservePage ReservePage = new ReservePage();
         private History HistoryPage = new History();
+        private ViewReservationsPage ViewReservationsPage = new ViewReservationsPage();
         public MainWindow()
         {
             InitializeComponent();
@@ -61,7 +62,7 @@ namespace View
 
         private void BtnReserveringen_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Content = HistoryPage;
+            Frame.Content = ViewReservationsPage;
 
         }
 
