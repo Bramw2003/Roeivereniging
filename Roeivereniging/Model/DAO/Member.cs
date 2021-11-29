@@ -9,6 +9,7 @@ namespace Model.DAO
     {
         public static Model.Member GetByUsername(string username)
         {
+            Database.Init();
             string sql = "SELECT TOP(1000)[ID],[name],[birthday],[admin],[repair],[examinator]FROM[LID] WHERE username = @username";
             Model.Member member = null;
             SqlCommand command = new SqlCommand(sql, Database.connection);
@@ -29,6 +30,7 @@ namespace Model.DAO
         }
         public static Model.Member GetById(int id)
         {
+            Database.Init();
             string sql = "SELECT TOP(1)[ID],[name],[birthday],[admin],[repair],[examinator],[username]FROM[LID] WHERE ID = @id";
             Model.Member member = null;
             SqlCommand command = new SqlCommand(sql, Database.connection);

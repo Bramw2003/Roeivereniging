@@ -7,10 +7,11 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            List<Boat> b = Database.GetBoatAll();
+            List<Boat> b = Model.DAO.Boat.GetBoatAll();
             foreach (Boat boat in b)
             {
                 Console.WriteLine(boat.ToString());
+                Console.WriteLine(boat.defect);
             }
             //Database.Select("", "");
         }

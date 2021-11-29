@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,9 +30,6 @@ namespace View
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var a = Model.DAO.Boat.GetBoatAll();
-            Frame.Content = ReservePage;
-            ReservePage.LbBoats.ItemsSource = a;
 #if !DEBUG
             LoginWindow loginWindow = new LoginWindow();
             // Anti-Cheese
@@ -44,6 +42,10 @@ namespace View
 #endif
             // More Anti-Cheese
             if(currentMember == null){this.Close();}
+
+            var a = Model.DAO.Boat.GetBoatAll();
+            Frame.Content = ReservePage;
+            ReservePage.LbBoats.ItemsSource = a;
 
             if (currentMember.IsAdmin())
             {
@@ -64,6 +66,7 @@ namespace View
         private void BtnReserveringen_Click(object sender, RoutedEventArgs e)
         {
             Frame.Content = ViewReservationsPage;
+            //ViewReservationsPage.LvRervations.ItemsSource = Model.DAO.Reservation.GetAllByMember(MainWindow.currentMember).OrderByDescending(x => x.date);
 
         }
 
