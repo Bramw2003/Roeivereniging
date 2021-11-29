@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="DefectPopup" Height="450" Width="800">
+        Title="DefectPopup" Height="328" Width="326">
     <Grid>
         <TextBox x:Name="TbTitle" HorizontalAlignment="Left" Margin="47,18,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TbDescription" HorizontalAlignment="Left" Margin="48,49,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" MaxLength="500"/>
-        <Label Content="Titel" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-        <Button Content="Melden" HorizontalAlignment="Left" Margin="65,133,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBox x:Name="TbDescription" HorizontalAlignment="Left" Margin="18,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272" MaxLength="500" AutomationProperties.IsRequiredForForm="True" Height="150"/>
+        <Label Content="Titel:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Beschrijving van het probleem:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <Button Content="Melden" HorizontalAlignment="Left" Margin="18,222,0,0" VerticalAlignment="Top" Click="Button_Click" Height="55" Width="272"/>
 
     </Grid>
 </Window>
