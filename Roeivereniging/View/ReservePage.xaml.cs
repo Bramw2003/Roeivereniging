@@ -47,6 +47,16 @@ namespace View
 
         private void Date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (DateTime.Now.Date != Date.SelectedDate.Value.Date)
+            {
+                StartTime.Minimum = DateTime.MinValue;
+                EndTime.Maximum = DateTime.MaxValue;
+            }
+            else
+            {
+                StartTime.Minimum = DateTime.Now;
+                EndTime.Minimum = DateTime.Now;
+            }
             UpdateLbBoats();
         }
         public void UpdateLbBoats()
@@ -54,7 +64,7 @@ namespace View
             if (Date?.SelectedDate != null && StartTime.Value != null && EndTime.Value != null && TbPersons.Text != "")
             {
                 var date = (DateTime)Date.SelectedDate;
-                LbBoats.ItemsSource = Database.GetAvailableBoats(date, (DateTime)StartTime.Value, (DateTime)EndTime.Value,(BoatType)CbType.SelectedIndex,int.Parse(TbPersons.Text),(bool)ChbSteer.IsChecked, (bool)ChbScull.IsChecked);
+                LbBoats.ItemsSource = Database.GetAvailableBoats(date, (DateTime)StartTime.Value, (DateTime)EndTime.Value, (BoatType)CbType.SelectedIndex, int.Parse(TbPersons.Text), (bool)ChbSteer.IsChecked, (bool)ChbScull.IsChecked);
             }
         }
 
@@ -75,7 +85,7 @@ namespace View
                 DateTime startTime = (DateTime)StartTime.Value.Value;
                 DateTime endTime = (DateTime)EndTime.Value.Value;
 
-                TimeSpan a = new TimeSpan(startTime.Hour,startTime.Minute, startTime.Second);
+                TimeSpan a = new TimeSpan(startTime.Hour, startTime.Minute, startTime.Second);
                 DateTime date = (DateTime)Date.SelectedDate.Value.Date + a;
                 TimeSpan b = new TimeSpan(endTime.Hour, endTime.Minute, endTime.Second);
                 DateTime end = (DateTime)Date.SelectedDate.Value.Date + b;
