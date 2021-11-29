@@ -87,35 +87,7 @@ namespace Model
             return result;
         }
 
-        /// <summary>
-        /// Tries to create a user in the database
-        /// </summary>
-        /// <param name="username">Name used for login</param>
-        /// <param name="password">Password used for login</param>
-        /// <param name="email">Email for confirmation</param>
-        /// <param name="name">Full name</param>
-        /// <param name="birthday">Birth date</param>
-        /// <returns>False on failure</returns>
-        public static bool AddUser(string username, string password, string email, string name, DateTime birthday)
-        {
-            if (username == null || username == "") return false;
-            if (password == null || password == "") return false;
-            if (email == null || email == "") return false;
-            if (name == null || name == "") return false;
-            if (birthday == null) return false;
-
-            String sql = "SELECT PWDCOMPARE(@password, [password]) FROM [Roeivereniging].[dbo].[LID] WHERE [username] = @username";
-            using (SqlCommand command = new SqlCommand(sql, Database.connection))
-            {
-                //command.Parameters.AddWithValue("username", username);
-                //command.Parameters.AddWithValue("password", password);
-
-                bool result = (int)command.ExecuteScalar() == 1;
-                connection.Close();
-                command.Dispose();
-                return result;
-            }
-        }
+        
 
         /// <summary>
         /// Tries to reserve a boat
@@ -133,7 +105,7 @@ namespace Model
         public static List<Boat> GetAvailableBoats(DateTime date, DateTime start, DateTime end, BoatType type = BoatType.W, int capacity=2,bool steer = false, bool sculling = false)
         {
             List<Boat> boats = new List<Boat>();
-            string sql = "SELECT DISTINCT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling] FROM [boat] LEFT JOIN reservations AS r ON r.boatID = boat.ID JOIN types ON types.ID = boat.typesID WHERE [types].[capacity]=@capacity and [types].[category]=@cat and [types].[steer]=@steer and [types].[sculling]=@scull and ((r.[date] != @date OR r.[date] IS NULL) OR(r.starttime NOT BETWEEN @starttime and @endtime) AND(r.endtime NOT BETWEEN @starttime and @endtime) OR(starttime is NULL AND endtime is null))";
+            string sql = "SELECT DISTINCT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling], (SELECT CASE WHEN EXISTS ( SELECT * FROM[brokenboat] WHERE boatID = boat.[ID]) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END) FROM [boat] LEFT JOIN reservations AS r ON r.boatID = boat.ID JOIN types ON types.ID = boat.typesID WHERE [types].[capacity]=@capacity and [types].[category]=@cat and [types].[steer]=@steer and [types].[sculling]=@scull and ((r.[date] != @date OR r.[date] IS NULL) OR(r.starttime NOT BETWEEN @starttime and @endtime) AND(r.endtime NOT BETWEEN @starttime and @endtime) OR(starttime is NULL AND endtime is null))";
             List<Boat> list = new List<Boat>();
             SqlCommand command = new SqlCommand(sql, Database.connection);
             var st = start.AddSeconds(1).ToString("HH:mm:ss");
@@ -150,7 +122,7 @@ namespace Model
                 var a = command.ExecuteReader();
                 while (a.Read())
                 {
-                    Boat n = new Boat(a.GetInt32(0), a.GetString(1), a.GetInt32(2), a.GetInt32(3), a.GetBoolean(4), a.GetBoolean(5));
+                    Boat n = new Boat(a.GetInt32(0), a.GetString(1), a.GetInt32(2), a.GetInt32(3), a.GetBoolean(4), a.GetBoolean(5),a.GetBoolean(6));
                     list.Add(n);
                 }
                 command.Dispose();

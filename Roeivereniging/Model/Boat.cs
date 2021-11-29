@@ -13,8 +13,9 @@ namespace Model
         public bool steer { get; }
         public bool sculling { get; }
         private BoatType _category;
+        public bool defect { get; }
 
-        public Boat(int id, string name, int capacity, int category, bool steer, bool sculling)
+        public Boat(int id, string name, int capacity, int category, bool steer, bool sculling, bool defect = false)
         {
             this.id = id;
             this.name = name;
@@ -43,6 +44,10 @@ namespace Model
             type += this.capacity;
             type += sculling ? "x" : "";
             type += steer ? "+" : "";
+            //defect = Model.DAO.Defect.GetByBoatID(id).Count != 0;
+            //defect = true;
+            this.defect = defect;
+
         }
         public String ToString()
         {

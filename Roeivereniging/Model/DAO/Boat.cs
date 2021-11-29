@@ -23,7 +23,7 @@ namespace Model.DAO
         public static Model.Boat GetBoatByID(int id)
         {
             Database.Init();
-            String sql = "SELECT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling] FROM [boat] JOIN[types] ON[types].[ID] =[boat].[typesID] WHERE[boat].[ID] = @id";
+            String sql = "SELECT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling], (SELECT CASE WHEN EXISTS ( SELECT * FROM[brokenboat] WHERE boatID = boat.[ID]) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END) FROM [boat] JOIN[types] ON[types].[ID] =[boat].[typesID] WHERE[boat].[ID] = @id";
             Model.Boat n = null;
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("id", id);
@@ -32,7 +32,7 @@ namespace Model.DAO
                 var a = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
                 while (a.Read())
                 {
-                    n = new Model.Boat(a.GetInt32(0), a.GetString(1), a.GetInt32(2), a.GetInt32(3), a.GetBoolean(4), a.GetBoolean(5));
+                    n = new Model.Boat(a.GetInt32(0), a.GetString(1), a.GetInt32(2), a.GetInt32(3), a.GetBoolean(4), a.GetBoolean(5),a.GetBoolean(6));
                 }
                 command.Dispose();
                 Database.connection.Close();
@@ -43,7 +43,7 @@ namespace Model.DAO
         public static List<Model.Boat> GetBoatAll()
         {
             Database.Init();
-            String sql = "SELECT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling] FROM [boat] JOIN[types] ON[types].[ID] =[boat].[typesID]";
+            String sql = "SELECT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling], (SELECT CASE WHEN EXISTS ( SELECT * FROM[brokenboat] WHERE boatID = boat.[ID]) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END) FROM [boat] JOIN[types] ON[types].[ID] =[boat].[typesID]";
             List<Model.Boat> list = new List<Model.Boat>();
             SqlCommand command = new SqlCommand(sql, Database.connection);
             if (Database.OpenConnection())
@@ -51,7 +51,7 @@ namespace Model.DAO
                 var a = command.ExecuteReader();
                 while (a.Read())
                 {
-                    Model.Boat n = new Model.Boat(a.GetInt32(0), a.GetString(1), a.GetInt32(2), a.GetInt32(3), a.GetBoolean(4), a.GetBoolean(5));
+                    Model.Boat n = new Model.Boat(a.GetInt32(0), a.GetString(1), a.GetInt32(2), a.GetInt32(3), a.GetBoolean(4), a.GetBoolean(5),a.GetBoolean(6));
                     list.Add(n);
                 }
                 command.Dispose();
