@@ -13,13 +13,14 @@
         <Label x:Name="label_Copy" Content="Wachtwoord" HorizontalContentAlignment="Right" HorizontalAlignment="Center" Margin="0,0,300,100" VerticalAlignment="Center" FontSize="24" Width="200" Height="45"/>
         <TextBox x:Name="TbUserrname" HorizontalAlignment="Center" Margin="300,0,0,200" TextWrapping="Wrap" VerticalAlignment="Center" Width="240" FontSize="24"/>
         <TextBox x:Name="TbPassword" HorizontalAlignment="Center" Margin="300,0,0,100" TextWrapping="Wrap" VerticalAlignment="Center" Width="240" FontSize="24"/>
-        <Button x:Name="Add_User_Button" Content="Voeg Toe" HorizontalAlignment="Center" Margin="0,400,50,0" VerticalAlignment="Center" FontSize="24" Click="Add_User_Button_Click"/>
+        <Button x:Name="Add_User_Button" Content="Voeg Toe" HorizontalAlignment="Center" Margin="300,300,0,0" VerticalAlignment="Center" FontSize="24" Click="Add_User_Button_Click" Width="240"/>
         <Label x:Name="label_Copy1" Content="Naam" HorizontalContentAlignment="Right" HorizontalAlignment="Center" Margin="0,0,300,0" VerticalAlignment="Center" FontSize="24" Width="200" Height="45"/>
         <Label x:Name="label_Copy2" Content="Email" HorizontalContentAlignment="Right" HorizontalAlignment="Center" Margin="0,100,300,0" VerticalAlignment="Center" FontSize="24" Width="200" Height="45"/>
         <Label x:Name="label_Copy3" Content="Geboortedatum " HorizontalContentAlignment="Right" HorizontalAlignment="Center" Margin="0,200,300,0" VerticalAlignment="Center" FontSize="24" Width="200" Height="45"/>
         <TextBox x:Name="TbName" HorizontalAlignment="Center" Margin="300,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="240" FontSize="24"/>
         <TextBox x:Name="TbEmail" HorizontalAlignment="Center" Margin="300,100,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="240" FontSize="24"/>
         <DatePicker x:Name="DpBirthDate" HorizontalAlignment="Center" Margin="300,200,0,0" VerticalAlignment="Center" FontSize="24" Width="240"/>
+        <Label x:Name="label1" Content="Gebruiker Toevoegen" HorizontalAlignment="Center" Margin="0,0,0,400" VerticalAlignment="Center" FontSize="36"/>
 
     </Grid>
 </Page>
