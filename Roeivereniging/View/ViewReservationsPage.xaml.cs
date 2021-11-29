@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Linq;
 
 namespace View
 {
@@ -27,12 +28,12 @@ namespace View
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            this.LvRervations.ItemsSource = Model.DAO.Reservation.GetAllByMember(MainWindow.currentMember);
+            this.LvRervations.ItemsSource = Model.DAO.Reservation.GetAllByMember(MainWindow.currentMember).OrderByDescending(x => x.date);
         }
 
         private void LvRervations_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            currentSelectedPerson = (Reservation)e.AddedItems[0];
+            currentSelectedPerson = (Reservation)LvRervations.SelectedItem;
         }
 
         private Reservation currentSelectedPerson;
@@ -42,7 +43,6 @@ namespace View
             set
             {
                 currentSelectedPerson = value;
-                //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CurrentSelectedPerson"));
             }
         }
     }
