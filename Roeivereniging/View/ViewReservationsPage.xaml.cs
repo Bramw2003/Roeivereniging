@@ -45,5 +45,15 @@ namespace View
                 currentSelectedPerson = value;
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DefectPopup defectPopup = new DefectPopup();
+            defectPopup.ShowDialog();
+            if ((bool)defectPopup.DialogResult && defectPopup.TbTitle.Text!=""&& defectPopup.TbDescription.Text!="")
+            {
+                Model.DAO.Defect.Add(new Defect(defectPopup.TbTitle.Text, defectPopup.TbDescription.Text, MainWindow.currentMember, currentSelectedPerson.boat));
+            }
+        }
     }
 }

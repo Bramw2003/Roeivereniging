@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -64,7 +65,7 @@ namespace View
             if (Date?.SelectedDate != null && StartTime.Value != null && EndTime.Value != null && TbPersons.Text != "")
             {
                 var date = (DateTime)Date.SelectedDate;
-                LbBoats.ItemsSource = Database.GetAvailableBoats(date, (DateTime)StartTime.Value, (DateTime)EndTime.Value, (BoatType)CbType.SelectedIndex, int.Parse(TbPersons.Text), (bool)ChbSteer.IsChecked, (bool)ChbScull.IsChecked);
+                LbBoats.ItemsSource = Database.GetAvailableBoats(date, (DateTime)StartTime.Value, (DateTime)EndTime.Value, (BoatType)CbType.SelectedIndex, int.Parse(TbPersons.Text), (bool)ChbSteer.IsChecked, (bool)ChbScull.IsChecked).Where(x => x.defect == false);
             }
         }
 
