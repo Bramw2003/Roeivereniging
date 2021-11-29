@@ -22,7 +22,14 @@ namespace View {
         }
 
         private void Add_User_Button_Click(object sender, RoutedEventArgs e) {//adds new member
-            Member.AddUser(TbUserrname.Text, TbPassword.Text, TbEmail.Text, TbName.Text, (DateTime)DpBirthDate.SelectedDate);
+            if(Member.AddUser(TbUserrname.Text, TbPassword.Text, TbEmail.Text, TbName.Text, (DateTime)DpBirthDate.SelectedDate)) {
+                Melding.Visibility = Visibility.Visible;
+                TbUserrname.Clear();
+                TbPassword.Clear();
+                TbEmail.Clear();
+                TbName.Clear();
+                DpBirthDate.SelectedDate = null;
+            }
 
         } 
     }

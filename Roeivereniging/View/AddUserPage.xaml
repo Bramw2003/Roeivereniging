@@ -21,6 +21,7 @@
         <TextBox x:Name="TbEmail" HorizontalAlignment="Center" Margin="300,100,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="240" FontSize="24"/>
         <DatePicker x:Name="DpBirthDate" HorizontalAlignment="Center" Margin="300,200,0,0" VerticalAlignment="Center" FontSize="24" Width="240"/>
         <Label x:Name="label1" Content="Gebruiker Toevoegen" HorizontalAlignment="Center" Margin="0,0,0,400" VerticalAlignment="Center" FontSize="36"/>
+        <Label x:Name="Melding" Content="Gebruiker Toegevoegt" HorizontalAlignment="Center" Margin="0,392,0,0" VerticalAlignment="Center" Foreground="#FF00FF0C" FontSize="24" Visibility="Hidden"/>
 
     </Grid>
 </Page>
