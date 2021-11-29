@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
-using Model;
+using Model.DAO;
+using System;
+
 namespace UnitTests
 {
     internal class Member
@@ -17,6 +19,12 @@ namespace UnitTests
         {
             Model.Member member = new Model.Member(id, "", "", System.DateTime.Now, true, true, true);
             Assert.AreEqual(id, member.GetId());
+        }
+
+        [Test]
+        public void Member_AddUser_MakeUser() {
+            Model.DAO.Member.AddUser("username", "password", "email@mail.nl", "name", DateTime.Now);
+            Assert.AreEqual("name", Model.DAO.Member.GetByUsername("username").GetName());
         }
 
     }

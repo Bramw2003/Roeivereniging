@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Model;
+using Model.DAO;
 
 namespace View {
     /// <summary>
@@ -21,8 +21,9 @@ namespace View {
             InitializeComponent();
         }
 
-        private void Add_User_Button_Click(object sender, RoutedEventArgs e) {
-            Database.AddUser(TbUserrname.Text, TbPassword.Text, TbEmail.Text, TbName.Text, (DateTime)DpBirthDate.SelectedDate);
+        private void Add_User_Button_Click(object sender, RoutedEventArgs e) {//adds new member
+            Member.AddUser(TbUserrname.Text, TbPassword.Text, TbEmail.Text, TbName.Text, (DateTime)DpBirthDate.SelectedDate);
+
         } 
     }
 }
