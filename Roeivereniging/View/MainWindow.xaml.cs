@@ -21,6 +21,7 @@ namespace View
         private ReservePage ReservePage = new ReservePage();
         private History HistoryPage = new History();
         private ViewReservationsPage ViewReservationsPage = new ViewReservationsPage();
+        private AddUserPage ViewAddUserPage = new AddUserPage();
         public MainWindow()
         {
             InitializeComponent();
@@ -57,7 +58,7 @@ namespace View
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            Frame.Content = ViewAddUserPage;
         }
 
         private void BtnReserveringen_Click(object sender, RoutedEventArgs e)

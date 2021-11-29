@@ -104,15 +104,21 @@ namespace Model
             if (name == null || name == "") return false;
             if (birthday == null) return false;
 
-            String sql = "SELECT PWDCOMPARE(@password, [password]) FROM [Roeivereniging].[dbo].[LID] WHERE [username] = @username";
-            using (SqlCommand command = new SqlCommand(sql, Database.connection))
+            Init();
+            String sql = "INSERT INTO LID(username,password,name,birthday,admin,repair,examinator) VALUES( @username, PWDENCRYPT(@password), @name, @birthday, 0, 0, 0)";
+            bool result = false;
+            SqlCommand command = new SqlCommand(sql, Database.connection);
             {
-                //command.Parameters.AddWithValue("username", username);
-                //command.Parameters.AddWithValue("password", password);
-
-                bool result = (int)command.ExecuteScalar() == 1;
-                connection.Close();
-                command.Dispose();
+                command.Parameters.AddWithValue("username", username);
+                command.Parameters.AddWithValue("password", password);
+                command.Parameters.AddWithValue("name", name);
+                command.Parameters.AddWithValue("birthday", birthday);
+                if (OpenConnection()) {
+                    var a = command.ExecuteNonQuery();
+                    result = a == 1;
+                    command.Dispose();
+                    connection.Close();
+                }
                 return result;
             }
         }
