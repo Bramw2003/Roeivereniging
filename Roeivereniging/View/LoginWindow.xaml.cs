@@ -36,6 +36,9 @@ namespace View
                     this.DialogResult = true;
                     this.Close();
                 }
+                else {
+                    Melding.Visibility = Visibility.Visible;
+                }
             }
         }
 
