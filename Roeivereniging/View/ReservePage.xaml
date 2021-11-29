@@ -6,9 +6,10 @@
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       x:Class="View.ReservePage"
       mc:Ignorable="d"
-      Title="ReservePage" Height="938" Width="1669"> 
+      Title="ReservePage">
+    <!--Height="938" Width="1669"-->
 
-    <Grid>
+    <Grid Margin="30,30,30,30">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="5*" />

@@ -13,6 +13,9 @@
     <Compile Update="ReservePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="ViewReservationsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="LoginWindow.xaml">
@@ -21,10 +24,10 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="History.xaml">
+    <Page Update="ReservePage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="ReservePage.xaml">
+    <Page Update="ViewReservationsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
