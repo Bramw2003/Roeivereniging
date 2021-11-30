@@ -86,21 +86,6 @@ namespace Model
             }
             return result;
         }
-
-        
-
-        /// <summary>
-        /// Tries to reserve a boat
-        /// </summary>
-        /// <returns></returns>
-        
-
-        /// <summary>
-        /// Tries to create a new boat in the database
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="type"></param>
-        /// <returns></returns>
         
         public static List<Boat> GetAvailableBoats(DateTime date, DateTime start, DateTime end, BoatType type = BoatType.W, int capacity=2,bool steer = false, bool sculling = false)
         {
