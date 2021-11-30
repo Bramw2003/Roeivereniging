@@ -30,6 +30,31 @@ namespace View
             Date.DisplayDateEnd = DateTime.Now.AddDays(5);
         }
 
+        /// <summary>
+        /// Update the listbox showing all available boats in the given time frame
+        /// </summary>
+        public void UpdateLbBoats()
+        {
+            if (Date?.SelectedDate != null && StartTime.Value != null && EndTime.Value != null && TbPersons.Text != "")
+            {
+                var date = (DateTime)Date.SelectedDate;
+                LbBoats.ItemsSource = Database.GetAvailableBoats(date, (DateTime)StartTime.Value, (DateTime)EndTime.Value, (BoatType)CbType.SelectedIndex, int.Parse(TbPersons.Text), (bool)ChbSteer.IsChecked, (bool)ChbScull.IsChecked).Where(x => x.defect == false);
+            }
+        }
+
+        /// <summary>
+        /// Update the duration label
+        /// </summary>
+        private void UpdateDuration()
+        {
+            if (StartTime.Value != null && EndTime.Value != null)
+            {
+                DateTime startTime = (DateTime)StartTime.Value.Value;
+                DateTime endTime = (DateTime)EndTime.Value.Value;
+                LbDuur.Content = "Duur: " + (endTime - startTime).Hours + ":" + (endTime - startTime).Minutes;
+            }
+        }
+
         private void StartTime_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             EndTime.Minimum = (DateTime)e.NewValue;
@@ -60,24 +85,6 @@ namespace View
             }
             UpdateLbBoats();
         }
-        public void UpdateLbBoats()
-        {
-            if (Date?.SelectedDate != null && StartTime.Value != null && EndTime.Value != null && TbPersons.Text != "")
-            {
-                var date = (DateTime)Date.SelectedDate;
-                LbBoats.ItemsSource = Database.GetAvailableBoats(date, (DateTime)StartTime.Value, (DateTime)EndTime.Value, (BoatType)CbType.SelectedIndex, int.Parse(TbPersons.Text), (bool)ChbSteer.IsChecked, (bool)ChbScull.IsChecked).Where(x => x.defect == false);
-            }
-        }
-
-        private void UpdateDuration()
-        {
-            if (StartTime.Value != null && EndTime.Value != null)
-            {
-                DateTime startTime = (DateTime)StartTime.Value.Value;
-                DateTime endTime = (DateTime)EndTime.Value.Value;
-                LbDuur.Content = "Duur: " + (endTime - startTime).Hours + ":" + (endTime - startTime).Minutes;
-            }
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -94,7 +101,11 @@ namespace View
             }
         }
 
-
+        /// <summary>
+        /// Validate the input of a textbox to only allow numbers
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
