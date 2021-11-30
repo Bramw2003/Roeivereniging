@@ -46,7 +46,7 @@ namespace View
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnReportDefect_click(object sender, RoutedEventArgs e)
         {
             DefectPopup defectPopup = new DefectPopup();
             defectPopup.ShowDialog();
