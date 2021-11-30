@@ -7,6 +7,10 @@ namespace Model.DAO
 {
     public static class Defect
     {
+        /// <summary>
+        /// Get all defects
+        /// </summary>
+        /// <returns>List of Defects</returns>
         public static List<Model.Defect> GetAll()
         {
             Database.Init();
@@ -27,6 +31,12 @@ namespace Model.DAO
             }
             return list;
         }
+
+        /// <summary>
+        /// Get a list of defects for a particular boat/boatID
+        /// </summary>
+        /// <param name="boatID"></param>
+        /// <returns></returns>
         public static List<Model.Defect> GetByBoatID(int boatID)
         {
             Database.Init();
@@ -48,10 +58,22 @@ namespace Model.DAO
             }
             return list;
         }
+        
+        /// <summary>
+        /// Get a list of defects for a particular boat
+        /// </summary>
+        /// <param name="boat"></param>
+        /// <returns></returns>
         public static List<Model.Defect> GetByBoat(Model.Boat boat)
         {
             return GetByBoatID(boat.id);
         }
+
+        /// <summary>
+        /// Add a defect to the database
+        /// </summary>
+        /// <param name="defect"></param>
+        /// <returns></returns>
         public static bool Add(Model.Defect defect)
         {
             Database.Init();
