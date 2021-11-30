@@ -7,6 +7,10 @@ namespace Model.DAO
 {
     public static class Reservation
     {
+        /// <summary>
+        /// Get all reservations in the database
+        /// </summary>
+        /// <returns></returns>
         public static List<Model.Reservation> GetAll()
         {
             Database.Init();
@@ -31,6 +35,12 @@ namespace Model.DAO
             }
             return list;
         }
+
+        /// <summary>
+        /// Get all reservations for a certain member
+        /// </summary>
+        /// <param name="member"></param>
+        /// <returns></returns>
         public static List<Model.Reservation> GetAllByMember(Model.Member member)
         {
             Database.Init();
@@ -56,6 +66,15 @@ namespace Model.DAO
             }
             return list;
         }
+
+        /// <summary>
+        /// Reserve the boat on the given date and between the start and end times
+        /// </summary>
+        /// <param name="boat"></param>
+        /// <param name="date">Start date and time</param>
+        /// <param name="endTime">End time</param>
+        /// <param name="member">Member making the reservation</param>
+        /// <returns>True if a reservation was added to the database</returns>
         public static bool ReserveBoat(Model.Boat boat, DateTime date, DateTime endTime, Model.Member member)
         {
             Database.Init();

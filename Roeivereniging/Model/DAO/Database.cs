@@ -14,6 +14,10 @@ namespace Model
     public static class Database
     {
         public static SqlConnection connection;
+
+        /// <summary>
+        /// Initialize all needed database variables
+        /// </summary>
         public static void Init()
         {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
@@ -23,6 +27,13 @@ namespace Model
             builder.InitialCatalog = "Roeivereniging";
             connection = new SqlConnection(builder.ConnectionString);
         }
+
+        /// <summary>
+        /// Open the connection
+        /// </summary>
+        /// <returns>
+        /// False on failed database connection
+        /// </returns>
         public static bool OpenConnection()
         {
             try
@@ -87,6 +98,17 @@ namespace Model
             return result;
         }
         
+        /// <summary>
+        /// Get all available boats in a given time frame and matching the given type 
+        /// </summary>
+        /// <param name="date">Date of reservation</param>
+        /// <param name="start">Start time</param>
+        /// <param name="end">End time</param>
+        /// <param name="type">Type of boat</param>
+        /// <param name="capacity">Capacity of boat</param>
+        /// <param name="steer"></param>
+        /// <param name="sculling"></param>
+        /// <returns></returns>
         public static List<Boat> GetAvailableBoats(DateTime date, DateTime start, DateTime end, BoatType type = BoatType.W, int capacity=2,bool steer = false, bool sculling = false)
         {
             List<Boat> boats = new List<Boat>();
@@ -115,6 +137,7 @@ namespace Model
             }
              return list;
         }
+
         /// <summary>
         /// Adds a type of boat to the database
         /// </summary>
