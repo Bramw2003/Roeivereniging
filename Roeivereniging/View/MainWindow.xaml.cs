@@ -23,6 +23,7 @@ namespace View
         private History HistoryPage = new History();
         private ViewReservationsPage ViewReservationsPage = new ViewReservationsPage();
         private AddUserPage ViewAddUserPage = new AddUserPage();
+        private DefectsPage DefectsPage = new DefectsPage();
         public MainWindow()
         {
             InitializeComponent();
@@ -56,6 +57,15 @@ namespace View
                 adminButton.Click += AdminButton_Click;
                 this.Header.Children.Add(adminButton);
             }
+            if (currentMember.IsRepair())
+            {
+                Button defectsBtn = new Button();
+                defectsBtn.Content = "Defecte boten";
+                defectsBtn.MinWidth = 100;
+                defectsBtn.Margin = new Thickness(10, 0, 0, 0);
+                defectsBtn.Click += DefectsButton_Click;
+                this.Header.Children.Add(defectsBtn);
+            }
         }
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
@@ -73,6 +83,10 @@ namespace View
         private void BtnReserveer_Click(object sender, RoutedEventArgs e)
         {
             Frame.Content = ReservePage;
+        }
+        private void DefectsButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = DefectsPage;
         }
     }
 }
