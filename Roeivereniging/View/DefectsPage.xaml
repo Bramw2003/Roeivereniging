@@ -23,7 +23,7 @@
                 <DropShadowEffect BlurRadius="30" Color="#000000" ShadowDepth="0" Opacity="0.3"/>
             </Rectangle.Effect>
         </Rectangle>
-        <ListView x:Name="LvDefects" Grid.Column="0" Grid.Row="0" d:ItemsSource="{d:SampleData ItemCount=5} " Margin="20,20,20,20">
+        <ListView x:Name="LvDefects" Grid.Column="0" Grid.Row="0" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="20,20,20,20">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Type" Width="50" DisplayMemberBinding="{Binding title}" />
@@ -31,18 +31,21 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Grid.Column="1" Content="Boot Naam" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top"/>
-        <Label Grid.Column="1" Content="Boot Type" HorizontalAlignment="Right" Margin="0,20,20,0" VerticalAlignment="Top"/>
-        <Label Grid.Column="1" Content="Probleem beschrijving" HorizontalAlignment="Left" Margin="20,90,0,0" VerticalAlignment="Top"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Stretch" Margin="20,120,20,80"/>
-        <Grid Grid.Column="1" x:Name="RepairMenu" Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="20,0,20,20">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            
-            <Button Grid.Column="0" Content="Reparatie Melden"></Button>
-            <Grid x:Name="RemoveBtn" Grid.Column="1">
-                
+
+        <Grid DataContext="{Binding SelectedItem, ElementName=LvDefects}" Grid.Column="1">
+            <Label Content="{Binding boat.name}" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top"/>
+            <Label Content="{Binding boat.type}" HorizontalAlignment="Right" Margin="0,20,20,0" VerticalAlignment="Top"/>
+            <Label Content="Probleem beschrijving" HorizontalAlignment="Left" Margin="20,90,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Stretch" IsReadOnly="True" TextWrapping="Wrap" Text="{Binding description}" VerticalAlignment="Stretch" Margin="20,120,20,80"/>
+            <Grid x:Name="RepairMenu" Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="20,0,20,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Content="Reparatie Melden" Click="RepairBtn_Click" ></Button>
+                <Grid x:Name="RemoveBtn" Grid.Column="1">
+                    
+                </Grid>
             </Grid>
         </Grid>
     </Grid>

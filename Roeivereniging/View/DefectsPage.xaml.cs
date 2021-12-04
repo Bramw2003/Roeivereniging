@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Model;
 
 namespace View
 {
@@ -25,14 +26,25 @@ namespace View
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if (MainWindow.currentMember.IsRepair())
+            // Add a "remove boat" butten if the current user is a admin
+            if (MainWindow.currentMember.IsAdmin())
             {
                 var column = new ColumnDefinition() { Width=new GridLength(1,GridUnitType.Star)};
                 RepairMenu.ColumnDefinitions.Add(column);
                 var button = new Button() { Content = "Boot Verwijderen", HorizontalAlignment=HorizontalAlignment.Stretch, VerticalAlignment=VerticalAlignment.Stretch };
                 RemoveBtn.Children.Add(button);
             }
+            // Get all defects and display them in the listview
             LvDefects.ItemsSource = Model.DAO.Defect.GetAll();
+        }
+
+        private void RepairBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var RepairDialog = new RepairBoatDialog((Defect)LvDefects.SelectedItem);
+            if ((bool)RepairDialog.ShowDialog())
+            {
+                LvDefects.ItemsSource = Model.DAO.Defect.GetAll();
+            }
         }
     }
 }

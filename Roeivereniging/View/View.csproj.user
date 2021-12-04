@@ -19,6 +19,9 @@
     <Compile Update="MainWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="RepairBoatDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="ReservePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -40,6 +43,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="RepairBoatDialog.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ReservePage.xaml">
