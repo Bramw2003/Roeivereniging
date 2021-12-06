@@ -14,7 +14,7 @@ namespace Model.DAO
         public static List<Model.Reservation> GetAll()
         {
             Database.Init();
-            String sql = "SELECT starttime, boatID, endtime, LIDID, [date] FROM reservations";
+            String sql = "SELECT starttime, boatID, endtime, memberID, [date] FROM reservations";
             List<Model.Reservation> list = new List<Model.Reservation>();
             SqlCommand command = new SqlCommand(sql, Database.connection);
             if (Database.OpenConnection())
@@ -44,7 +44,7 @@ namespace Model.DAO
         public static List<Model.Reservation> GetAllByMember(Model.Member member)
         {
             Database.Init();
-            String sql = "SELECT starttime, boatID, endtime, LIDID, [date] FROM reservations WHERE LIDID=@id";
+            String sql = "SELECT starttime, boatID, endtime, memberID, [date] FROM reservations WHERE memberID=@id";
             List<Model.Reservation> list = new List<Model.Reservation>();
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("id",member.GetId());
@@ -78,7 +78,7 @@ namespace Model.DAO
         public static bool ReserveBoat(Model.Boat boat, DateTime date, DateTime endTime, Model.Member member)
         {
             Database.Init();
-            String sql = "INSERT INTO [reservations] (starttime, boatID, endtime, LIDID, [date]) VALUES (@starttime, @boatid, @endtime, @memberid, @date)";
+            String sql = "INSERT INTO [reservations] (starttime, boatID, endtime, memberID, [date]) VALUES (@starttime, @boatid, @endtime, @memberid, @date)";
 
             using (SqlCommand command = new SqlCommand(sql, Database.connection))
             {

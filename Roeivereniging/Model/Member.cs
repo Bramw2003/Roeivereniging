@@ -12,8 +12,9 @@ namespace Model
         private bool _repair { get; set; }
         private bool _examinator { get; set; }
         private string _username { get; set; }
+        private string _email { get; set; }
 
-        public Member(int id, string name, string username, DateTime date, bool admin, bool repair, bool examinator)
+        public Member(int id, string name, string username, DateTime date, bool admin, bool repair, bool examinator, string email)
         {
             _id = id;
             _name = name;
@@ -22,6 +23,7 @@ namespace Model
             _admin = admin;
             _repair = repair;
             _examinator = examinator;
+            _email = email;
         }
 
         #region Getters
@@ -54,7 +56,7 @@ namespace Model
             name = name ?? _name;
 
             Database.Init();
-            string sql = "UPDATE [LID] SET [name] = @name, [birthday] = @bday, [admin] = @admin, [repair] = @repair, [examinator] = @examinator, [username] = @username WHERE [ID] = @id";
+            string sql = "UPDATE [member] SET [name] = @name, [birthday] = @bday, [admin] = @admin, [repair] = @repair, [examinator] = @examinator, [username] = @username WHERE [ID] = @id";
             bool result = false;
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("username", username);

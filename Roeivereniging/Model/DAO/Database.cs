@@ -57,7 +57,7 @@ namespace Model
         public static bool UserLogin(string username, string password)
         {
             Init();
-            String sql = "SELECT TOP(1) PWDCOMPARE(@password, [password]) FROM [LID] WHERE [username] = @username";
+            String sql = "SELECT TOP(1) PWDCOMPARE(@password, [password]) FROM [member] WHERE [username] = @username";
             bool result = false;
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("username", username);
@@ -84,7 +84,7 @@ namespace Model
         public static bool UserExist(string username)
         {
             Init();
-            String sql = "SELECT TOP(1) * FROM [LID] WHERE [username] = @username";
+            String sql = "SELECT TOP(1) * FROM [member] WHERE [username] = @username";
             bool result = false;
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("username", username);

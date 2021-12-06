@@ -15,7 +15,7 @@ namespace Model.DAO
         {
             Database.Init();
 
-            string sql = "SELECT [title], [description], [LIDID], [boatID] FROM [brokenboat]";
+            string sql = "SELECT [title], [description], [memberID], [boatID] FROM [brokenboat]";
             List<Model.Defect> list = new List<Model.Defect>();
             SqlCommand command = new SqlCommand(sql, Database.connection);
             if (Database.OpenConnection())
@@ -41,7 +41,7 @@ namespace Model.DAO
         {
             Database.Init();
 
-            string sql = "SELECT [title], [description], [LIDID], [boatID] FROM [brokenboat] WHERE [boatID]=@id";
+            string sql = "SELECT [title], [description], [memberID], [boatID] FROM [brokenboat] WHERE [boatID]=@id";
             List<Model.Defect> list = new List<Model.Defect>();
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("id", boatID);
@@ -77,7 +77,7 @@ namespace Model.DAO
         public static bool Add(Model.Defect defect)
         {
             Database.Init();
-            string sql = "INSERT INTO brokenboat(title, description, LIDID, boatID) VALUES (@title, @desc, @memberID, @boatID)";
+            string sql = "INSERT INTO brokenboat(title, description, memberID, boatID) VALUES (@title, @desc, @memberID, @boatID)";
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("title", defect.title);
             command.Parameters.AddWithValue("desc", defect.description);

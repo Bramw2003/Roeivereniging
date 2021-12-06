@@ -10,7 +10,7 @@ namespace Model.DAO
         public static Model.Member GetByUsername(string username)
         {
             Database.Init();
-            string sql = "SELECT TOP(1000)[ID],[name],[birthday],[admin],[repair],[examinator]FROM[LID] WHERE username = @username";
+            string sql = "SELECT TOP(1000)[ID],[name],[birthday],[admin],[repair],[examinator],[email]FROM[member] WHERE username = @username";
             Model.Member member = null;
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("username", username);
@@ -19,7 +19,7 @@ namespace Model.DAO
                 var a = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
                 while (a.Read())
                 {
-                    member = new Model.Member(a.GetInt32(0),a.GetString(1),username,a.GetDateTime(2), a.GetBoolean(3), a.GetBoolean(4), a.GetBoolean(5));
+                  member = new Model.Member(a.GetInt32(0),a.GetString(1),username,a.GetDateTime(2), a.GetBoolean(3), a.GetBoolean(4), a.GetBoolean(5),a.GetString(6);
                     
                 }
                 command.Dispose();
@@ -31,7 +31,7 @@ namespace Model.DAO
         public static Model.Member GetById(int id)
         {
             Database.Init();
-            string sql = "SELECT TOP(1)[ID],[name],[birthday],[admin],[repair],[examinator],[username]FROM[LID] WHERE ID = @id";
+            string sql = "SELECT TOP(1)[ID],[name],[birthday],[admin],[repair],[examinator],[username],[email]FROM[member] WHERE ID = @id";
             Model.Member member = null;
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("id", id);
@@ -40,7 +40,7 @@ namespace Model.DAO
                 var a = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
                 while (a.Read())
                 {
-                    member = new Model.Member(a.GetInt32(0), a.GetString(1), a.GetString(6), a.GetDateTime(2), a.GetBoolean(3), a.GetBoolean(4), a.GetBoolean(5));
+                    member = new Model.Member(a.GetInt32(0), a.GetString(1), a.GetString(6), a.GetDateTime(2), a.GetBoolean(3), a.GetBoolean(4), a.GetBoolean(5),a.GetString(6));
 
                 }
                 command.Dispose();
@@ -67,7 +67,7 @@ namespace Model.DAO
             if (birthday == null) return false;
 
             Database.Init();
-            String sql = "INSERT INTO LID(username,password,name,birthday,admin,repair,examinator) VALUES( @username, PWDENCRYPT(@password), @name, @birthday, 0, 0, 0)";
+            String sql = "INSERT INTO member(username,password,name,birthday,admin,repair,examinator,email) VALUES( @username, PWDENCRYPT(@password), @name, @birthday, 0, 0, 0,@email)";
             bool result = false;
             SqlCommand command = new SqlCommand(sql, Database.connection);
             {
@@ -75,6 +75,8 @@ namespace Model.DAO
                 command.Parameters.AddWithValue("password", password);
                 command.Parameters.AddWithValue("name", name);
                 command.Parameters.AddWithValue("birthday", birthday);
+                command.Parameters.AddWithValue("email", email);
+
                 if (Database.OpenConnection()) {
                     var a = command.ExecuteNonQuery();
                     result = a == 1;
