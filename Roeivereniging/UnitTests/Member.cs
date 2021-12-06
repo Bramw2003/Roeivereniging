@@ -17,7 +17,7 @@ namespace UnitTests
         [TestCase(2)]
         public void TestMemberID(int id)
         {
-            Model.Member member = new Model.Member(id, "", "", System.DateTime.Now, true, true, true);
+            Model.Member member = new Model.Member(id, "", "", System.DateTime.Now, true, true, true,"admin@pizza.com");
             Assert.AreEqual(id, member.GetId());
         }
 

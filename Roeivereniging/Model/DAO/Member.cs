@@ -19,7 +19,7 @@ namespace Model.DAO
                 var a = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
                 while (a.Read())
                 {
-                  member = new Model.Member(a.GetInt32(0),a.GetString(1),username,a.GetDateTime(2), a.GetBoolean(3), a.GetBoolean(4), a.GetBoolean(5),a.GetString(6);
+                  member = new Model.Member(a.GetInt32(0),a.GetString(1),username,a.GetDateTime(2), a.GetBoolean(3), a.GetBoolean(4), a.GetBoolean(5),a.GetString(6));
                     
                 }
                 command.Dispose();
