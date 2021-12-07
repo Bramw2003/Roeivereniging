@@ -77,7 +77,7 @@ namespace Model.DAO
         public static bool Add(Model.Defect defect)
         {
             Database.Init();
-            string sql = "INSERT INTO brokenboat(title, description, memberID, boatID) VALUES (@title, @desc, @memberID, @boatID)";
+            string sql = "INSERT INTO brokenboat(title, description, memberID, boatID, [date]) VALUES (@title, @desc, @memberID, @boatID, GETDATE())";
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("title", defect.title);
             command.Parameters.AddWithValue("desc", defect.description);
