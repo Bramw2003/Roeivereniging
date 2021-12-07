@@ -18,12 +18,17 @@ namespace View {
     public partial class AdminPage : Page {
 
         private AddMemberPage AddMemberPage = new AddMemberPage();
+        private AddBoatPage AddBoatPage = new AddBoatPage();
         public AdminPage() {
             InitializeComponent();
         }
 
         private void Button_Member_Add_Click(object sender, RoutedEventArgs e) {
             AdminFrame.Content = AddMemberPage;
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e) {
+            AdminFrame.Content = AddBoatPage;
         }
     }
 }

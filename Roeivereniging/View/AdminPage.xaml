@@ -26,7 +26,7 @@
             <Button Content="Rechten aanpassen" />
             <Button x:Name="button1" Content="Verwijderen"/>
             <Label x:Name="label1" Content="Booten" Margin="0,10,0,0" HorizontalAlignment="Center" FontSize="24"/>
-            <Button x:Name="button2" Content="Toevoegen"/>
+            <Button x:Name="button2" Content="Toevoegen" Click="button2_Click"/>
             <Button x:Name="button3" Content="Verwijderen"/>
         </StackPanel>
         <Frame x:Name="AdminFrame" Content="" Grid.Column="3" Grid.RowSpan="3"/>
