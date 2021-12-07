@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Linq;
+using Viewmodel;
 
 namespace View
 {
@@ -28,7 +29,7 @@ namespace View
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            this.LvRervations.ItemsSource = Model.DAO.Reservation.GetAllByMember(MainWindow.currentMember).OrderByDescending(x => x.date);
+            this.LvRervations.ItemsSource = ReservationViewModel.GetAllByMember(MainWindow.currentMember).OrderByDescending(x => x.date);
         }
 
         private void LvRervations_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -52,7 +53,7 @@ namespace View
             defectPopup.ShowDialog();
             if ((bool)defectPopup.DialogResult && defectPopup.TbTitle.Text!=""&& defectPopup.TbDescription.Text!="")
             {
-                Model.DAO.Defect.Add(new Defect(defectPopup.TbTitle.Text, defectPopup.TbDescription.Text, MainWindow.currentMember, currentSelectedPerson.boat));
+                DefectViewModel.AddDefect(new Defect(defectPopup.TbTitle.Text, defectPopup.TbDescription.Text, MainWindow.currentMember, currentSelectedPerson.boat));
             }
         }
     }

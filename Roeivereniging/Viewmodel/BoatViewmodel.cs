@@ -1,25 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using MicroMvvm;
 using Model;
+using Model.DAO;
+
 namespace Viewmodel
 {
-    public class BoatViewmodel : ObservableObject
-    {
-        private Boat _boat;
-        public BoatViewmodel()
-        {
-            _boat = new Boat(0,"Unknown",1,1,false,true);
-        }
+    public static class BoatViewmodel{
+        private static BoatDAO BoatDB = new BoatDAO();
 
-        public Boat Boat
-        {
-            get { return _boat; }
-            set { _boat = value; }
-        }
-
-        public string BoatName
-        {
-            get { return _boat.name; }
+        public static List<Boat> GetAllBoats() {
+            return BoatDB.GetBoatAll();
         }
     }
 }

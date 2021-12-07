@@ -28,10 +28,6 @@ namespace Model.DAO {
             }
         }
 
-        public bool Update(Member member) {
-            throw new NotImplementedException();
-        }
-
         public bool Delete(int memberID) {
             throw new NotImplementedException();
         }

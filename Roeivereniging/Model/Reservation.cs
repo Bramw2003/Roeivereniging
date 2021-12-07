@@ -9,16 +9,16 @@ namespace Model
         public DateTime date { get;}
         public DateTime startTime { get; }
         public DateTime endTime { get; }
-        public Model.Boat boat { get; }
-        public Model.Member member { get; }
+        public Boat boat { get; }
+        public Member member { get; }
 
-        public Reservation(DateTime startTime, DateTime endTime, int boatId, int MemberId)
+        public Reservation(DateTime startTime, DateTime endTime, Boat boat, Member member)
         {
             this.date = startTime.Date;
             this.startTime = startTime;
             this.endTime = endTime;
-            this.boat = Model.DAO.Boat.GetBoatByID(boatId);
-            this.member = Model.DAO.Member.GetById(MemberId);
+            this.boat = boat;
+            this.member = member;
         }
         public string StartTime { 
             get {  return this.startTime.ToString("HH:mm"); }

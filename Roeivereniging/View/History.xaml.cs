@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
+using Viewmodel;
 
 namespace View
 {
@@ -26,7 +27,7 @@ namespace View
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            this.LbReservations.ItemsSource = Model.DAO.Reservation.GetAllByMember(MainWindow.currentMember);
+            this.LbReservations.ItemsSource = ReservationViewModel.GetAllByMember(MainWindow.currentMember);
         }
     }
 }
