@@ -6,7 +6,7 @@ using System.Text;
 namespace Model.DAO {
     public class MemberDAO : IMember {
 
-        public bool insert(Member member) {
+        public bool insert(Member member, string password) {
             Database.Init();
             String sql = "INSERT INTO member(username,password,name,birthday,admin,repair,examinator,email) VALUES( @username, PWDENCRYPT(@password), @name, @birthday, 0, 0, 0,@email)";
             bool result = false;
