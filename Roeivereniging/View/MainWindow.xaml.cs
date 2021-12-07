@@ -22,7 +22,7 @@ namespace View
         private ReservePage ReservePage = new ReservePage();
         private History HistoryPage = new History();
         private ViewReservationsPage ViewReservationsPage = new ViewReservationsPage();
-        private AddUserPage ViewAddUserPage = new AddUserPage();
+        private AdminPage AdminPage = new AdminPage();
         private DefectsPage DefectsPage = new DefectsPage();
         public MainWindow()
         {
@@ -70,7 +70,7 @@ namespace View
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Content = ViewAddUserPage;
+            Frame.Content = AdminPage;
         }
 
         private void BtnReserveringen_Click(object sender, RoutedEventArgs e)

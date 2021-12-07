@@ -7,6 +7,12 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="AddMemberPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdminPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="DefectPopup.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -30,7 +36,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="AddMemberPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="AddUserPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdminPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DefectPopup.xaml">

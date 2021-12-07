@@ -1,0 +1,34 @@
+﻿<Page x:Class="View.AdminPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AdminPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="18*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="40*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" VerticalAlignment="Top" Grid.Row="1">
+            <Label x:Name="label" Content="Leden" HorizontalAlignment="Center" FontSize="24"/>
+            <Button x:Name="Button_Member_Add" Content="Toevoegen" Click="Button_Member_Add_Click"/>
+            <Button Content="Rechten aanpassen" />
+            <Button x:Name="button1" Content="Verwijderen"/>
+            <Label x:Name="label1" Content="Booten" Margin="0,10,0,0" HorizontalAlignment="Center" FontSize="24"/>
+            <Button x:Name="button2" Content="Toevoegen"/>
+            <Button x:Name="button3" Content="Verwijderen"/>
+        </StackPanel>
+        <Frame x:Name="AdminFrame" Content="" Grid.Column="3" Grid.RowSpan="3"/>
+    </Grid>
+</Page>
