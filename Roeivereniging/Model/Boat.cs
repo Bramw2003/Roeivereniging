@@ -49,7 +49,7 @@ namespace Model
             this.defect = defect;
 
         }
-        public String ToString()
+        public override string ToString()
         {
             return $"id:\t{id}\t name:\t{name}\tcapacity:\t{capacity}\tsteer:\t{steer}\tsculling:\t{sculling}";
         }

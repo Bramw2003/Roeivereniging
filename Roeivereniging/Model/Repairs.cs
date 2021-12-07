@@ -16,5 +16,10 @@ namespace Model
             this.repairer = repairer;
             this.repairDate = repairDate;
         }
+
+        public override string ToString()
+        {
+            return $"{defect.boat.name} is repaired by {repairer.GetName()} on {repairDate.ToString("HH:mm")}";
+        }
     }
 }

@@ -33,5 +33,10 @@ namespace Model
         {
             get { return this.date.ToString("dd-MM-yyyy"); }
         }
+
+        public override string ToString()
+        {
+            return $"{this.date.ToString("dd-MM-yyyy")} {this.startTime.ToString("HH:mm")} - {this.endTime.ToString("HH:mm")} {this.boat.name} {this.member.GetName()} {this.member.GetId()}";
+        }
     }
 }

@@ -18,5 +18,10 @@ namespace Model
             this.reporter = reporter;
             this.boat = boat;
         }
+        
+        public override string ToString()
+        {
+            return $"{title} - {description} - {reporter.GetName()} - {boat.name}";
+        }
     }
 }
