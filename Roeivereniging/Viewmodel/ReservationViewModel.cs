@@ -20,5 +20,10 @@ namespace Viewmodel {
             return ReservationDB.GetAllByMember(member);
         }
 
+        public static void DeleteReservation(Reservation reservation)
+        {
+            ReservationDB.DeleteReservation(reservation.boat,reservation.date,reservation.startTime,reservation.endTime,reservation.member);
+        }
+
     }
 }

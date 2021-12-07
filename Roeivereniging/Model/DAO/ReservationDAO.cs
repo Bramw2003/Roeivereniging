@@ -90,5 +90,33 @@ namespace Model.DAO {
                 return result;
             }
         }
+
+        /// <summary>
+        /// Delete the matching reservation
+        /// </summary>
+        /// <param name="boat">boat</param>
+        /// <param name="date">date</param>
+        /// <param name="startTime">Start time</param>
+        /// <param name="endTime">End time</param>
+        /// <param name="member">Member from who the reservation is</param>
+        /// <returns></returns>
+
+        public void DeleteReservation(Boat boat, DateTime date, DateTime startTime, DateTime endTime, Member member) {
+            Database.Init();
+            String sql = "DELETE FROM [reservations] WHERE starttime = @starttime AND boatID = @boatid AND endtime = @endtime AND memberID = @memberid AND date = @date";
+
+            using (SqlCommand command = new SqlCommand(sql, Database.connection)) {
+                command.Parameters.AddWithValue("starttime", startTime.ToString("HH:mm:ss"));
+                command.Parameters.AddWithValue("boatid", boat.id);
+                command.Parameters.AddWithValue("endtime", endTime.ToString("HH:mm:ss"));
+                command.Parameters.AddWithValue("memberid", member.GetId());
+                command.Parameters.AddWithValue("date", date.Date);
+                bool result = false;
+                if (Database.OpenConnection()) {
+                    result = (int)command.ExecuteNonQuery() == 1;
+                }
+                Database.connection.Close();
+            }
+        }
     }
 }

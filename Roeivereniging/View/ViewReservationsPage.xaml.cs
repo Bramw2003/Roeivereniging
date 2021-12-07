@@ -29,6 +29,11 @@ namespace View
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            LoadLvRervations();
+        }
+
+        private void LoadLvRervations()
+        {
             this.LvRervations.ItemsSource = ReservationViewModel.GetAllByMember(MainWindow.currentMember).OrderByDescending(x => x.date);
         }
 
@@ -55,6 +60,17 @@ namespace View
             {
                 DefectViewModel.AddDefect(new Defect(defectPopup.TbTitle.Text, defectPopup.TbDescription.Text, MainWindow.currentMember, currentSelectedPerson.boat));
             }
+        }
+
+        private void BtnCancelReservation_click(object sender, RoutedEventArgs e)
+        {
+            var selectedReservation = (Reservation)LvRervations.SelectedItem;
+            if (selectedReservation != null)
+            {
+                ReservationViewModel.DeleteReservation(selectedReservation);
+                LoadLvRervations();
+            }
+            
         }
     }
 }
