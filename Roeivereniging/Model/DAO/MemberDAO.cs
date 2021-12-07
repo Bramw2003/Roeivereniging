@@ -3,44 +3,68 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
 
-namespace Model.DAO
-{
-    public static class Member
-    {
-        public static Model.Member GetByUsername(string username)
-        {
+namespace Model.DAO {
+    public class MemberDAO : IMember {
+
+        public bool insert(Member member) {
+            Database.Init();
+            String sql = "INSERT INTO member(username,password,name,birthday,admin,repair,examinator,email) VALUES( @username, PWDENCRYPT(@password), @name, @birthday, 0, 0, 0,@email)";
+            bool result = false;
+            SqlCommand command = new SqlCommand(sql, Database.connection);
+            {
+                command.Parameters.AddWithValue("username", member.GetUsername());
+                command.Parameters.AddWithValue("password", member.GetPassword());
+                command.Parameters.AddWithValue("name", member.GetName());
+                command.Parameters.AddWithValue("birthday", member.GetBirthday());
+                command.Parameters.AddWithValue("email", member.GetEmail());
+
+                if (Database.OpenConnection()) {
+                    var a = command.ExecuteNonQuery();
+                    result = a == 1;
+                    command.Dispose();
+                    Database.connection.Close();
+                }
+                return result;
+            }
+        }
+
+        public bool Update(Member member) {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(int memberID) {
+            throw new NotImplementedException();
+        }
+
+        public Member GetByUsername(string username) {
             Database.Init();
             string sql = "SELECT TOP(1000)[ID],[name],[birthday],[admin],[repair],[examinator],[email]FROM[member] WHERE username = @username";
-            Model.Member member = null;
+            Member member = null;
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("username", username);
-            if (Database.OpenConnection())
-            {
+            if (Database.OpenConnection()) {
                 var a = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
-                while (a.Read())
-                {
-                  member = new Model.Member(a.GetInt32(0),a.GetString(1),username,a.GetDateTime(2), a.GetBoolean(3), a.GetBoolean(4), a.GetBoolean(5),a.GetString(6));
-                    
+                while (a.Read()) {
+                    member = new Member(a.GetInt32(0), a.GetString(1), username, a.GetDateTime(2), a.GetBoolean(3), a.GetBoolean(4), a.GetBoolean(5), a.GetString(6));
+
                 }
                 command.Dispose();
                 Database.connection.Close();
             }
             return member;
-            
+
         }
-        public static Model.Member GetById(int id)
-        {
+
+        public Member GetById(int id) {
             Database.Init();
             string sql = "SELECT TOP(1)[ID],[name],[birthday],[admin],[repair],[examinator],[username],[email]FROM[member] WHERE ID = @id";
-            Model.Member member = null;
+            Member member = null;
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("id", id);
-            if (Database.OpenConnection())
-            {
+            if (Database.OpenConnection()) {
                 var a = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
-                while (a.Read())
-                {
-                    member = new Model.Member(a.GetInt32(0), a.GetString(1), a.GetString(6), a.GetDateTime(2), a.GetBoolean(3), a.GetBoolean(4), a.GetBoolean(5),a.GetString(6));
+                while (a.Read()) {
+                    member = new Member(a.GetInt32(0), a.GetString(1), a.GetString(6), a.GetDateTime(2), a.GetBoolean(3), a.GetBoolean(4), a.GetBoolean(5), a.GetString(6));
 
                 }
                 command.Dispose();
