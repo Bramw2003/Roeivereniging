@@ -13,7 +13,7 @@ namespace Model.DAO {
             SqlCommand command = new SqlCommand(sql, Database.connection);
             {
                 command.Parameters.AddWithValue("username", member.GetUsername());
-                command.Parameters.AddWithValue("password", member.GetPassword());
+                command.Parameters.AddWithValue("password", password);
                 command.Parameters.AddWithValue("name", member.GetName());
                 command.Parameters.AddWithValue("birthday", member.GetBirthday());
                 command.Parameters.AddWithValue("email", member.GetEmail());
