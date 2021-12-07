@@ -32,7 +32,8 @@ namespace View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
+            this.DialogResult = Model.DAO.Repairs.AddRepair(defect, TbNote.Text,MainWindow.currentMember);
+            this.Close();
         }
     }
 }
