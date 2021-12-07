@@ -13,6 +13,7 @@ namespace Model
         private bool _examinator { get; set; }
         private string _username { get; set; }
         private string _email { get; set; }
+        private string _password { get; set; }
 
         public Member(int id, string name, string username, DateTime date, bool admin, bool repair, bool examinator, string email)
         {
@@ -26,6 +27,14 @@ namespace Model
             _email = email;
         }
 
+        public Member(string name, string username, DateTime date, string email, string password) {
+            _name = name;
+            _username = username;
+            _date = date;
+            _email = email;
+            _password = password;
+        }
+
         #region Getters
         public DateTime GetBirthday() { return _date; }
         public string GetName() { return _name; }
@@ -34,6 +43,8 @@ namespace Model
         public bool IsExaminator() { return _examinator; }
         public string GetUsername() { return _username; }
         public int GetId() { return _id; }
+        public string GetEmail() { return _email; }
+        public string GetPassword() { return _password; }
         #endregion
 
         #region Setters
