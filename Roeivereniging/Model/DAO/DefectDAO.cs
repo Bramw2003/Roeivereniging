@@ -3,27 +3,24 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
 
-namespace Model.DAO
-{
-    public static class Defect
-    {
+namespace Model.DAO {
+    public class DefectDAO {
+
+        private MemberDAO tempMemberDB = new MemberDAO();
+        private BoatDAO tempBoatDB = new BoatDAO();
         /// <summary>
         /// Get all defects
         /// </summary>
         /// <returns>List of Defects</returns>
-        public static List<Model.Defect> GetAll()
-        {
+        public List<Defect> GetAll() {
             Database.Init();
-
             string sql = "SELECT [title], [description], [memberID], [boatID] FROM [brokenboat]";
-            List<Model.Defect> list = new List<Model.Defect>();
+            List<Defect> list = new List<Defect>();
             SqlCommand command = new SqlCommand(sql, Database.connection);
-            if (Database.OpenConnection())
-            {
+            if (Database.OpenConnection()) {
                 var a = command.ExecuteReader();
-                while (a.Read())
-                {
-                    Model.Defect defect = new Model.Defect(a.GetString(0),a.GetString(1),Member.GetById(a.GetInt32(2)),Boat.GetBoatByID(a.GetInt32(3)));
+                while (a.Read()) {
+                    Defect defect = new Defect(a.GetString(0), a.GetString(1), tempMemberDB.GetById(a.GetInt32(2)), tempBoatDB.GetBoatByID(a.GetInt32(3)));
                     list.Add(defect);
                 }
                 command.Dispose();
@@ -37,20 +34,16 @@ namespace Model.DAO
         /// </summary>
         /// <param name="boatID"></param>
         /// <returns></returns>
-        public static List<Model.Defect> GetByBoatID(int boatID)
-        {
+        public List<Defect> GetByBoatID(int boatID) {
             Database.Init();
-
             string sql = "SELECT [title], [description], [memberID], [boatID] FROM [brokenboat] WHERE [boatID]=@id";
-            List<Model.Defect> list = new List<Model.Defect>();
+            List<Defect> list = new List<Defect>();
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("id", boatID);
-            if (Database.OpenConnection())
-            {
+            if (Database.OpenConnection()) {
                 var a = command.ExecuteReader();
-                while (a.Read())
-                {
-                    Model.Defect defect = new Model.Defect(a.GetString(0), a.GetString(1), Member.GetById(a.GetInt32(2)), Boat.GetBoatByID(a.GetInt32(3)));
+                while (a.Read()) {
+                    Defect defect = new Defect(a.GetString(0), a.GetString(1), tempMemberDB.GetById(a.GetInt32(2)), tempBoatDB.GetBoatByID(a.GetInt32(3)));
                     list.Add(defect);
                 }
                 command.Dispose();
@@ -58,15 +51,14 @@ namespace Model.DAO
             }
             return list;
         }
-        
+
         /// <summary>
         /// Get a list of defects for a particular boat
         /// </summary>
         /// <param name="boat"></param>
         /// <returns></returns>
-        public static List<Model.Defect> GetByBoat(Model.Boat boat)
-        {
-            return GetByBoatID(boat.id);
+        public List<Defect> GetByBoat(Boat boat) {
+            return  GetByBoatID(boat.id);
         }
 
         /// <summary>
@@ -74,8 +66,7 @@ namespace Model.DAO
         /// </summary>
         /// <param name="defect"></param>
         /// <returns></returns>
-        public static bool Add(Model.Defect defect)
-        {
+        public bool Add(Defect defect) {
             Database.Init();
             string sql = "INSERT INTO brokenboat(title, description, memberID, boatID, [date]) VALUES (@title, @desc, @memberID, @boatID, GETDATE())";
             SqlCommand command = new SqlCommand(sql, Database.connection);
@@ -83,8 +74,7 @@ namespace Model.DAO
             command.Parameters.AddWithValue("desc", defect.description);
             command.Parameters.AddWithValue("memberID", defect.reporter.GetId());
             command.Parameters.AddWithValue("boatID", defect.boat.id);
-            if (Database.OpenConnection())
-            {
+            if (Database.OpenConnection()) {
                 return command.ExecuteNonQuery() == 1;
             }
             command.Dispose();

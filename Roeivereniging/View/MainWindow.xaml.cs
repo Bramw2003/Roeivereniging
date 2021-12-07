@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model;
+using Viewmodel;
+
 namespace View
 {
     /// <summary>
@@ -39,12 +41,12 @@ namespace View
                 this.Close();
             }
 #else
-            currentMember = Model.DAO.Member.GetByUsername("admin");
+            currentMember = MemberViewModel.GetByUsername("admin");
 #endif
             // More Anti-Cheese
             if(currentMember == null){this.Close();}
 
-            var a = Model.DAO.Boat.GetBoatAll();
+            var a = BoatViewmodel.GetAllBoats();
             Frame.Content = ReservePage;
             ReservePage.LbBoats.ItemsSource = a;
 

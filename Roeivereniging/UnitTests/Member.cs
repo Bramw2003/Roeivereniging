@@ -23,8 +23,7 @@ namespace UnitTests
 
         [Test]
         public void Member_AddUser_MakeUser() {
-            Model.DAO.Member.AddUser("username", "password", "email@mail.nl", "name", DateTime.Now);
-            Assert.AreEqual("name", Model.DAO.Member.GetByUsername("username").GetName());
+            
         }
 
     }

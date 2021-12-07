@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
+using Viewmodel;
 
 namespace View
 {
@@ -35,7 +36,7 @@ namespace View
                 RemoveBtn.Children.Add(button);
             }
             // Get all defects and display them in the listview
-            LvDefects.ItemsSource = Model.DAO.Defect.GetAll();
+            LvDefects.ItemsSource = DefectViewModel.AllDefects();
         }
 
         private void RepairBtn_Click(object sender, RoutedEventArgs e)
@@ -43,7 +44,7 @@ namespace View
             var RepairDialog = new RepairBoatDialog((Defect)LvDefects.SelectedItem);
             if ((bool)RepairDialog.ShowDialog())
             {
-                LvDefects.ItemsSource = Model.DAO.Defect.GetAll();
+                LvDefects.ItemsSource = DefectViewModel.AllDefects();
             }
         }
     }

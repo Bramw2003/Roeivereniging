@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
+using Viewmodel;
 
 namespace View
 {
@@ -32,7 +33,7 @@ namespace View
             {
                 if (Database.UserLogin(TbUsername.Text, PbPassword.Text))
                 {
-                    MainWindow.currentMember = Model.DAO.Member.GetByUsername(TbUsername.Text);
+                    MainWindow.currentMember = MemberViewModel.GetByUsername(TbUsername.Text);
                     this.DialogResult = true;
                     this.Close();
                 }

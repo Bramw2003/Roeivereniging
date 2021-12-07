@@ -16,9 +16,6 @@
     <Compile Update="DefectPopup.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="AddUserPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="DefectsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -37,9 +34,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="AddMemberPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="AddUserPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="AdminPage.xaml">

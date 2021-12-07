@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model;
+using Viewmodel;
 
 namespace View
 {
@@ -32,7 +33,7 @@ namespace View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = Model.DAO.Repairs.AddRepair(defect, TbNote.Text,MainWindow.currentMember);
+            this.DialogResult = RepairsViewModel.AddRepair(defect, TbNote.Text,MainWindow.currentMember);
             this.Close();
         }
     }

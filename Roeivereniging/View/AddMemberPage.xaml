@@ -32,12 +32,12 @@
             <Label x:Name="label3" Content="Email" Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,5,0" Grid.Row="6" VerticalAlignment="Center" FontSize="18"/>
             <Label x:Name="label4" Content="Geboortedatum" Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,5,0" Grid.Row="7" VerticalAlignment="Center" FontSize="18"/>
             <Label x:Name="label5" Content="Lid Toevoegen" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" FontSize="24" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="textBox" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" FontSize="18"/>
-            <TextBox x:Name="textBox1" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" FontSize="18"/>
-            <TextBox x:Name="textBox2" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" FontSize="18"/>
-            <TextBox x:Name="textBox3" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="6" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" FontSize="18"/>
-            <Button x:Name="button" Content="Toevoegen" Grid.Column="0" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="8" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="24"/>
-            <DatePicker x:Name="datePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="7" VerticalAlignment="Center" FontSize="18"/>
+            <TextBox x:Name="tbName" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" FontSize="18"/>
+            <TextBox x:Name="tbUserName" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" FontSize="18"/>
+            <TextBox x:Name="tbPassWord" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" FontSize="18"/>
+            <TextBox x:Name="tbEMail" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="6" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" FontSize="18"/>
+            <Button x:Name="Add_Member_Button" Content="Toevoegen" Grid.Column="0" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="8" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="24" Click="Add_Member_Button_Click"/>
+            <DatePicker x:Name="dpBirthDay" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="7" VerticalAlignment="Center" FontSize="18"/>
         </Grid>
 
     </Grid>
