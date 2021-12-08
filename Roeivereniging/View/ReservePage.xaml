@@ -53,12 +53,13 @@
             <!--<TextBox Grid.Column="2" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="1" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="24"/>-->
             <ComboBox x:Name="CbType" Grid.Column="2" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" FontSize="24" SelectionChanged="CbType_SelectionChanged">
                 <ComboBoxItem>A-boten</ComboBoxItem>
-                <ComboBoxItem IsSelected="True">B-boten</ComboBoxItem>
+                <ComboBoxItem>B-boten</ComboBoxItem>
                 <ComboBoxItem>C-boten</ComboBoxItem>
                 <ComboBoxItem>Wherry</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">All</ComboBoxItem>
             </ComboBox>
             <Label Content="Aantal roeiers:" Grid.Column="1" HorizontalAlignment="Left" Margin="0,50,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="24"/>
-            <TextBox x:Name="TbPersons" PreviewTextInput="NumberValidationTextBox" Grid.Column="2" HorizontalAlignment="Center" Margin="0,50,0,0" Grid.Row="1" Text="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="24" TextChanged="TbPersons_TextChanged"/>
+            <TextBox x:Name="TbPersons" PreviewTextInput="NumberValidationTextBox" Grid.Column="2" HorizontalAlignment="Center" Margin="0,50,0,0" Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="24" TextChanged="TbPersons_TextChanged"/>
     
             
             <Label Content="Met stuur:" Grid.Column="1" HorizontalAlignment="Left" Margin="0,100,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="24"/>

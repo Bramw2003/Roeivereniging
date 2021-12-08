@@ -36,10 +36,27 @@ namespace View
         /// </summary>
         public void UpdateLbBoats()
         {
-            if (Date?.SelectedDate != null && StartTime.Value != null && EndTime.Value != null && TbPersons.Text != "")
+            if (Date?.SelectedDate != null && StartTime.Value != null && EndTime.Value != null)
             {
                 var date = (DateTime)Date.SelectedDate;
-                LbBoats.ItemsSource = Database.GetAvailableBoats(date, (DateTime)StartTime.Value, (DateTime)EndTime.Value, (BoatType)CbType.SelectedIndex, int.Parse(TbPersons.Text), (bool)ChbSteer.IsChecked, (bool)ChbScull.IsChecked).Where(x => x.defect == false);
+                List<Boat> boats = Database.GetAvailableBoats(date, (DateTime)StartTime.Value, (DateTime)EndTime.Value, (BoatType)CbType.SelectedIndex).Where(x => x.defect == false).ToList();
+                if (TbPersons.Text != "")
+                {
+                    boats = boats.Where(x => x.capacity == int.Parse(TbPersons.Text)).ToList();
+                }
+                if (CbType.SelectedIndex != 4)
+                {
+                    boats = boats.Where(x => (int)x.category == CbType.SelectedIndex).ToList();
+                }
+                if ((bool)ChbSteer.IsChecked)
+                {
+                    boats = boats.Where(x=>x.steer).ToList();
+                }
+                if ((bool)ChbScull.IsChecked)
+                {
+                    boats = boats.Where(x => x.sculling).ToList();
+                }
+                LbBoats.ItemsSource = boats;
             }
         }
 
@@ -52,7 +69,7 @@ namespace View
             {
                 DateTime startTime = (DateTime)StartTime.Value.Value;
                 DateTime endTime = (DateTime)EndTime.Value.Value;
-                LbDuur.Content = "Duur: " + (endTime - startTime).Hours + ":" + (endTime - startTime).Minutes;
+                LbDuur.Content = "Duur: " + endTime.Subtract(startTime).ToString();
             }
         }
 
