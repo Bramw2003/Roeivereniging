@@ -26,6 +26,7 @@ namespace View
         private ViewReservationsPage ViewReservationsPage = new ViewReservationsPage();
         private AdminPage AdminPage = new AdminPage();
         private DefectsPage DefectsPage = new DefectsPage();
+        private ExaminatorsPage ExaminatorsPage = new ExaminatorsPage();
         public MainWindow()
         {
             InitializeComponent();
@@ -68,6 +69,15 @@ namespace View
                 defectsBtn.Click += DefectsButton_Click;
                 this.Header.Children.Add(defectsBtn);
             }
+            if (currentMember.IsExaminator())
+            {
+                Button examBtn = new Button();
+                examBtn.Content = "Examinator";
+                examBtn.MinWidth = 100;
+                examBtn.Margin = new Thickness(10, 0, 0, 0);
+                examBtn.Click += ExaminatorButton_Click;
+                this.Header.Children.Add(examBtn);
+            }
         }
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
@@ -89,6 +99,10 @@ namespace View
         private void DefectsButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Content = DefectsPage;
+        }
+        private void ExaminatorButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = ExaminatorsPage;
         }
     }
 }
