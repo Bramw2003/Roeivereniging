@@ -22,6 +22,9 @@
     <Compile Update="DefectsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="DeleteBoatPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MainWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -49,6 +52,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DefectsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="DeleteBoatPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="LoginWindow.xaml">

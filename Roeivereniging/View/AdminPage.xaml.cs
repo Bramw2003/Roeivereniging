@@ -19,6 +19,7 @@ namespace View {
 
         private AddMemberPage AddMemberPage = new AddMemberPage();
         private AddBoatPage AddBoatPage = new AddBoatPage();
+        private DeleteBoatPage DeleteBoatPage = new DeleteBoatPage();
         public AdminPage() {
             InitializeComponent();
         }
@@ -29,6 +30,10 @@ namespace View {
 
         private void button2_Click(object sender, RoutedEventArgs e) {
             AdminFrame.Content = AddBoatPage;
+        }
+
+        private void Button_Boat_Delete_Click(object sender, RoutedEventArgs e) {
+            AdminFrame.Content = DeleteBoatPage;
         }
     }
 }
