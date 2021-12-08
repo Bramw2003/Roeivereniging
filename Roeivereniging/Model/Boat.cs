@@ -41,9 +41,12 @@ namespace Model
                 default:
                     break;
             }
-            type += this.capacity;
-            type += sculling ? "x" : "";
-            type += steer ? "+" : "";
+            if (category != (int)BoatType.W)
+            {
+                type += this.capacity;
+                type += sculling ? "x" : "";
+                type += steer ? "+" : "";
+            }
             this.defect = defect;
 
         }
