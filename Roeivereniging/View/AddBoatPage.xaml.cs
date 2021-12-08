@@ -22,6 +22,9 @@ namespace View {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// when the add button get clicked checks values and calls view model
+        /// </summary>
         private void Add_Boat_Button_Click(object sender, RoutedEventArgs e) {
             int Capacity = int.Parse(tbCapacity.Text);
             bool sculing = false;
@@ -51,6 +54,9 @@ namespace View {
             BoatViewmodel.AddBoat(tbName.Text, cbType.SelectedIndex , Capacity, sculing, steer);
         }
 
+        /// <summary>
+        /// makes sure capacity textbox can only be numbers
+        /// </summary>
         private void PreviewTextInput(object sender, TextCompositionEventArgs e) {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
