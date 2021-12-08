@@ -109,10 +109,10 @@ namespace Model
         /// <param name="steer"></param>
         /// <param name="sculling"></param>
         /// <returns></returns>
-        public static List<Boat> GetAvailableBoats(DateTime date, DateTime start, DateTime end, BoatType type = BoatType.W, int capacity=2,bool steer = false, bool sculling = false)
+        public static List<Boat> GetAvailableBoats(DateTime date, DateTime start, DateTime end, BoatType type = BoatType.W)
         {
             List<Boat> boats = new List<Boat>();
-            string sql = "SELECT DISTINCT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling], (SELECT CASE WHEN EXISTS ( SELECT * FROM[brokenboat] WHERE boatID = boat.[ID]) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END) FROM [boat] LEFT JOIN reservations AS r ON r.boatID = boat.ID JOIN types ON types.ID = boat.typesID WHERE [types].[capacity]=@capacity and [types].[category]=@cat and [types].[steer]=@steer and [types].[sculling]=@scull and ((r.[date] != @date OR r.[date] IS NULL) OR(r.starttime NOT BETWEEN @starttime and @endtime) AND(r.endtime NOT BETWEEN @starttime and @endtime) OR(starttime is NULL AND endtime is null))";
+            string sql = "SELECT DISTINCT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling], (SELECT CASE WHEN EXISTS ( SELECT * FROM[brokenboat] WHERE boatID = boat.[ID]) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END) FROM [boat] LEFT JOIN reservations AS r ON r.boatID = boat.ID JOIN types ON types.ID = boat.typesID WHERE ((r.[date] != @date OR r.[date] IS NULL) OR(r.starttime NOT BETWEEN @starttime and @endtime) AND(r.endtime NOT BETWEEN @starttime and @endtime) OR(starttime is NULL AND endtime is null))";
             List<Boat> list = new List<Boat>();
             SqlCommand command = new SqlCommand(sql, Database.connection);
             var st = start.AddSeconds(1).ToString("HH:mm:ss");
@@ -120,10 +120,6 @@ namespace Model
             command.Parameters.AddWithValue("starttime", st);
             command.Parameters.AddWithValue("endtime", et);
             command.Parameters.AddWithValue("date", date);
-            command.Parameters.AddWithValue("capacity", capacity);
-            command.Parameters.AddWithValue("cat", (int)type);
-            command.Parameters.AddWithValue("steer", steer ? 1 : 0);
-            command.Parameters.AddWithValue("scull", sculling ? 1 : 0);
             if (OpenConnection())
             {
                 var a = command.ExecuteReader();

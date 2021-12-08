@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
+using System.Linq;
 
 namespace Model.DAO {
     public class DefectDAO {
@@ -35,20 +36,7 @@ namespace Model.DAO {
         /// <param name="boatID"></param>
         /// <returns></returns>
         public List<Defect> GetByBoatID(int boatID) {
-            Database.Init();
-            string sql = "SELECT [title], [description], [memberID], [boatID] FROM [brokenboat] WHERE [boatID]=@id";
-            List<Defect> list = new List<Defect>();
-            SqlCommand command = new SqlCommand(sql, Database.connection);
-            command.Parameters.AddWithValue("id", boatID);
-            if (Database.OpenConnection()) {
-                var a = command.ExecuteReader();
-                while (a.Read()) {
-                    Defect defect = new Defect(a.GetString(0), a.GetString(1), tempMemberDB.GetById(a.GetInt32(2)), tempBoatDB.GetBoatByID(a.GetInt32(3)));
-                    list.Add(defect);
-                }
-                command.Dispose();
-                Database.connection.Close();
-            }
+            List<Defect>list = GetAll().Where(x=> x.boat.id == boatID).ToList();
             return list;
         }
 

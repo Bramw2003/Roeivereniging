@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
-
+using System.Linq;
 namespace Model.DAO {
     public class BoatDAO : IBoat {
         public bool AddBoat(string name, BoatType type) {
@@ -18,20 +18,7 @@ namespace Model.DAO {
         }
 
         public Boat GetBoatByID(int id) {
-            Database.Init();
-            String sql = "SELECT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling], (SELECT CASE WHEN EXISTS ( SELECT * FROM[brokenboat] WHERE boatID = boat.[ID]) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END) FROM [boat] JOIN[types] ON[types].[ID] =[boat].[typesID] WHERE[boat].[ID] = @id";
-            Boat n = null;
-            SqlCommand command = new SqlCommand(sql, Database.connection);
-            command.Parameters.AddWithValue("id", id);
-            if (Database.OpenConnection()) {
-                var a = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
-                while (a.Read()) {
-                    n = new Boat(a.GetInt32(0), a.GetString(1), a.GetInt32(2), a.GetInt32(3), a.GetBoolean(4), a.GetBoolean(5), a.GetBoolean(6));
-                }
-                command.Dispose();
-                Database.connection.Close();
-            }
-            return n;
+            return GetAll().Where(x => x.id == id).First();
 
         }
 
