@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Viewmodel;
+using System.Text.RegularExpressions;
 
 namespace View {
     /// <summary>
@@ -18,6 +20,40 @@ namespace View {
     public partial class AddBoatPage : Page {
         public AddBoatPage() {
             InitializeComponent();
+        }
+
+        private void Add_Boat_Button_Click(object sender, RoutedEventArgs e) {
+            int Capacity = int.Parse(tbCapacity.Text);
+            bool sculing = false;
+            bool steer = false;
+            switch (cbSculling.SelectedIndex) {
+                case -1:
+                    return;
+                case 0:
+                    sculing = true;
+                    break;
+                case 1:
+                    sculing = false;
+                    break;
+            }
+
+            switch (cbSteering.SelectedIndex) {
+                case -1:
+                    return;
+                case 0:
+                    steer = true;
+                    break;
+                case 1:
+                    steer = false;
+                    break;
+            }
+
+            BoatViewmodel.AddBoat(tbName.Text, cbType.SelectedIndex , Capacity, sculing, steer);
+        }
+
+        private void PreviewTextInput(object sender, TextCompositionEventArgs e) {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

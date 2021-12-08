@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Input;
 using MicroMvvm;
 using Model;
 using Model.DAO;
@@ -12,5 +13,11 @@ namespace Viewmodel
         public static List<Boat> GetAllBoats() {
             return BoatDB.GetAll();
         }
+        
+        public static void AddBoat(string name, int type, int capacity, bool sculling, bool steer) {
+            int typeID = BoatDB.FindTypeIDByDetails(capacity, type, steer, sculling);
+            BoatDB.AddBoat(name, (BoatType)typeID);
+        }
+
     }
 }

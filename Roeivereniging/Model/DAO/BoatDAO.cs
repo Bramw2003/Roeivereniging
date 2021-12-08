@@ -59,5 +59,25 @@ namespace Model.DAO {
         public bool Delete(Boat boat) {
             throw new NotImplementedException();
         }
+
+        public int FindTypeIDByDetails(int capacity, int category, bool steer, bool sculling) {
+            Database.Init();
+            int id = 0;
+            String sql = "SELECT ID FROM types WHERE capacity = @capacity AND category = @category AND steer = @steer AND sculling = @sculling";
+            SqlCommand command = new SqlCommand(sql, Database.connection);
+            command.Parameters.AddWithValue("capacity", capacity);
+            command.Parameters.AddWithValue("category", category);
+            command.Parameters.AddWithValue("steer", steer);
+            command.Parameters.AddWithValue("sculling", sculling);
+            if (Database.OpenConnection()) {
+                var a = command.ExecuteReader();
+                while (a.Read()) {
+                    id = a.GetInt32(0);
+                }
+                command.Dispose();
+                Database.connection.Close();
+            }
+            return id;
+        }
     }
 }
