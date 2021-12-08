@@ -54,12 +54,10 @@ namespace Model.DAO
         public List<Certificate> GetByMember(Member member)
         {
             Database.Init();
-            String sql = @"SELECT name
-                            FROM certificate
-                            WHERE id IN(
-                            SELECT certificateid
+            String sql = @"select [name], [date]
                             FROM member_certificate
-                            WHERE memberid = @memberid)";
+                            JOIN certificate ON certificateID = certificate.id
+                            WHERE memberID = @memberid";
             List<Certificate> list = new List<Certificate>();
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("memberid", member.GetId());
@@ -68,7 +66,7 @@ namespace Model.DAO
                 var a = command.ExecuteReader();
                 while (a.Read())
                 {
-                    Certificate n = new Certificate(a.GetString(0));
+                    Certificate n = new Certificate(a.GetString(0), a.GetDateTime(1));
                     list.Add(n);
                 }
                 command.Dispose();
