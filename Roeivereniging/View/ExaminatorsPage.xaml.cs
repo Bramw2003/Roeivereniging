@@ -39,15 +39,15 @@ namespace View
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ComboBoxDiplomas.Items.Clear();
-            certDao.GetAvailableByMember(MainWindow.currentMember).ForEach(x => ComboBoxDiplomas.Items.Add(x.name));
+            //ComboBoxDiplomas.Items.Clear();
+            //certDao.GetAvailableByMember(MainWindow.currentMember).ForEach(x => ComboBoxDiplomas.Items.Add(x.name));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             certDao.AddToMember((Member)LvMember.SelectedItem, new Certificate(ComboBoxDiplomas.SelectedValue.ToString()));
             ComboBoxDiplomas.Items.Clear();
-            certDao.GetAvailableByMember(MainWindow.currentMember).ForEach(x => ComboBoxDiplomas.Items.Add(x.name));
+            certDao.GetAvailableByMember((Member)LvMember.SelectedItem).ForEach(x => ComboBoxDiplomas.Items.Add(x.name));
         }
     }
 }

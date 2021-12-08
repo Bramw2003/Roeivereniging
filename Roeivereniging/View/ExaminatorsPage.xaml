@@ -28,10 +28,10 @@
             <ListView x:Name="LvMember" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="LvMember_SelectionChanged">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Type" Width="auto" DisplayMemberBinding="{Binding name}" />
-                        <GridViewColumn Header="Naam" Width="150" DisplayMemberBinding="{Binding name}" />
-                        <GridViewColumn Header="Stuur" Width="50" DisplayMemberBinding="{Binding steer}" />
-                        <GridViewColumn Header="Scullen" Width="50" DisplayMemberBinding="{Binding sculling}" />
+                        <GridViewColumn Header="Naam" Width="auto" DisplayMemberBinding="{Binding name}" />
+                        <GridViewColumn Header="Gebruikersnaam" Width="auto" DisplayMemberBinding="{Binding username}" />
+                        <GridViewColumn Header="Admin" Width="auto" DisplayMemberBinding="{Binding admin}" />
+                        <GridViewColumn Header="Reperateur" Width="auto" DisplayMemberBinding="{Binding repair}" />
                     </GridView>
                 </ListView.View>
             </ListView>
