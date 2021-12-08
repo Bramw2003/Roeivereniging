@@ -22,7 +22,6 @@ namespace View
     {
         public static Member currentMember { get; set; }
         private ReservePage ReservePage = new ReservePage();
-        private History HistoryPage = new History();
         private ViewReservationsPage ViewReservationsPage = new ViewReservationsPage();
         private AdminPage AdminPage = new AdminPage();
         private DefectsPage DefectsPage = new DefectsPage();
