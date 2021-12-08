@@ -1,15 +1,17 @@
 ﻿using NUnit.Framework;
 using Model.DAO;
 using System;
+using Model;
+using Viewmodel;
 
 namespace UnitTests
 {
-    internal class Member
+    internal class MemberTest
     {
         [SetUp]
         public void Setup()
         {
-
+            Database.catalog = "Roeivereniging_Test";
         }
 
         [Test]
@@ -23,7 +25,10 @@ namespace UnitTests
 
         [Test]
         public void Member_AddUser_MakeUser() {
-            
+            DateTime date = new DateTime(2500, 12, 31);
+            MemberViewModel.MakeUser("test", "tester", date, "test@mail.com", "wachtwoord");
+            Member result = MemberViewModel.GetByUsername("tester");
+            Assert.AreEqual(date, result.GetBirthday());
         }
 
     }

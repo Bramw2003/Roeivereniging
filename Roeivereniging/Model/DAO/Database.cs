@@ -14,6 +14,7 @@ namespace Model
     public static class Database
     {
         public static SqlConnection connection;
+        public static string catalog = "Roeivereniging";
 
         /// <summary>
         /// Initialize all needed database variables
@@ -24,7 +25,7 @@ namespace Model
             builder.DataSource = "127.0.0.1";
             builder.UserID = "sa";
             builder.Password = "#7mBzd*EN";
-            builder.InitialCatalog = "Roeivereniging";
+            builder.InitialCatalog = catalog;
             connection = new SqlConnection(builder.ConnectionString);
         }
 
