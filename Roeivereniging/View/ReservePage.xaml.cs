@@ -98,7 +98,7 @@ namespace View
                 DateTime date = (DateTime)Date.SelectedDate.Value.Date + a;
                 TimeSpan b = new TimeSpan(endTime.Hour, endTime.Minute, endTime.Second);
                 DateTime end = (DateTime)Date.SelectedDate.Value.Date + b;
-                MessageBox.Show(ReservationViewModel.MakeReservation((Boat)LbBoats.SelectedItem, date, end, MainWindow.currentMember).ToString());
+                ReservationViewModel.MakeReservation((Boat)LbBoats.SelectedItem, date, end, MainWindow.currentMember).ToString();
             }
         }
 
