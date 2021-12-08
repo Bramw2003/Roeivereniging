@@ -12,7 +12,7 @@ namespace Model
         public int capacity { get; }
         public bool steer { get; }
         public bool sculling { get; }
-        private BoatType _category;
+        public BoatType category { get; }
         public bool defect { get; }
 
         public Boat(int id, string name, int capacity, int category, bool steer, bool sculling, bool defect = false)
@@ -20,12 +20,12 @@ namespace Model
             this.id = id;
             this.name = name;
             type = "";
-            _category = (BoatType)category;
+            this.category = (BoatType)category;
             this.capacity = capacity;
             this.steer = steer;
             this.sculling = sculling;
 
-            switch (_category)
+            switch (this.category)
             {
                 case BoatType.A:
                     break;
