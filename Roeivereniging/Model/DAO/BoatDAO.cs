@@ -19,7 +19,6 @@ namespace Model.DAO {
 
         public Boat GetBoatByID(int id) {
             return GetAll().Where(x => x.id == id).First();
-
         }
 
         public List<Boat> GetAll() {

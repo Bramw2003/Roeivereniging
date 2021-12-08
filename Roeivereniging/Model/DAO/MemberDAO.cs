@@ -6,6 +6,26 @@ using System.Text;
 namespace Model.DAO {
     public class MemberDAO : IMember {
 
+        public List<Member> GetAll()
+        {
+            Database.Init();
+            string sql = "SELECT [ID],[name],[birthday],[admin],[repair],[examinator],[email],[username]FROM[member]";
+            List<Member> list = new List<Member>();
+            SqlCommand command = new SqlCommand(sql, Database.connection);
+            if (Database.OpenConnection())
+            {
+                var a = command.ExecuteReader();
+                while (a.Read())
+                {
+                    Member member = new Member(a.GetInt32(0), a.GetString(1), a.GetString(7), a.GetDateTime(2), a.GetBoolean(3), a.GetBoolean(4), a.GetBoolean(5), a.GetString(6));
+                    list.Add(member);
+                }
+                command.Dispose();
+                Database.connection.Close();
+            }
+            return list;
+        }
+
         /// <summary>
         /// Inserts a new member into the database
         /// </summary>
@@ -37,7 +57,7 @@ namespace Model.DAO {
 
         public Member GetByUsername(string username) {
             Database.Init();
-            string sql = "SELECT TOP(1000)[ID],[name],[birthday],[admin],[repair],[examinator],[email]FROM[member] WHERE username = @username";
+            string sql = "SELECT [ID],[name],[birthday],[admin],[repair],[examinator],[email]FROM[member] WHERE username = @username";
             Member member = null;
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("username", username);
@@ -108,6 +128,50 @@ namespace Model.DAO {
                 }
                 return result;
             }
+        }
+        /// <summary>
+        /// !!!Should redefine member after altering!!!
+        /// </summary>
+        /// <param name="member"></param>
+        /// <param name="date"></param>
+        /// <param name="admin"></param>
+        /// <param name="repair"></param>
+        /// <param name="examinator"></param>
+        /// <param name="username"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        private bool Alter(Member member, DateTime? date = null, bool? admin = null, bool? repair = null, bool? examinator = null, string username = null, string name = null)
+        {
+
+            date = date ?? member.date;
+            admin = admin ?? member.admin;
+            repair = repair ?? member.repair;
+            examinator = examinator ?? member.examinator;
+            username = username ?? member.username;
+            name = name ?? member.name;
+
+            Database.Init();
+            string sql = "UPDATE [member] SET [name] = @name, [birthday] = @bday, [admin] = @admin, [repair] = @repair, [examinator] = @examinator, [username] = @username WHERE [ID] = @id";
+            bool result = false;
+            SqlCommand command = new SqlCommand(sql, Database.connection);
+            command.Parameters.AddWithValue("username", username);
+            command.Parameters.AddWithValue("name", name);
+            command.Parameters.AddWithValue("bday", date.Value.Date);
+            command.Parameters.AddWithValue("admin", admin.Value);
+            command.Parameters.AddWithValue("repair", repair.Value);
+            command.Parameters.AddWithValue("examinator", examinator.Value);
+            command.Parameters.AddWithValue("id", member.GetId());
+            if (Database.OpenConnection())
+            {
+                var a = command.ExecuteScalar();
+                if (a != null)
+                {
+                    result = (int)a == 1;
+                }
+                command.Dispose();
+                Database.connection.Close();
+            }
+            return result;
         }
     }
 }
