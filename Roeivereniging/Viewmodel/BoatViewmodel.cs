@@ -10,7 +10,7 @@ namespace Viewmodel
         private static BoatDAO BoatDB = new BoatDAO();
 
         public static List<Boat> GetAllBoats() {
-            return BoatDB.GetBoatAll();
+            return BoatDB.GetAll();
         }
     }
 }
