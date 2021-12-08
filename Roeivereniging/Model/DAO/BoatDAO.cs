@@ -35,7 +35,7 @@ namespace Model.DAO {
 
         }
 
-        public List<Boat> GetBoatAll() {
+        public List<Boat> GetAll() {
             Database.Init();
             String sql = "SELECT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling], (SELECT CASE WHEN EXISTS ( SELECT * FROM[brokenboat] WHERE boatID = boat.[ID]) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END) FROM [boat] JOIN[types] ON[types].[ID] =[boat].[typesID]";
             List<Boat> list = new List<Boat>();

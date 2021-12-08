@@ -7,6 +7,6 @@ namespace Model {
         bool insert(Boat boat);
         bool Delete(Boat boat);
         Boat GetBoatByID(int id);
-        List<Boat> GetBoatAll();
+        List<Boat> GetAll();
     }
 }

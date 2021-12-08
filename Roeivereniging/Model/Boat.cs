@@ -44,8 +44,6 @@ namespace Model
             type += this.capacity;
             type += sculling ? "x" : "";
             type += steer ? "+" : "";
-            //defect = Model.DAO.Defect.GetByBoatID(id).Count != 0;
-            //defect = true;
             this.defect = defect;
 
         }
