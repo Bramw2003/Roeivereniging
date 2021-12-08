@@ -47,9 +47,10 @@ namespace Model.DAO {
             throw new NotImplementedException();
         }
 
-        public int FindTypeIDByDetails(int capacity, int category, bool steer, bool sculling) {
+
+        public int? FindTypeIDByDetails(int capacity, int category, bool steer, bool sculling) {
             Database.Init();
-            int id = 0;
+            int? id = null;
             String sql = "SELECT ID FROM types WHERE capacity = @capacity AND category = @category AND steer = @steer AND sculling = @sculling";
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("capacity", capacity);
@@ -69,7 +70,6 @@ namespace Model.DAO {
 
         public void MakeTypeWithDetails(int capacity, int category, bool steer, bool sculling) {
             Database.Init();
-            int id = 0;
             String sql = "INSERT INTO types VALUES (@capacity, @category, @steer, @sculling)";
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("capacity", capacity);
