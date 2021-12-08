@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
+using System.Linq;
 
 namespace Model.DAO {
     public class ReservationDAO {
@@ -20,12 +21,12 @@ namespace Model.DAO {
             if (Database.OpenConnection()) {
                 var a = command.ExecuteReader();
                 while (a.Read()) {
-                    DateTime start = a.GetDateTime(0);
-                    DateTime end = a.GetDateTime(2);
-                    DateTime date = a.GetDateTime(4).Date;
-                    start = date + new TimeSpan(start.Hour, start.Minute, start.Second);
-                    end = date + new TimeSpan(end.Hour, end.Minute, end.Second);
-                    Reservation n = new Reservation(start, end, tempBoatDB.GetBoatByID(a.GetInt32(4)), tempMemberDB.GetById(a.GetInt32(1)));
+                    DateTime start = a.GetDateTime(4).Date;
+                    DateTime end = a.GetDateTime(4).Date;
+
+                    start = start + a.GetTimeSpan(0);
+                    end = end + a.GetTimeSpan(2);
+                    Reservation n = new Reservation(start, end, tempBoatDB.GetBoatByID(a.GetInt32(1)), tempMemberDB.GetById(a.GetInt32(3)));
                     list.Add(n);
                 }
                 command.Dispose();
@@ -40,28 +41,7 @@ namespace Model.DAO {
         /// <param name="member"></param>
         /// <returns></returns>
         public List<Reservation> GetAllByMember(Member member) {
-            Database.Init();
-            MemberDAO tempMemberDB = new MemberDAO();
-            BoatDAO tempBoatDB = new BoatDAO();
-            String sql = "SELECT starttime, boatID, endtime, memberID, [date] FROM reservations WHERE memberID=@id";
-            List<Reservation> list = new List<Reservation>();
-            SqlCommand command = new SqlCommand(sql, Database.connection);
-            command.Parameters.AddWithValue("id", member.GetId());
-            if (Database.OpenConnection()) {
-                var a = command.ExecuteReader();
-                while (a.Read()) {
-                    DateTime start = a.GetDateTime(4).Date;
-                    DateTime end = a.GetDateTime(4).Date;
-
-                    start = start + a.GetTimeSpan(0);
-                    end = end + a.GetTimeSpan(2);
-                    Reservation n = new Reservation(start, end, tempBoatDB.GetBoatByID(a.GetInt32(1)), tempMemberDB.GetById(a.GetInt32(3)));
-                    list.Add(n);
-                }
-                command.Dispose();
-                Database.connection.Close();
-            }
-            return list;
+            return GetAll().Where(x=> x.member.GetId()==member.GetId()).ToList();
         }
 
         /// <summary>
