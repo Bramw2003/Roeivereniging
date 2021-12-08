@@ -37,12 +37,22 @@
             </ListView>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="0" Margin="40" DataContext="{Binding SelectedItem, ElementName=LvMember}">
-            <Label Content="{Binding name}" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top"/>
-            
-            <ComboBox x:Name="ComboBoxDiplomas" Margin="0,40,0,0" VerticalAlignment="Top">
-                
-            </ComboBox>
-            <Button Content="Toevoegen" HorizontalAlignment="Stretch" Margin="0,138,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Content="{Binding name}" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top"/>
+            <ComboBox Grid.Row="0" Margin="0,30,0,0" x:Name="ComboBoxDiplomas" VerticalAlignment="Top"></ComboBox>
+            <Button Grid.Row="0" Content="Toevoegen" Margin="0,60,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="Button_Click"/>
+            <ListView Grid.Row="1" x:Name="LvCerts" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Behaalde Diplomas" Width="160" DisplayMemberBinding="{Binding name}"/>
+                        <GridViewColumn Header="Datum" Width="160" DisplayMemberBinding="{Binding date}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </Grid>
     </Grid>
 </Page>

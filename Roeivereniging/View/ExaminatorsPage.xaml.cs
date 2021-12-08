@@ -35,6 +35,7 @@ namespace View
         {
             ComboBoxDiplomas.Items.Clear();
             certDao.GetAvailableByMember((Member)LvMember.SelectedItem).ForEach(x => ComboBoxDiplomas.Items.Add(x.name));
+            LvCerts.ItemsSource = certDao.GetByMember((Member)LvMember.SelectedItem);
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
