@@ -39,7 +39,7 @@ namespace View
             if (Date?.SelectedDate != null && StartTime.Value != null && EndTime.Value != null)
             {
                 var date = (DateTime)Date.SelectedDate;
-                List<Boat> boats = Database.GetAvailableBoats(date, (DateTime)StartTime.Value, (DateTime)EndTime.Value, (BoatType)CbType.SelectedIndex).Where(x => x.defect == false).ToList();
+                List<Boat> boats = Database.GetAvailableBoats(date, (DateTime)StartTime.Value, (DateTime)EndTime.Value, MainWindow.currentMember).Where(x => x.defect == false).ToList();
                 if (TbPersons.Text != "")
                 {
                     boats = boats.Where(x => x.capacity == int.Parse(TbPersons.Text)).ToList();

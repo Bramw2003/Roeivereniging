@@ -110,17 +110,32 @@ namespace Model
         /// <param name="steer"></param>
         /// <param name="sculling"></param>
         /// <returns></returns>
-        public static List<Boat> GetAvailableBoats(DateTime date, DateTime start, DateTime end, BoatType type = BoatType.W)
+        public static List<Boat> GetAvailableBoats(DateTime date, DateTime start, DateTime end, Member member)
         {
             List<Boat> boats = new List<Boat>();
             string sql = "SELECT DISTINCT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling], (SELECT CASE WHEN EXISTS ( SELECT * FROM[brokenboat] WHERE boatID = boat.[ID]) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END) FROM [boat] LEFT JOIN reservations AS r ON r.boatID = boat.ID JOIN types ON types.ID = boat.typesID WHERE ((r.[date] != @date OR r.[date] IS NULL) OR(r.starttime NOT BETWEEN @starttime and @endtime) AND(r.endtime NOT BETWEEN @starttime and @endtime) OR(starttime is NULL AND endtime is null))";
+            string available = @"SELECT DISTINCT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling], (SELECT CASE WHEN EXISTS ( SELECT * FROM[brokenboat] WHERE boatID = boat.[ID]) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END)
+                                FROM boat 
+                                LEFT JOIN types on boat.typesID = types.ID
+                                LEFT JOIN types_certificate ON types.ID = types_certificate.typesID 
+                                LEFT JOIN certificate ON types_certificate.certificateID = certificate.ID 
+                                LEFT JOIN member_certificate on member_certificate.certificateID=certificate.ID 
+                                LEFT JOIN member ON member_certificate.memberID = member.ID
+                                LEFT JOIN reservations AS r ON r.boatID = boat.ID
+                                WHERE member.ID = @memberid
+                                AND ([deleted] IS NULL OR [deleted] = 0) AND
+                                ((r.[date] != @date OR r.[date] IS NULL) OR
+                                (r.starttime NOT BETWEEN @starttime and @endtime) AND
+                                (r.endtime NOT BETWEEN @starttime and @endtime) OR
+                                (starttime is NULL AND endtime is null));";
             List<Boat> list = new List<Boat>();
-            SqlCommand command = new SqlCommand(sql, Database.connection);
+            SqlCommand command = new SqlCommand(available, Database.connection);
             var st = start.AddSeconds(1).ToString("HH:mm:ss");
             var et = end.AddSeconds(-1).ToString("HH:mm:ss");
             command.Parameters.AddWithValue("starttime", st);
             command.Parameters.AddWithValue("endtime", et);
             command.Parameters.AddWithValue("date", date);
+            command.Parameters.AddWithValue("memberid", member.GetId());
             if (OpenConnection())
             {
                 var a = command.ExecuteReader();
