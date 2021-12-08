@@ -16,6 +16,10 @@ namespace Viewmodel
         
         public static void AddBoat(string name, int type, int capacity, bool sculling, bool steer) {
             int typeID = BoatDB.FindTypeIDByDetails(capacity, type, steer, sculling);
+            if(typeID == 0) {
+                BoatDB.MakeTypeWithDetails(capacity, type, steer, sculling);
+                typeID = BoatDB.FindTypeIDByDetails(capacity, type, steer, sculling);
+            }
             BoatDB.AddBoat(name, (BoatType)typeID);
         }
 

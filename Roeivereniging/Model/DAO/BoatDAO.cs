@@ -79,5 +79,19 @@ namespace Model.DAO {
             }
             return id;
         }
+
+        public void MakeTypeWithDetails(int capacity, int category, bool steer, bool sculling) {
+            Database.Init();
+            int id = 0;
+            String sql = "INSERT INTO types VALUES (@capacity, @category, @steer, @sculling)";
+            SqlCommand command = new SqlCommand(sql, Database.connection);
+            command.Parameters.AddWithValue("capacity", capacity);
+            command.Parameters.AddWithValue("category", category);
+            command.Parameters.AddWithValue("steer", steer);
+            command.Parameters.AddWithValue("sculling", sculling);
+            if (Database.OpenConnection()) {
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }
