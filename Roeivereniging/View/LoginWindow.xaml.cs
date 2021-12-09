@@ -37,7 +37,8 @@ namespace View
                     this.DialogResult = true;
                     this.Close();
                 }
-                else {
+                else
+                {
                     Melding.Visibility = Visibility.Visible;
                 }
             }
@@ -54,13 +55,11 @@ namespace View
             {
                 TbUsernamePlaceholder.Visibility = Visibility.Hidden;
             }
-            else
+            else if (TbUsername.Text == "")
             {
-                if(TbUsername.Text == "")
-                {
-                    TbUsernamePlaceholder.Visibility = Visibility.Visible;
-                }
+                TbUsernamePlaceholder.Visibility = Visibility.Visible;
             }
+
         }
 
         private void PbPassword_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -69,12 +68,10 @@ namespace View
             {
                 PbPasswordPlaceholder.Visibility = Visibility.Hidden;
             }
-            else
+            else if (PbPassword.Text == "")
             {
-                if (PbPassword.Text == "")
-                {
-                    PbPasswordPlaceholder.Visibility = Visibility.Visible;
-                }
+                PbPasswordPlaceholder.Visibility = Visibility.Visible;
+
             }
         }
 
@@ -82,8 +79,17 @@ namespace View
         {
             if (e.Key == Key.Return)
             {
-                BtnLogin_Click(null,null);
+                BtnLogin_Click(null, null);
             }
+        }
+
+        private void LbForgotPassword_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            this.Topmost = false;
+            var forgotPasswordDialog = new ForgotPasswordWindow();
+            forgotPasswordDialog.ShowDialog();
+            this.Topmost = true;
+
         }
     }
 }

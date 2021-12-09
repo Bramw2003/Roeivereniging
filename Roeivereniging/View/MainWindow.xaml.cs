@@ -132,7 +132,7 @@ namespace View
                 this.Close();
             }
             // More Anti-Cheese
-            if (currentMember == null) { this.Close(); }
+            if (currentMember == null) { this.Close(); return; }
             ReservePage = new ReservePage();
             ViewReservationsPage = new ViewReservationsPage();
             AdminPage = new AdminPage();

@@ -173,5 +173,27 @@ namespace Model.DAO {
             }
             return result;
         }
+
+        public bool UpdatePassword(Member member, string password)
+        {
+            string sql = "UPDATE [member] SET [password]=PWDENCRYPT(@pass) WHERE [username] = @username and [email] = @email";
+
+            bool result = false;
+            SqlCommand command = new SqlCommand(sql, Database.connection);
+            command.Parameters.AddWithValue("username", member.username);
+            command.Parameters.AddWithValue("email", member.email);
+            command.Parameters.AddWithValue("pass", password);
+            if (Database.OpenConnection())
+            {
+                var a = command.ExecuteNonQuery();
+                if (a != null)
+                {
+                    result = (int)a == 1;
+                }
+                command.Dispose();
+                Database.connection.Close();
+            }
+            return result;
+        }
     }
 }

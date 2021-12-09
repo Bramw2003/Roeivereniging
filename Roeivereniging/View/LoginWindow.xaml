@@ -68,7 +68,10 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
+        <Label x:Name="LbForgotPassword" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,190,0,0" MouseLeftButtonUp="LbForgotPassword_MouseLeftButtonUp">
+            <TextBlock TextDecorations="Underline">Wachtwoord vergeten</TextBlock>
+        </Label>
         <Label x:Name="Melding" Content="gebruikersnaam en of wachtwoord incorrect" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,250,0,0" Width="300" Background="White" Foreground="#FFF50000" Visibility="Hidden" Height="26" VerticalAlignment="Center"/>
-
+        
     </Grid>
 </Window>
