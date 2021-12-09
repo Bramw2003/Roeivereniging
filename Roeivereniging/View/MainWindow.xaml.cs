@@ -44,12 +44,31 @@ namespace View
             currentMember = MemberViewModel.GetByUsername("admin");
 #endif
             // More Anti-Cheese
-            if(currentMember == null){this.Close();}
+            if (currentMember == null) { this.Close(); }
 
             var a = BoatViewmodel.GetAllBoats();
             Frame.Content = ReservePage;
             ReservePage.LbBoats.ItemsSource = a;
+            AddHeaderBtns();
+        }
 
+        private void AddHeaderBtns()
+        {
+            // Add default header buttons like reserve and history
+            Button ReserveBtn = new Button();
+            ReserveBtn.Content = "Reserveer";
+            ReserveBtn.MinWidth = 100;
+            ReserveBtn.Margin = new Thickness(10, 0, 0, 0);
+            ReserveBtn.Click += BtnReserveer_Click;
+            this.Header.Children.Add(ReserveBtn);
+            Button HistoryBtn = new Button();
+            HistoryBtn.Content = "Geschiedenis";
+            HistoryBtn.MinWidth = 100;
+            HistoryBtn.Margin = new Thickness(10, 0, 0, 0);
+            HistoryBtn.Click += BtnReserveringen_Click;
+            this.Header.Children.Add(HistoryBtn);
+
+            // Add user specific buttons
             if (currentMember.IsAdmin())
             {
                 Button adminButton = new Button();
@@ -77,6 +96,7 @@ namespace View
                 examBtn.Click += ExaminatorButton_Click;
                 this.Header.Children.Add(examBtn);
             }
+
         }
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
@@ -87,8 +107,6 @@ namespace View
         private void BtnReserveringen_Click(object sender, RoutedEventArgs e)
         {
             Frame.Content = ViewReservationsPage;
-            //ViewReservationsPage.LvRervations.ItemsSource = Model.DAO.Reservation.GetAllByMember(MainWindow.currentMember).OrderByDescending(x => x.date);
-
         }
 
         private void BtnReserveer_Click(object sender, RoutedEventArgs e)
@@ -102,6 +120,29 @@ namespace View
         private void ExaminatorButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Content = ExaminatorsPage;
+        }
+
+        private void BtnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            currentMember = null;
+            LoginWindow loginWindow = new LoginWindow();
+            // Anti-Cheese
+            if (!(bool)loginWindow.ShowDialog())
+            {
+                this.Close();
+            }
+            // More Anti-Cheese
+            if (currentMember == null) { this.Close(); }
+            ReservePage = new ReservePage();
+            ViewReservationsPage = new ViewReservationsPage();
+            AdminPage = new AdminPage();
+            DefectsPage = new DefectsPage();
+            ExaminatorsPage = new ExaminatorsPage();
+
+            // Clear the header
+            Header.Children.Clear();
+
+            AddHeaderBtns();
         }
     }
 }
