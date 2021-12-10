@@ -21,12 +21,12 @@ namespace View
     public partial class MainWindow : Window
     {
         public static Member currentMember { get; set; }
-        private ReservePage ReservePage = new ReservePage();
-        private ViewReservationsPage ViewReservationsPage = new ViewReservationsPage();
-        private AdminPage AdminPage = new AdminPage();
-        private DefectsPage DefectsPage = new DefectsPage();
-        private ExaminatorsPage ExaminatorsPage = new ExaminatorsPage();
-        private AccountPage AccountPage = new AccountPage();
+        private ReservePage ReservePage;
+        private ViewReservationsPage ViewReservationsPage;
+        private AdminPage AdminPage;
+        private DefectsPage DefectsPage;
+        private ExaminatorsPage ExaminatorsPage;
+        private AccountPage AccountPage;
         public MainWindow()
         {
             InitializeComponent();
@@ -46,6 +46,7 @@ namespace View
 #endif
             // More Anti-Cheese
             if (currentMember == null) { this.Close(); return; }
+            ResetPages();
 
             var a = BoatViewmodel.GetAllBoats();
             Frame.Content = ReservePage;
@@ -100,6 +101,36 @@ namespace View
 
         }
 
+        public void ResetPages()
+        {
+            ReservePage = new ReservePage();
+            ViewReservationsPage = new ViewReservationsPage();
+            AdminPage = new AdminPage();
+            DefectsPage = new DefectsPage();
+            ExaminatorsPage = new ExaminatorsPage();
+            AccountPage = new AccountPage(this);
+        }
+
+        public void Logout()
+        {
+            currentMember = null;
+            LoginWindow loginWindow = new LoginWindow();
+            // Anti-Cheese
+            if (!(bool)loginWindow.ShowDialog())
+            {
+                this.Close();
+            }
+            // More Anti-Cheese
+            if (currentMember == null) { this.Close(); return; }
+
+            ResetPages();
+            Frame.Content = ReservePage;
+
+            // Clear the header
+            Header.Children.Clear();
+
+            AddHeaderBtns();
+        }
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Content = AdminPage;
@@ -125,25 +156,7 @@ namespace View
 
         private void BtnLogout_Click(object sender, RoutedEventArgs e)
         {
-            currentMember = null;
-            LoginWindow loginWindow = new LoginWindow();
-            // Anti-Cheese
-            if (!(bool)loginWindow.ShowDialog())
-            {
-                this.Close();
-            }
-            // More Anti-Cheese
-            if (currentMember == null) { this.Close(); return; }
-            ReservePage = new ReservePage();
-            ViewReservationsPage = new ViewReservationsPage();
-            AdminPage = new AdminPage();
-            DefectsPage = new DefectsPage();
-            ExaminatorsPage = new ExaminatorsPage();
-
-            // Clear the header
-            Header.Children.Clear();
-
-            AddHeaderBtns();
+            Logout();
         }
 
         private void BtnAccount_Click(object sender, RoutedEventArgs e)
