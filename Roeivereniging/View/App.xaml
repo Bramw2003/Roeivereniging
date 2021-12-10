@@ -4,6 +4,19 @@
              xmlns:local="clr-namespace:View"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Button">
+            <!--<Setter Property="FontSize" Value="24"/>-->
+            <Setter Property="Background" Value="#FF6BB0E8"/>
+            <Setter Property="BorderThickness" Value="0,0,0,0"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="Rectangle">
+            <Setter Property="Stroke" Value="#FFF3F3F3"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+            <Setter Property="VerticalAlignment" Value="Stretch"></Setter>
+            <Setter Property="RadiusX" Value="12"></Setter>
+            <Setter Property="RadiusY" Value="12"></Setter>
+            <Setter Property="Fill" Value="White"></Setter>
+        </Style>
     </Application.Resources>
 </Application>
