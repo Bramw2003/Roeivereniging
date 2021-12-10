@@ -36,6 +36,16 @@ namespace View
                     mDao.UpdatePassword(MainWindow.currentMember, TbNew.Textbox.Text);
                     mainWindow.Logout();
                 }
+                else
+                {
+                    LbWarning.Content = "Nieuwe wachtwoorden zijn niet gelijk!";
+                    LbWarning.Visibility = Visibility.Visible;
+                }
+            }
+            else
+            {
+                LbWarning.Content = "Huidig wachtwoord is verkeerd";
+                LbWarning.Visibility = Visibility.Visible;
             }
         }
     }
