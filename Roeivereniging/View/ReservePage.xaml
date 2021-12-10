@@ -19,17 +19,17 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <Rectangle Grid.Column="1" Grid.Row="0" Margin="15,30,15,30" Grid.RowSpan="2" HorizontalAlignment="Stretch" Stroke="#FFF3F3F3" VerticalAlignment="Stretch" RadiusX="12" RadiusY="12" Fill="White">
+        <Rectangle Grid.Column="1" Grid.Row="0" Margin="15,30,15,30" Grid.RowSpan="2">
             <Rectangle.Effect>
                 <DropShadowEffect BlurRadius="30" Color="#000000" ShadowDepth="0" Opacity="0.3"/>
             </Rectangle.Effect>
         </Rectangle>
-        <Rectangle Grid.Column="0" Grid.Row="0" Margin="15,30,15,15" HorizontalAlignment="Stretch" Stroke="#FFF3F3F3" VerticalAlignment="Stretch" RadiusX="12" RadiusY="12" Fill="White">
+        <Rectangle Grid.Column="0" Grid.Row="0" Margin="15,30,15,15">
             <Rectangle.Effect>
                 <DropShadowEffect BlurRadius="30" Color="#000000" ShadowDepth="0" Opacity="0.3"/>
             </Rectangle.Effect>
         </Rectangle>
-        <Rectangle Grid.Column="0" Grid.Row="1" Margin="15,15,15,30" HorizontalAlignment="Stretch" Stroke="#FFF3F3F3" VerticalAlignment="Stretch" RadiusX="12" RadiusY="12" Fill="White">
+        <Rectangle Grid.Column="0" Grid.Row="1" Margin="15,15,15,30">
             <Rectangle.Effect>
                 <DropShadowEffect BlurRadius="30" Color="#000000" ShadowDepth="0" Opacity="0.3"/>
             </Rectangle.Effect>
@@ -107,8 +107,8 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
 
-            <Button Content="Reserveer" Margin="10,10,10,10" Grid.Column="1" HorizontalAlignment="Stretch" Grid.RowSpan="1" Grid.Row="3" VerticalAlignment="Stretch" FontSize="24" Background="#FF6BB0E8" BorderThickness="0,0,0,0" Foreground="White" Click="Button_Click"/>
-            <Button Content="Reset" Margin="10,10,10,10" Grid.Column="2" HorizontalAlignment="Stretch" Grid.RowSpan="1" Grid.Row="3" VerticalAlignment="Stretch" FontSize="24" Background="#00DDDDDD" BorderThickness="2,2,2,2" Click="Button_Click_1"/>
+            <Button Content="Reserveer" Margin="10,10,10,10" Grid.Column="1" HorizontalAlignment="Stretch" Grid.RowSpan="1" Grid.Row="3" VerticalAlignment="Stretch" FontSize="24" Click="Button_Click"/>
+            <Button Content="Reset" Margin="10,10,10,10" Grid.Column="2" HorizontalAlignment="Stretch" Grid.RowSpan="1" Grid.Row="3" VerticalAlignment="Stretch" FontSize="24" Foreground="Black" Background="#00DDDDDD" BorderThickness="2,2,2,2" Click="Button_Click_1"/>
             <DatePicker x:Name="Date" Grid.Column="1" HorizontalAlignment="Stretch" Margin="10,10,10,10" Grid.Row="2" VerticalAlignment="Stretch" FontSize="24" FirstDayOfWeek="Monday" SelectedDateChanged="Date_SelectedDateChanged"/>
             <Label x:Name="LbDuur" Content="Duur: --:--" Margin="10,10,10,10" Grid.Column="2" HorizontalAlignment="Stretch" Grid.Row="2" VerticalAlignment="Stretch" FontSize="24"/>
 
