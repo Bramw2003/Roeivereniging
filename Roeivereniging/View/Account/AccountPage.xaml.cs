@@ -18,14 +18,16 @@ namespace View
     /// </summary>
     public partial class AccountPage : Page
     {
-        public AccountPage()
+        ChangePasswordPage changePasswordPage;
+        public AccountPage(MainWindow main)
         {
+            changePasswordPage = new ChangePasswordPage(main);
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Content = new ChangePasswordPage();
+            Frame.Content = changePasswordPage;
         }
     }
 }

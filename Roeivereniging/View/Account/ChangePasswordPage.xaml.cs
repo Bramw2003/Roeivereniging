@@ -19,8 +19,10 @@ namespace View
     /// </summary>
     public partial class ChangePasswordPage : Page
     {
-        public ChangePasswordPage()
+        MainWindow mainWindow;
+        public ChangePasswordPage(MainWindow main)
         {
+            mainWindow = main;
             InitializeComponent();
         }
 
@@ -32,6 +34,7 @@ namespace View
                 if (TbNew.Textbox.Text == TbNewRepeat.Textbox.Text)
                 {
                     mDao.UpdatePassword(MainWindow.currentMember, TbNew.Textbox.Text);
+                    mainWindow.Logout();
                 }
             }
         }
