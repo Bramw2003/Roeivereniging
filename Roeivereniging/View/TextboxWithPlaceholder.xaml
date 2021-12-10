@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="View.TextboxWithPlaceholder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:View"
+             mc:Ignorable="d" 
+             d:DesignHeight="18" d:DesignWidth="200">
+    <Grid>
+        <Label x:Name="Placeholder" Panel.ZIndex="1" Content="{Binding PlaceholderText}" Margin="5,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Opacity="0.75" HorizontalContentAlignment="Left" Padding="0,0,0,0"  IsHitTestVisible="False">
+        </Label>
+        <TextBox x:Name="Textbox" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsKeyboardFocusedChanged="Textbox_IsKeyboardFocusedChanged" ></TextBox>
+    </Grid>
+</UserControl>

@@ -26,6 +26,7 @@ namespace View
         private AdminPage AdminPage = new AdminPage();
         private DefectsPage DefectsPage = new DefectsPage();
         private ExaminatorsPage ExaminatorsPage = new ExaminatorsPage();
+        private AccountPage AccountPage = new AccountPage();
         public MainWindow()
         {
             InitializeComponent();
@@ -44,7 +45,7 @@ namespace View
             currentMember = MemberViewModel.GetByUsername("admin");
 #endif
             // More Anti-Cheese
-            if (currentMember == null) { this.Close(); }
+            if (currentMember == null) { this.Close(); return; }
 
             var a = BoatViewmodel.GetAllBoats();
             Frame.Content = ReservePage;
@@ -143,6 +144,11 @@ namespace View
             Header.Children.Clear();
 
             AddHeaderBtns();
+        }
+
+        private void BtnAccount_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = AccountPage;
         }
     }
 }

@@ -7,13 +7,19 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="AddBoatPage.xaml.cs">
+    <Compile Update="Account\AccountPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="AddMemberPage.xaml.cs">
+    <Compile Update="Account\ChangePasswordPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="AdminPage.xaml.cs">
+    <Compile Update="Admin\AddBoatPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Admin\AddMemberPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Admin\AdminPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="DefectPopup.xaml.cs">
@@ -22,7 +28,7 @@
     <Compile Update="DefectsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="DeleteBoatPage.xaml.cs">
+    <Compile Update="Admin\DeleteBoatPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="ExaminatorsPage.xaml.cs">
@@ -40,18 +46,27 @@
     <Compile Update="ReservePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="TextboxWithPlaceholder.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="ViewReservationsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="AddBoatPage.xaml">
+    <Page Update="Account\AccountPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="AddMemberPage.xaml">
+    <Page Update="Account\ChangePasswordPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="AdminPage.xaml">
+    <Page Update="Admin\AddBoatPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Admin\AddMemberPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Admin\AdminPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DefectPopup.xaml">
@@ -60,7 +75,7 @@
     <Page Update="DefectsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="DeleteBoatPage.xaml">
+    <Page Update="Admin\DeleteBoatPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ExaminatorsPage.xaml">
@@ -79,6 +94,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ReservePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TextboxWithPlaceholder.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ViewReservationsPage.xaml">
