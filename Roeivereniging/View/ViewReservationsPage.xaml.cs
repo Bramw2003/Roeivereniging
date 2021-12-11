@@ -71,6 +71,7 @@ namespace View
             var selectedReservation = (Reservation)LvRervations.SelectedItem;
             if (selectedReservation != null)
             {
+                MainWindow.Mail.SendReservationCancelation(selectedReservation,MainWindow.currentMember);
                 ReservationViewModel.DeleteReservation(selectedReservation);
                 LoadLvRervations();
             }
