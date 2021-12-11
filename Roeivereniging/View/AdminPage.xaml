@@ -24,7 +24,7 @@
             <Label x:Name="label" Content="Leden" HorizontalAlignment="Center" FontSize="24"/>
             <Button x:Name="Button_Member_Add" Content="Toevoegen" Click="Button_Member_Add_Click"/>
             <Button Content="Rechten aanpassen" />
-            <Button x:Name="button1" Content="Verwijderen"/>
+            <Button x:Name="Button_Member_Delete" Content="Verwijderen" Click="Button_Member_Delete_Click"/>
             <Label x:Name="label1" Content="Booten" Margin="0,10,0,0" HorizontalAlignment="Center" FontSize="24"/>
             <Button x:Name="button2" Content="Toevoegen" Click="button2_Click"/>
             <Button x:Name="Button_Boat_Delete" Content="Verwijderen" Click="Button_Boat_Delete_Click"/>
