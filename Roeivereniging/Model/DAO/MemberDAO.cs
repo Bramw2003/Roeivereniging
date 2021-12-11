@@ -83,7 +83,7 @@ namespace Model.DAO {
             if (Database.OpenConnection()) {
                 var a = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
                 while (a.Read()) {
-                    member = new Member(a.GetInt32(0), a.GetString(1), a.GetString(6), a.GetDateTime(2), a.GetBoolean(3), a.GetBoolean(4), a.GetBoolean(5), a.GetString(6));
+                    member = new Member(a.GetInt32(0), a.GetString(1), a.GetString(6), a.GetDateTime(2), a.GetBoolean(3), a.GetBoolean(4), a.GetBoolean(5), a.GetString(7));
 
                 }
                 command.Dispose();
