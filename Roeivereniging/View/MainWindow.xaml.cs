@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Extensions.Configuration;
 using Model;
 using Viewmodel;
 
@@ -21,14 +22,30 @@ namespace View
     public partial class MainWindow : Window
     {
         public static Member currentMember { get; set; }
+        public static IMail Mail;
         private ReservePage ReservePage;
         private ViewReservationsPage ViewReservationsPage;
         private AdminPage AdminPage;
         private DefectsPage DefectsPage;
         private ExaminatorsPage ExaminatorsPage;
         private AccountPage AccountPage;
+        IConfigurationRoot configuration;
         public MainWindow()
         {
+            try
+            {
+                configuration = new ConfigurationBuilder()
+                                        .AddUserSecrets<App>()
+                                        .Build();
+                Mail = new Model.DAO.Mail(configuration);
+
+            }
+            catch (Exception ex)
+            {
+                configuration = new ConfigurationBuilder().Build();
+                Mail = new Model.DAO.NoMail();
+                MessageBox.Show("Geen mail mogelijk... Stel user secrets in");
+            }
             InitializeComponent();
         }
 

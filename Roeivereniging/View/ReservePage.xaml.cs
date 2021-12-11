@@ -56,7 +56,7 @@ namespace View
                 {
                     boats = boats.Where(x => x.sculling).ToList();
                 }
-                LbBoats.ItemsSource = boats;
+                LbBoats.ItemsSource = boats.Where(x => x.deleted != true);
             }
         }
 
@@ -115,7 +115,10 @@ namespace View
                 DateTime date = (DateTime)Date.SelectedDate.Value.Date + a;
                 TimeSpan b = new TimeSpan(endTime.Hour, endTime.Minute, endTime.Second);
                 DateTime end = (DateTime)Date.SelectedDate.Value.Date + b;
-                ReservationViewModel.MakeReservation((Boat)LbBoats.SelectedItem, date, end, MainWindow.currentMember).ToString();
+                if(ReservationViewModel.MakeReservation((Boat)LbBoats.SelectedItem, date, end, MainWindow.currentMember))
+                {
+                    MainWindow.Mail.SendReservationConfirmation(new Reservation(date, end, (Boat)LbBoats.SelectedItem, MainWindow.currentMember));
+                }
             }
         }
 

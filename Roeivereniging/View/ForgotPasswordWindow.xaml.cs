@@ -39,7 +39,10 @@ namespace View
                 var newpass = RandomString(8);
                 if (memberDAO.UpdatePassword(member, newpass))
                 {
-                    if (SendTempPassword(member, newpass)) MessageBox.Show("Tijdelijk wachtwoord succesvol verzonden!");
+                    if (MainWindow.Mail != null)
+                    {
+                        if (MainWindow.Mail.SendTempPassword(member, newpass)) MessageBox.Show("Tijdelijk wachtwoord succesvol verzonden!");
+                    }
                 }
             }
         }
@@ -76,34 +79,6 @@ namespace View
                 PbUsernamePlaceholder.Visibility = Visibility.Visible;
 
             }
-        }
-        public bool SendTempPassword(Member member, string password)
-        {
-            var configuration = new ConfigurationBuilder()
-                                    .AddUserSecrets<App>()
-                                    .Build();
-
-            // get usersecret mailDomain from usersecrets.json
-            //var mailDomain = Environment.GetEnvironmentVariable("mailDomain");
-            //var mailKey = Environment.GetEnvironmentVariable("mailKey");
-            var mailDomain = configuration["mailDomain"];
-            var mailKey = configuration["mailKey"];
-
-            var sender = new MailgunSender(mailDomain, // Mailgun Domain
-                                             mailKey); // Mailgun API Key
-            Email.DefaultSender = sender;
-
-            /*
-                You can optionally set the sender per instance like so:
-
-                email.Sender = new MailgunSender(...);
-            */
-            var email = Email.From("roei@"+mailDomain)
-                                .To(member.email)
-                                .Subject("Tijdelijk wachtwoord Roeivereniging")
-                                .Body("Hier is je tijdelijke wachtwoord: " + password);
-
-            return email.Send().Successful;
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Windows.Input;
 using MicroMvvm;
 using Model;
 using Model.DAO;
+using System.Linq;
 
 namespace Viewmodel
 {
@@ -21,7 +22,7 @@ namespace Viewmodel
         /// returns list of all boats in database
         /// </summary>
         public static List<Boat> GetAllBoats() {
-            return BoatDB.GetAll();
+            return BoatDB.GetAll().Where(x => x.deleted != true).ToList();
         }
 
         /// <summary>
