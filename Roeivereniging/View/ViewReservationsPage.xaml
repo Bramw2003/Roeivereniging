@@ -74,9 +74,9 @@
 
         </Grid>
 
+        
 
-
-        <ListView x:Name="LvRervations" Grid.Column="0" Margin="25,40,25,40" FontSize="16" SelectionChanged="LvRervations_SelectionChanged">
+        <ListView x:Name="LvRervations" Grid.Column="0" Margin="25,60,25,40" FontSize="16" SelectionChanged="LvRervations_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Datum" Width="auto" DisplayMemberBinding="{Binding Date}"></GridViewColumn>
@@ -85,5 +85,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <CheckBox Content="Toon alle reserveringen" HorizontalAlignment="Left" Margin="25,40,25,40" VerticalAlignment="Top" Unchecked="CbxShowAllUnchecked" Checked="CbxShowAllChecked"/>
     </Grid>
 </Page>

@@ -34,7 +34,8 @@ namespace View
 
         private void LoadLvRervations()
         {
-            this.LvRervations.ItemsSource = ReservationViewModel.GetAllByMember(MainWindow.currentMember).OrderByDescending(x => x.date);
+            if (showAll) this.LvRervations.ItemsSource = ReservationViewModel.GetAllReservations().OrderByDescending(x => x.date);
+            else this.LvRervations.ItemsSource = ReservationViewModel.GetAllByMember(MainWindow.currentMember).OrderByDescending(x => x.date);
         }
 
         private void LvRervations_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -74,6 +75,20 @@ namespace View
                 LoadLvRervations();
             }
             
+        }
+
+        private bool showAll = false; //used to deterime which method should be used to get the reservation in the LoadLvRervations() method
+
+        private void CbxShowAllUnchecked(object sender, RoutedEventArgs e)
+        {
+            showAll = false;
+            LoadLvRervations();
+        }
+
+        private void CbxShowAllChecked(object sender, RoutedEventArgs e)
+        {
+            showAll = true;
+            LoadLvRervations();
         }
     }
 }
