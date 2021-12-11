@@ -23,15 +23,15 @@ namespace Model.DAO
             string body;
             if (member.name != reservation.member.name)
             {
-                body = "";
+                body = "Je reservering is geannuleerd door" + member.name;
             }
             else
             {
-                body = "";
+                body = "Je reservering is geannuleerd";
             }
             return SendMail("Annulering reservering " + reservation.Date + " " + reservation.StartTime,
                 body,
-                member.email);
+                reservation.member.email);
         }
 
         public bool SendReservationCancelation(Reservation reservation)
@@ -40,7 +40,7 @@ namespace Model.DAO
         }
         public bool SendReservationConfirmation(Reservation reservation)
         {
-            return SendMail("Reservering " + reservation.Date + " " + reservation.StartTime,
+            return SendMail($"Reservering {reservation.Date} {reservation.StartTime}",
                 $"Reservering op {reservation.Date} tussen {reservation.StartTime} en {reservation.EndTime}",
                 reservation.member.email);
         }
