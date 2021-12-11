@@ -14,8 +14,9 @@ namespace Model
         public bool sculling { get; }
         public BoatType category { get; }
         public bool defect { get; }
+        public bool deleted { get; }
 
-        public Boat(int id, string name, int capacity, int category, bool steer, bool sculling, bool defect = false)
+        public Boat(int id, string name, int capacity, int category, bool steer, bool sculling, bool defect = false, bool deleted = false)
         {
             this.id = id;
             this.name = name;
@@ -48,7 +49,7 @@ namespace Model
                 type += steer ? "+" : "";
             }
             this.defect = defect;
-
+            this.deleted = deleted;
         }
         public override string ToString()
         {
