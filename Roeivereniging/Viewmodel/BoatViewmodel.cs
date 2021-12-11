@@ -7,8 +7,14 @@ using Model.DAO;
 
 namespace Viewmodel
 {
-    public static class BoatViewmodel{
+    public class BoatViewmodel : ObservableObject{
         private static BoatDAO BoatDB = new BoatDAO();
+        public List<Boat> _BoatList = GetAllBoats();
+
+        public List<Boat> BoatList {
+            get { return _BoatList; }
+            set { _BoatList = value; RaisePropertyChanged("BoatList"); }
+        }
 
 
         /// <summary>
@@ -28,6 +34,11 @@ namespace Viewmodel
                 typeID = BoatDB.FindTypeIDByDetails(capacity, type, steer, sculling);
             }
             BoatDB.AddBoat(name, (BoatType)typeID);
+        }
+
+        public void DeleteBoat(Boat boat) {
+            BoatDB.Delete(boat);
+            BoatList = GetAllBoats();
         }
 
     }

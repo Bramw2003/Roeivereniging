@@ -23,7 +23,7 @@ namespace Model.DAO {
 
         public List<Boat> GetAll() {
             Database.Init();
-            String sql = "SELECT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling], (SELECT CASE WHEN EXISTS ( SELECT * FROM[brokenboat] WHERE boatID = boat.[ID]) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END) FROM [boat] JOIN[types] ON[types].[ID] =[boat].[typesID]";
+            String sql = "SELECT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling], (SELECT CASE WHEN EXISTS ( SELECT * FROM[brokenboat] WHERE boatID = boat.[ID]) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END) FROM [boat] JOIN[types] ON[types].[ID] =[boat].[typesID] WHERE deleted IS NULL ";
             List<Boat> list = new List<Boat>();
             SqlCommand command = new SqlCommand(sql, Database.connection);
             if (Database.OpenConnection()) {
@@ -42,8 +42,14 @@ namespace Model.DAO {
             throw new NotImplementedException();
         }
 
-        public bool Delete(Boat boat) {
-            throw new NotImplementedException();
+        public void Delete(Boat boat) {
+            Database.Init();
+            String sql = "UPDATE boat SET deleted = 'TRUE' WHERE ID = @id";
+            SqlCommand command = new SqlCommand(sql, Database.connection);
+            command.Parameters.AddWithValue("ID", boat.id);
+            if (Database.OpenConnection()) {
+                command.ExecuteNonQuery();
+            }
         }
 
 

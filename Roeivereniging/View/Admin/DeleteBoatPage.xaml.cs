@@ -10,14 +10,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Viewmodel;
 
 namespace View {
     /// <summary>
     /// Interaction logic for DeleteBoatPage.xaml
     /// </summary>
     public partial class DeleteBoatPage : Page {
+
+        BoatViewmodel _BoatViewModel;
         public DeleteBoatPage() {
             InitializeComponent();
+            _BoatViewModel = (BoatViewmodel)base.DataContext;
+        }
+
+        private void Delete_Boat_Button_Click(object sender, RoutedEventArgs e) {
+            _BoatViewModel.DeleteBoat((Model.Boat)dataGrid.SelectedItem);
         }
     }
 }
