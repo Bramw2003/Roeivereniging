@@ -10,6 +10,7 @@ namespace Viewmodel
 {
     public class BoatViewmodel : ObservableObject{
         private static BoatDAO BoatDB = new BoatDAO();
+        private static ReservationDAO ReservationDB = new ReservationDAO();
         public List<Boat> _BoatList = GetAllBoats();
 
         public List<Boat> BoatList {
@@ -40,7 +41,10 @@ namespace Viewmodel
         public void DeleteBoat(Boat boat) {
             BoatDB.Delete(boat);
             BoatList = GetAllBoats();
+            ReservationDB.DeleteAllFutureReservationsByBoat(boat);
         }
+
+        
 
     }
 }

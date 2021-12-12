@@ -98,5 +98,23 @@ namespace Model.DAO {
                 Database.connection.Close();
             }
         }
+
+        public void DeleteAllFutureReservationsByBoat(Boat boat) {
+            Database.Init();
+            DateTime current = new DateTime();
+            current = DateTime.Now;
+            String sql = "DELETE FROM [reservations] WHERE starttime > @currentTime AND boatID = @boatid OR date > @currentDate AND boatID = @boatid";
+
+            using (SqlCommand command = new SqlCommand(sql, Database.connection)) {
+                command.Parameters.AddWithValue("currentTime",current.ToString("HH:mm:ss"));
+                command.Parameters.AddWithValue("boatid", boat.id);
+                command.Parameters.AddWithValue("currentDate", current.Date);
+                bool result = false;
+                if (Database.OpenConnection()) {
+                    result = (int)command.ExecuteNonQuery() == 1;
+                }
+                Database.connection.Close();
+            }
+        }
     }
 }
