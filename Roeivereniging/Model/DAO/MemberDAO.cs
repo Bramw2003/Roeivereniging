@@ -129,6 +129,7 @@ namespace Model.DAO {
                 return result;
             }
         }
+
         /// <summary>
         /// !!!Should redefine member after altering!!!
         /// </summary>
@@ -140,7 +141,7 @@ namespace Model.DAO {
         /// <param name="username"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        private bool Alter(Member member, DateTime? date = null, bool? admin = null, bool? repair = null, bool? examinator = null, string username = null, string name = null)
+        public bool Alter(Member member, DateTime? date = null, bool? admin = null, bool? repair = null, bool? examinator = null, string username = null, string name = null)
         {
 
             date = date ?? member.date;

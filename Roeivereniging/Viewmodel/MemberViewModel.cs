@@ -14,6 +14,11 @@ namespace Viewmodel {
             return true;
         }
 
+        public static bool EditUserRoles(int ID, bool admin, bool examinator, bool canRepair)
+        {
+            return MemberDB.Alter(MemberDB.GetById(ID), null, admin, canRepair, examinator);
+        }
+
         public static Member GetByUsername(string name) {
            return MemberDB.GetByUsername(name);
         }

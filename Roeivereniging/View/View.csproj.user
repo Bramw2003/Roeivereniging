@@ -7,81 +7,18 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Account\AccountPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Account\ChangePasswordPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Admin\AddBoatPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Admin\AddMemberPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Admin\AdminPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="DefectPopup.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="DefectsPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Admin\DeleteBoatPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="ExaminatorsPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="ForgotPasswordWindow.xaml.cs">
+    <Compile Update="EditUser.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="MainWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="RepairBoatDialog.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="ReservePage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Customcontrols\TextboxWithPlaceholder.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="ViewReservationsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Account\AccountPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Account\ChangePasswordPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Admin\AddBoatPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Admin\AddMemberPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Admin\AdminPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="DefectPopup.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="DefectsPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Admin\DeleteBoatPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="ExaminatorsPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="ForgotPasswordWindow.xaml">
+    <Page Update="EditUser.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="LoginWindow.xaml">
@@ -90,16 +27,7 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="RepairBoatDialog.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="ReservePage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Customcontrols\TextboxWithPlaceholder.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="ViewReservationsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
