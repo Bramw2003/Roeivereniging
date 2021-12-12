@@ -46,9 +46,6 @@
     <Compile Update="ReservePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Customcontrols\TextboxWithPlaceholder.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="ViewReservationsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -94,9 +91,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ReservePage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Customcontrols\TextboxWithPlaceholder.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ViewReservationsPage.xaml">
