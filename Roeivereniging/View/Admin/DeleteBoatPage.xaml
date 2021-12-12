@@ -23,12 +23,13 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="400*"/>
-                <RowDefinition Height="10*"/>
+                <RowDefinition Height="30*"/>
                 <RowDefinition Height="30*"/>
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
             <Button x:Name="Delete_Boat_Button" Content="Verwijder" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="3" VerticalAlignment="Center" FontSize="20" Grid.Column="1" Click="Delete_Boat_Button_Click"/>
             <DataGrid x:Name="dataGrid" Grid.Column="1" Grid.Row="1" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding BoatList}" ColumnWidth="*"/>
+            <Label x:Name="Notification" Content="Boot verwijderd" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Top" FontSize="14" Visibility="Hidden" Foreground="#FF0DEC17" Grid.Column="1" Margin="0,0,0,0" Grid.RowSpan="2"/>
         </Grid>
 
     </Grid>
