@@ -103,7 +103,7 @@ namespace Model.DAO {
             Database.Init();
             DateTime current = new DateTime();
             current = DateTime.Now;
-            String sql = "DELETE FROM [reservations] WHERE starttime > @currentTime AND boatID = @boatid OR date > @currentDate AND boatID = @boatid";
+            String sql = "DELETE FROM [reservations] WHERE starttime > @currentTime AND boatID = @boatid AND date = @currentDate OR date > @currentDate AND boatID = @boatid";
 
             using (SqlCommand command = new SqlCommand(sql, Database.connection)) {
                 command.Parameters.AddWithValue("currentTime",current.ToString("HH:mm:ss"));
