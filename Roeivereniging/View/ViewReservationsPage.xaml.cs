@@ -71,11 +71,14 @@ namespace View
             var selectedReservation = (Reservation)LvRervations.SelectedItem;
             if (selectedReservation != null)
             {
-                MainWindow.Mail.SendReservationCancelation(selectedReservation,MainWindow.currentMember);
-                ReservationViewModel.DeleteReservation(selectedReservation);
-                LoadLvRervations();
-            }
-            
+                if ((selectedReservation.member.id == MainWindow.currentMember.id) ||
+                MessageBox.Show($"U staat op het punt de reservering van {selectedReservation.member.name} te anuleren, weet u het zeker dat u deze wilt anuleren?", "Zeker weten", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    MainWindow.Mail.SendReservationCancelation(selectedReservation, MainWindow.currentMember);
+                    ReservationViewModel.DeleteReservation(selectedReservation);
+                    LoadLvRervations();
+                }
+            }  
         }
 
         private bool showAll = false; //used to deterime which method should be used to get the reservation in the LoadLvRervations() method
