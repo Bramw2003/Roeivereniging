@@ -49,6 +49,7 @@ namespace View
             certDao.AddToMember((Member)LvMember.SelectedItem, new Certificate(ComboBoxDiplomas.SelectedValue.ToString()));
             ComboBoxDiplomas.Items.Clear();
             certDao.GetAvailableByMember((Member)LvMember.SelectedItem).ForEach(x => ComboBoxDiplomas.Items.Add(x.name));
+            LvCerts.ItemsSource = certDao.GetByMember((Member)LvMember.SelectedItem);
         }
     }
 }
