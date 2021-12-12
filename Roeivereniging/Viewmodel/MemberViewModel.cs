@@ -8,9 +8,10 @@ namespace Viewmodel {
     public static class MemberViewModel {
         private static MemberDAO MemberDB = new MemberDAO();
 
-        public static void MakeUser(string name, string username, DateTime date, string email, string password) {
+        public static bool MakeUser(string name, string username, DateTime date, string email, string password) {
             Member member = new Member(name, username, date, email);
             MemberDB.insert(member, password);
+            return true;
         }
 
         public static Member GetByUsername(string name) {
