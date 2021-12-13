@@ -42,7 +42,7 @@
 
 
             <Label Content="Admin:" HorizontalAlignment="Left" Margin="39,103,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="2"/>
-            <CheckBox x:Name="IsAdminButton" Grid.Column="3" HorizontalAlignment="Center" Margin="0,117,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Click="IsAdminButton_Click">
+            <CheckBox x:Name="IsAdminButton" Grid.Column="3" HorizontalAlignment="Center" Margin="0,117,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
                 <CheckBox.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="2" ScaleY="2"/>
@@ -54,7 +54,7 @@
             </CheckBox>
 
             <Label Content="Examinator:" HorizontalAlignment="Left" Margin="39,0,0,0" Grid.Row="1" VerticalAlignment="Center" FontSize="24" Grid.ColumnSpan="4" Width="142"/>
-            <CheckBox x:Name="IsExaminatorButton" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Click="IsExaminatorButton_Click">
+            <CheckBox x:Name="IsExaminatorButton" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                 <CheckBox.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="2" ScaleY="2"/>
@@ -65,7 +65,7 @@
                 </CheckBox.RenderTransform>
             </CheckBox>
             <Label Content="Repareren:" HorizontalAlignment="Left" Margin="39,228,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="4" Width="131"/>
-            <CheckBox x:Name="CanRepairButton" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Click="CanRepairButton_Click" Margin="0,241,0,0">
+            <CheckBox x:Name="CanRepairButton" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Margin="0,241,0,0">
                 <CheckBox.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="2" ScaleY="2"/>
