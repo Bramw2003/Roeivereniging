@@ -64,7 +64,14 @@ namespace Model.DAO {
                 command.Parameters.AddWithValue("date", date.Date);
                 bool result = false;
                 if (Database.OpenConnection()) {
-                    result = (int)command.ExecuteNonQuery() == 1;
+                    try
+                    {
+                        result = (int)command.ExecuteNonQuery() == 1;
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+                    }
                 }
                 Database.connection.Close();
                 return result;
