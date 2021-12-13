@@ -81,6 +81,7 @@
                 <GridView>
                     <GridViewColumn Header="Datum" Width="auto" DisplayMemberBinding="{Binding Date}"></GridViewColumn>
                     <GridViewColumn Header="Type boot" Width="auto" DisplayMemberBinding="{Binding boat.type}"></GridViewColumn>
+                    <GridViewColumn Header="Reserveerder" Width="auto" DisplayMemberBinding="{Binding member.name}"></GridViewColumn>
 
                 </GridView>
             </ListView.View>
