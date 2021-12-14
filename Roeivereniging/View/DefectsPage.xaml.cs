@@ -23,18 +23,18 @@ namespace View
         public DefectsPage()
         {
             InitializeComponent();
+            if (MainWindow.currentMember.IsAdmin()) {
+                var column = new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) };
+                RepairMenu.ColumnDefinitions.Add(column);
+                var button = new Button() { Content = "Boot Verwijderen", HorizontalAlignment = HorizontalAlignment.Stretch, VerticalAlignment = VerticalAlignment.Stretch };
+                RemoveBtn.Children.Add(button);
+            }
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             // Add a "remove boat" butten if the current user is a admin
-            if (MainWindow.currentMember.IsAdmin())
-            {
-                var column = new ColumnDefinition() { Width=new GridLength(1,GridUnitType.Star)};
-                RepairMenu.ColumnDefinitions.Add(column);
-                var button = new Button() { Content = "Boot Verwijderen", HorizontalAlignment=HorizontalAlignment.Stretch, VerticalAlignment=VerticalAlignment.Stretch };
-                RemoveBtn.Children.Add(button);
-            }
+
             // Get all defects and display them in the listview
             LvDefects.ItemsSource = DefectViewModel.AllDefects();
         }
