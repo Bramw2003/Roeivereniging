@@ -25,7 +25,7 @@ namespace View {
         /// <summary>
         /// when the add button get clicked checks values and calls view model
         /// </summary>
-        private void Add_Boat_Button_Click(object sender, RoutedEventArgs e) {
+        /*private void Add_Boat_Button_Click(object sender, RoutedEventArgs e) {
             int Capacity = int.Parse(tbCapacity.Text);
             bool sculing = false;
             bool steer = false;
@@ -52,7 +52,7 @@ namespace View {
             }
 
             BoatViewmodel.AddBoat(tbName.Text, cbType.SelectedIndex , Capacity, sculing, steer);
-        }
+        }*/
 
         /// <summary>
         /// makes sure capacity textbox can only be numbers
