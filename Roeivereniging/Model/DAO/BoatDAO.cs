@@ -5,12 +5,13 @@ using System.Text;
 using System.Linq;
 namespace Model.DAO {
     public class BoatDAO : IBoat {
-        public bool AddBoat(string name, BoatType type) {
+        public bool AddBoat(string name, BoatType type, string location) {
             Database.Init();
-            string sql = "INSERT INTO boat(name, typesID) VALUES (@name, @type)";
+            string sql = "INSERT INTO boat(name, typesID, location) VALUES (@name, @type, @location)";
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("name", name);
             command.Parameters.AddWithValue("type", type);
+            command.Parameters.AddWithValue("location", location);
             if (Database.OpenConnection()) {
                 return command.ExecuteNonQuery() == 1;
             }

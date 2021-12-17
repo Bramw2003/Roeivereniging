@@ -25,10 +25,11 @@ namespace View {
         /// <summary>
         /// when the add button get clicked checks values and calls view model
         /// </summary>
-        /*private void Add_Boat_Button_Click(object sender, RoutedEventArgs e) {
-            int Capacity = int.Parse(tbCapacity.Text);
+        private void Add_Boat_Button_Click(object sender, RoutedEventArgs e) {
+            int Capacity = int.Parse(tbCapacity.Textbox.Text);
             bool sculing = false;
             bool steer = false;
+            string location = tbShed.Textbox.Text + "-" + tbRow.Textbox.Text + "-" + tbColumn.Textbox.Text + "-" + tbHeight.Textbox.Text;
             switch (cbSculling.SelectedIndex) {
                 case -1:
                     return;
@@ -51,8 +52,8 @@ namespace View {
                     break;
             }
 
-            BoatViewmodel.AddBoat(tbName.Text, cbType.SelectedIndex , Capacity, sculing, steer);
-        }*/
+            BoatViewmodel.AddBoat(tbName.Textbox.Text, cbType.SelectedIndex, Capacity, sculing, steer, location);
+        }
 
         /// <summary>
         /// makes sure capacity textbox can only be numbers
