@@ -39,6 +39,27 @@ namespace Model.DAO {
             return list;
         }
 
+        public void EditBoat(Boat boat, string name, int type, int Capacity, bool sculing, bool steer, string location)
+        {
+            var typeID = FindTypeIDByDetails(Capacity, type, steer, sculing);
+            if (typeID == null) {
+                MakeTypeWithDetails(Capacity, type, steer, sculing);
+                typeID = FindTypeIDByDetails(Capacity, type, steer, sculing);
+            }
+
+            Database.Init();
+            string sql = "UPDATE boat SET name = @name, typesID = @typeID, location = @location WHERE ID = @ID";
+            SqlCommand command = new SqlCommand(sql, Database.connection);
+            command.Parameters.AddWithValue("name", name);
+            command.Parameters.AddWithValue("typeID", typeID);
+            command.Parameters.AddWithValue("location",location);
+            command.Parameters.AddWithValue("ID", boat.id);
+            if (Database.OpenConnection())
+            {
+             command.ExecuteNonQuery();
+            }
+        }
+
         public bool insert(Boat boat) {
             throw new NotImplementedException();
         }

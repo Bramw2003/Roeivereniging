@@ -30,7 +30,7 @@ namespace View {
         }
 
         private void Edit_Boat_Button_Click(Object sender, RoutedEventArgs e) {
-            var EditBoatWindow= new Admin.EditBoatWindow();
+            var EditBoatWindow= new Admin.EditBoatWindow(_BoatViewModel,(Model.Boat)dataGrid.SelectedItem);
             EditBoatWindow.ShowDialog();
         }
     }

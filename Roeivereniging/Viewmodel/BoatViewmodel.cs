@@ -39,6 +39,11 @@ namespace Viewmodel
             return true;
         }
 
+        public void EditBoat(Boat boat, string name, int type,int Capacity,bool sculing, bool steer, string location) {
+            BoatDB.EditBoat(boat, name, type, Capacity, sculing, steer, location);
+            BoatList = GetAllBoats();
+        }
+
         public void DeleteBoat(Boat boat) {
             BoatDB.Delete(boat);
             BoatList = GetAllBoats();
