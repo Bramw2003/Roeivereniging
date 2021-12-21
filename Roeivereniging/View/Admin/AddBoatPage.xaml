@@ -48,12 +48,12 @@
                 <ComboBoxItem Content="Wherry"/>
             </ComboBox>
             <local:TextboxWithPlaceholder x:Name="tbName" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="400" Height="45" FontSize="18" Cursor="" PlaceholderText="Naam"/>
-            <local:TextboxWithPlaceholder x:Name="tbCapacity" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="3" VerticalAlignment="Center" Grid.ColumnSpan="2" Height="45" Width="400" FontSize="18" PlaceholderText="Aantal personen"/>
+            <local:TextboxWithPlaceholder x:Name="tbCapacity" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="3" VerticalAlignment="Center" Grid.ColumnSpan="2" Height="45" Width="400" FontSize="18" PlaceholderText="Aantal personen" PreviewTextInput="PreviewTextInput"/>
             <Label x:Name="label" Content="Opslag locatie:" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="6" VerticalAlignment="Bottom" Grid.ColumnSpan="2" FontSize="18"/>
-            <local:TextboxWithPlaceholder x:Name="tbShed" HorizontalAlignment="Right" Margin="0,0,140,0" Grid.Row="7" VerticalAlignment="Center" PlaceholderText="Loods" FontSize="18" Width="70"/>
-            <local:TextboxWithPlaceholder x:Name="tbRow" HorizontalAlignment="Right" Margin="0,0,30,0" Grid.Row="7" VerticalAlignment="Center" PlaceholderText="Rij" FontSize="18" Width="70"/>
-            <local:TextboxWithPlaceholder x:Name="tbColumn" Grid.Column="1" HorizontalAlignment="Left" Margin="30,0,0,0" Grid.Row="7" VerticalAlignment="Center" PlaceholderText="Kolom" FontSize="18" Width="70"/>
-            <local:TextboxWithPlaceholder x:Name="tbHeight" Grid.Column="1" HorizontalAlignment="Left" Margin="140,0,0,0" Grid.Row="7" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" PlaceholderText="Hoogte" FontSize="18" Width="70"/>
+            <local:TextboxWithPlaceholder x:Name="tbShed" HorizontalAlignment="Right" Margin="0,0,140,0" Grid.Row="7" VerticalAlignment="Center" PlaceholderText="Loods" FontSize="18" Width="70" PreviewTextInput="PreviewTextInput"/>
+            <local:TextboxWithPlaceholder x:Name="tbRow" HorizontalAlignment="Right" Margin="0,0,30,0" Grid.Row="7" VerticalAlignment="Center" PlaceholderText="Rij" FontSize="18" Width="70" PreviewTextInput="PreviewTextInput"/>
+            <local:TextboxWithPlaceholder x:Name="tbColumn" Grid.Column="1" HorizontalAlignment="Left" Margin="30,0,0,0" Grid.Row="7" VerticalAlignment="Center" PlaceholderText="Kolom" FontSize="18" Width="70" PreviewTextInput="PreviewTextInput"/>
+            <local:TextboxWithPlaceholder x:Name="tbHeight" Grid.Column="1" HorizontalAlignment="Left" Margin="140,0,0,0" Grid.Row="7" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" PlaceholderText="Hoogte" FontSize="18" Width="70" PreviewTextInput="PreviewTextInput"/>
         </Grid>
 
     </Grid>
