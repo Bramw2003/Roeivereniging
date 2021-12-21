@@ -54,6 +54,7 @@
             <local:TextboxWithPlaceholder x:Name="tbRow" HorizontalAlignment="Right" Margin="0,0,30,0" Grid.Row="7" VerticalAlignment="Center" PlaceholderText="Rij" FontSize="18" Width="70" PreviewTextInput="PreviewTextInput"/>
             <local:TextboxWithPlaceholder x:Name="tbColumn" Grid.Column="1" HorizontalAlignment="Left" Margin="30,0,0,0" Grid.Row="7" VerticalAlignment="Center" PlaceholderText="Kolom" FontSize="18" Width="70" PreviewTextInput="PreviewTextInput"/>
             <local:TextboxWithPlaceholder x:Name="tbHeight" Grid.Column="1" HorizontalAlignment="Left" Margin="140,0,0,0" Grid.Row="7" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" PlaceholderText="Hoogte" FontSize="18" Width="70" PreviewTextInput="PreviewTextInput"/>
+            <Label x:Name="Notification" Content="Boot Toegevoegd" HorizontalAlignment="Center" Grid.Row="9" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="14" Visibility="Hidden" Foreground="#FF0DEC17"/>
         </Grid>
 
     </Grid>

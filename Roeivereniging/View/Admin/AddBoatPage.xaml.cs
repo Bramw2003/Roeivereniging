@@ -12,14 +12,18 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Viewmodel;
 using System.Text.RegularExpressions;
+using System.Timers;
 
 namespace View {
     /// <summary>
     /// Interaction logic for AddBoatPage.xaml
     /// </summary>
     public partial class AddBoatPage : Page {
+        private Timer timer = new Timer(3000);
+
         public AddBoatPage() {
             InitializeComponent();
+            timer.Elapsed += OnTimedEvent;
         }
 
         /// <summary>
@@ -52,7 +56,20 @@ namespace View {
                     break;
             }
 
-            BoatViewmodel.AddBoat(tbName.Textbox.Text, cbType.SelectedIndex, Capacity, sculing, steer, location);
+            if(BoatViewmodel.AddBoat(tbName.Textbox.Text, cbType.SelectedIndex, Capacity, sculing, steer, location))
+            {
+                timer.Start();
+                Notification.Visibility = Visibility.Visible;
+                tbName.Textbox.Text = "";
+                cbType.SelectedIndex = 0;
+                tbCapacity.Textbox.Text = "";
+                cbSculling.SelectedIndex = 0;
+                cbSteering.SelectedIndex = 1;
+                tbShed.Textbox.Text = "";
+                tbRow.Textbox.Text = "";
+                tbColumn.Textbox.Text = "";
+                tbHeight.Textbox.Text = "";
+            }
         }
 
         /// <summary>
@@ -61,6 +78,15 @@ namespace View {
         private void PreviewTextInput(object sender, TextCompositionEventArgs e) {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        public void OnTimedEvent(object o, EventArgs e)
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                Notification.Visibility = Visibility.Hidden;
+            });
+            timer.Stop();
         }
     }
 }
