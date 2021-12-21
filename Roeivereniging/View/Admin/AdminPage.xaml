@@ -33,7 +33,7 @@
             <Button x:Name="button1" Content="Verwijderen"/>
             <Label x:Name="label1" Content="Booten" Margin="0,10,0,0" HorizontalAlignment="Center" FontSize="24"/>
             <Button x:Name="button2" Content="Toevoegen" Click="button2_Click"/>
-            <Button x:Name="Button_Boat_Delete" Content="Verwijderen" Click="Button_Boat_Delete_Click"/>
+            <Button x:Name="Button_Boat_Delete" Content="Beheren" Click="Button_Boat_Delete_Click"/>
         </StackPanel>
         <Frame x:Name="AdminFrame" Content="" Grid.Column="3" Margin="0,0,0,0" Grid.Row="1"/>
     </Grid>

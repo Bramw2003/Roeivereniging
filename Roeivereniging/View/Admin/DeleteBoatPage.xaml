@@ -53,6 +53,11 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
+        <Rectangle Grid.Column="0" Grid.Row="0" Margin="5,5,5,5" Panel.ZIndex="-1">
+            <Rectangle.Effect>
+                <DropShadowEffect BlurRadius="30" Color="#000000" ShadowDepth="0" Opacity="0.3"/>
+            </Rectangle.Effect>
+        </Rectangle>
 
     </Grid>
 </Page>
