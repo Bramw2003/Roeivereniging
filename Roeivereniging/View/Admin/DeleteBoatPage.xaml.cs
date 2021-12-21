@@ -20,24 +20,18 @@ namespace View {
     public partial class DeleteBoatPage : Page {
 
         BoatViewmodel _BoatViewModel;
-        private Timer timer = new Timer(3000);
         public DeleteBoatPage() {
             InitializeComponent();
             _BoatViewModel = (BoatViewmodel)base.DataContext;
-            timer.Elapsed += OnTimedEvent;
         }
 
         private void Delete_Boat_Button_Click(object sender, RoutedEventArgs e) {
             _BoatViewModel.DeleteBoat((Model.Boat)dataGrid.SelectedItem);
-            Notification.Visibility = Visibility.Visible;
-            timer.Start();
         }
 
-        public void OnTimedEvent(object o, EventArgs e) {
-            this.Dispatcher.Invoke(() => {
-                Notification.Visibility = Visibility.Hidden;
-            });
-            timer.Stop();
+        private void Edit_Boat_Button_Click(Object sender, RoutedEventArgs e) {
+            var EditBoatWindow= new Admin.EditBoatWindow();
+            EditBoatWindow.ShowDialog();
         }
     }
 }
