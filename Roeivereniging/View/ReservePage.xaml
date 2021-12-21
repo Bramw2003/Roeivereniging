@@ -9,7 +9,7 @@
       Title="ReservePage">
     <!--Height="938" Width="1669"-->
 
-    <Grid Margin="30,30,30,30">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="5*" />
@@ -19,21 +19,9 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <Rectangle Grid.Column="1" Grid.Row="0" Margin="15,30,15,30" Grid.RowSpan="2">
-            <Rectangle.Effect>
-                <DropShadowEffect BlurRadius="30" Color="#000000" ShadowDepth="0" Opacity="0.3"/>
-            </Rectangle.Effect>
-        </Rectangle>
-        <Rectangle Grid.Column="0" Grid.Row="0" Margin="15,30,15,15">
-            <Rectangle.Effect>
-                <DropShadowEffect BlurRadius="30" Color="#000000" ShadowDepth="0" Opacity="0.3"/>
-            </Rectangle.Effect>
-        </Rectangle>
-        <Rectangle Grid.Column="0" Grid.Row="1" Margin="15,15,15,30">
-            <Rectangle.Effect>
-                <DropShadowEffect BlurRadius="30" Color="#000000" ShadowDepth="0" Opacity="0.3"/>
-            </Rectangle.Effect>
-        </Rectangle>
+        <Rectangle Margin="15,15,15,15" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"/>
+        <Rectangle Margin="15,15,15,15" Grid.Column="0" Grid.Row="0" />
+        <Rectangle Margin="15,15,15,15" Grid.Column="0" Grid.Row="1" />
 
         <Grid Grid.Row="0" Grid.Column="0" Margin="15,15,15,30">
             <Grid.ColumnDefinitions>
@@ -63,28 +51,13 @@
     
             
             <Label Content="Met stuur:" Grid.Column="1" HorizontalAlignment="Left" Margin="0,100,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="24"/>
-            <CheckBox x:Name="ChbSteer" Grid.Column="2" HorizontalAlignment="Center" Margin="0,120,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Click="ChbSteer_Click">
-                <CheckBox.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="2" ScaleY="2"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </CheckBox.RenderTransform>
-            </CheckBox>
+            <CheckBox x:Name="ChbSteer" Grid.Column="2" HorizontalAlignment="Center" Margin="0,120,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ChbSteer_Click"/>
+
 
             <Label Content="Scullen:" Grid.Column="1" HorizontalAlignment="Left" Margin="0,150,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="24"/>
-            <CheckBox x:Name="ChbScull" Grid.Column="2" HorizontalAlignment="Center" Margin="0,170,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Click="ChbScull_Click">
-                <CheckBox.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="2" ScaleY="2"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </CheckBox.RenderTransform>
-            </CheckBox>
+            <CheckBox x:Name="ChbScull" Grid.Column="2" HorizontalAlignment="Center" Margin="0,170,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ChbScull_Click"/>
+
+
 
 
 

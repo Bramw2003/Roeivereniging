@@ -14,16 +14,9 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <Rectangle Grid.Column="1" Grid.Row="0" Margin="20,20,20,20" Grid.RowSpan="2" HorizontalAlignment="Stretch" Stroke="#FFF3F3F3" VerticalAlignment="Stretch" RadiusX="12" RadiusY="12" Fill="White">
-            <Rectangle.Effect>
-                <DropShadowEffect BlurRadius="30" Color="#000000" ShadowDepth="0" Opacity="0.3"/>
-            </Rectangle.Effect>
-        </Rectangle>
-        <Rectangle Grid.Column="0" Grid.Row="0" Margin="20,20,20,20" Grid.RowSpan="2" HorizontalAlignment="Stretch" Stroke="#FFF3F3F3" VerticalAlignment="Stretch" RadiusX="12" RadiusY="12" Fill="White">
-            <Rectangle.Effect>
-                <DropShadowEffect BlurRadius="30" Color="#000000" ShadowDepth="0" Opacity="0.3"/>
-            </Rectangle.Effect>
-        </Rectangle>
+        <Rectangle Margin="15,15,15,15" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"/>
+        <Rectangle Margin="15,15,15,15" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"/>
+
         <Grid Grid.Column="0" Grid.Row="0" Margin="40">
             <ListView x:Name="LvMember" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="LvMember_SelectionChanged">
                 <ListView.View>

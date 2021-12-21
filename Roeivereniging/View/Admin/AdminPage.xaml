@@ -10,23 +10,20 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="18*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="17*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="80*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Grid.Column="1" Grid.Row="1" Stroke="#FFF3F3F3" RadiusX="12" RadiusY="12" Fill="White" Margin="5,6,5,6">
-            <Rectangle.Effect>
-                <DropShadowEffect BlurRadius="30" Color="#000000" ShadowDepth="0" Opacity="0.3"/>
-            </Rectangle.Effect>
-        </Rectangle>
-        <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="8,22,8,0" Grid.Row="1">
+        <Rectangle Margin="15,15,15,15" Grid.Column="1" Grid.Row="1" />
+
+        <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="20,20,20,20" Grid.Row="1" >
             <Label x:Name="label" Content="Leden" HorizontalAlignment="Center" FontSize="24"/>
             <Button x:Name="Button_Member_Add" Content="Toevoegen" Click="Button_Member_Add_Click"/>
             <Button Content="Rechten aanpassen" />

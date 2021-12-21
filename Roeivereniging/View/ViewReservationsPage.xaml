@@ -13,19 +13,11 @@
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
-        <Rectangle Grid.Column="1" Margin="15,30,15,30" HorizontalAlignment="Stretch" Stroke="#FFF3F3F3" VerticalAlignment="Stretch" RadiusX="12" RadiusY="12" Fill="White">
-            <Rectangle.Effect>
-                <DropShadowEffect BlurRadius="30" Color="#000000" ShadowDepth="0" Opacity="0.3"/>
-            </Rectangle.Effect>
-        </Rectangle>
-        <Rectangle Grid.Column="0" Margin="15,30,15,30" HorizontalAlignment="Stretch" Stroke="#FFF3F3F3" VerticalAlignment="Stretch" RadiusX="12" RadiusY="12" Fill="White">
-            <Rectangle.Effect>
-                <DropShadowEffect BlurRadius="30" Color="#000000" ShadowDepth="0" Opacity="0.3"/>
-            </Rectangle.Effect>
-        </Rectangle>
+        <Rectangle Margin="15,15,15,15" Grid.Column="1"/>
+        <Rectangle Margin="15,15,15,15" Grid.Column="0"/>
 
 
-        <Grid Grid.Column="1" Margin="15,30,15,30" DataContext="{Binding SelectedItem, ElementName=LvRervations}">
+            <Grid Grid.Column="1" Margin="15,30,15,30" DataContext="{Binding SelectedItem, ElementName=LvRervations}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="7*" />
                 <RowDefinition Height="1*" />
@@ -86,7 +78,7 @@
 
         
 
-        <ListView x:Name="LvRervations" Grid.Column="0" Margin="25,60,25,40" FontSize="16" SelectionChanged="LvRervations_SelectionChanged">
+        <ListView x:Name="LvRervations" Grid.Column="0" Margin="25,80,25,40" FontSize="16" SelectionChanged="LvRervations_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Datum" Width="auto" DisplayMemberBinding="{Binding Date}"></GridViewColumn>
@@ -96,6 +88,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <CheckBox Content="Toon alle reserveringen" HorizontalAlignment="Left" Margin="25,40,25,40" VerticalAlignment="Top" Unchecked="CbxShowAllUnchecked" Checked="CbxShowAllChecked"/>
+        <CheckBox Content="Toon alle reserveringen" HorizontalAlignment="Left" Margin="95 ,40,0,0" VerticalAlignment="Top" Unchecked="CbxShowAllUnchecked" Checked="CbxShowAllChecked"/>
     </Grid>
 </Page>

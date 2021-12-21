@@ -40,10 +40,7 @@
             <DatePicker x:Name="dpBirthDay" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="7" VerticalAlignment="Center" FontSize="18"/>
             <Label x:Name="Notification" Content="Lid Toegevoegd" HorizontalAlignment="Center" Grid.Row="9" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="14" Visibility="Hidden" Foreground="#FF0DEC17"/>
         </Grid>
-        <Rectangle Grid.Column="0" Grid.Row="0" Margin="5,5,5,5" Panel.ZIndex="-1">
-            <Rectangle.Effect>
-                <DropShadowEffect BlurRadius="30" Color="#000000" ShadowDepth="0" Opacity="0.3"/>
-            </Rectangle.Effect>
+        <Rectangle Margin="15,15,15,15" Grid.Column="0" Grid.Row="0" Panel.ZIndex="-1">
         </Rectangle>
 
     </Grid>
