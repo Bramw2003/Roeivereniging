@@ -24,13 +24,13 @@ namespace Model.DAO {
 
         public List<Boat> GetAll() {
             Database.Init();
-            String sql = "SELECT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling], (SELECT CASE WHEN EXISTS ( SELECT * FROM[brokenboat] WHERE boatID = boat.[ID]) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END), removed=(SELECT CASE WHEN deleted = 1 OR deleted IS NOT NULL THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END) FROM [boat] JOIN[types] ON[types].[ID] =[boat].[typesID]";
+            String sql = "SELECT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling],[boat].[location], (SELECT CASE WHEN EXISTS ( SELECT * FROM[brokenboat] WHERE boatID = boat.[ID]) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END), removed=(SELECT CASE WHEN deleted = 1 OR deleted IS NOT NULL THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END) FROM [boat] JOIN[types] ON[types].[ID] =[boat].[typesID]";
             List<Boat> list = new List<Boat>();
             SqlCommand command = new SqlCommand(sql, Database.connection);
             if (Database.OpenConnection()) {
                 var a = command.ExecuteReader();
                 while (a.Read()) {
-                    Boat n = new Boat(a.GetInt32(0), a.GetString(1), a.GetInt32(2), a.GetInt32(3), a.GetBoolean(4), a.GetBoolean(5), a.GetBoolean(6),a.GetBoolean(7));
+                    Boat n = new Boat(a.GetInt32(0), a.GetString(1), a.GetInt32(2), a.GetInt32(3), a.GetBoolean(4), a.GetBoolean(5),a.GetString(6), a.GetBoolean(7),a.GetBoolean(8));
                     list.Add(n);
                 }
                 command.Dispose();

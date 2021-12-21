@@ -141,7 +141,7 @@ namespace Model
                 var a = command.ExecuteReader();
                 while (a.Read())
                 {
-                    Boat n = new Boat(a.GetInt32(0), a.GetString(1), a.GetInt32(2), a.GetInt32(3), a.GetBoolean(4), a.GetBoolean(5),a.GetBoolean(6));
+                    Boat n = new Boat(a.GetInt32(0), a.GetString(1), a.GetInt32(2), a.GetInt32(3), a.GetBoolean(4),a.GetBoolean(5), " " ,a.GetBoolean(6));
                     list.Add(n);
                 }
                 command.Dispose();

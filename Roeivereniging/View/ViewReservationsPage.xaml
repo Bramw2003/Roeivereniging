@@ -46,6 +46,16 @@
                     <TextBlock FontSize="28" Text=" tot "/>
                     <TextBlock FontSize="28" Text="{Binding EndTime}" FontWeight="Bold"/>
                 </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top">
+                    <TextBlock FontSize="24" Text="Uw boot ligt in loods "/>
+                    <TextBlock FontSize="24" Text="{Binding boat.shed}" FontWeight="Bold"/>
+                    <TextBlock FontSize="24" Text=" rij "/>
+                    <TextBlock FontSize="24" Text="{Binding boat.row}" FontWeight="Bold"/>
+                    <TextBlock FontSize="24" Text=" kolom "/>
+                    <TextBlock FontSize="24" Text="{Binding boat.Column}" FontWeight="Bold"/>
+                    <TextBlock FontSize="24" Text=" op hoogte "/>
+                    <TextBlock FontSize="24" Text="{Binding boat.Height}" FontWeight="Bold"/>
+                </StackPanel>
 
 
                 <!--<Label Content="{Binding StartTime}" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="170,50,0,0" VerticalAlignment="Top" FontSize="26"/>

@@ -15,8 +15,13 @@ namespace Model
         public BoatType category { get; }
         public bool defect { get; }
         public bool deleted { get; }
+        //location info
+        public string shed { get; }
+        public string row { get; }
+        public string Column { get; }
+        public string Height { get; }
 
-        public Boat(int id, string name, int capacity, int category, bool steer, bool sculling, bool defect = false, bool deleted = false)
+        public Boat(int id, string name, int capacity, int category, bool steer, bool sculling, string location = "", bool defect = false, bool deleted = false)
         {
             this.id = id;
             this.name = name;
@@ -48,6 +53,11 @@ namespace Model
                 type += sculling ? "x" : "";
                 type += steer ? "+" : "";
             }
+            string[] locationInfo = location.Split("-");
+            this.shed = locationInfo[0];
+            this.row = locationInfo[1];
+            this.Column = locationInfo[2];
+            this.Height = locationInfo[3]; 
             this.defect = defect;
             this.deleted = deleted;
         }
