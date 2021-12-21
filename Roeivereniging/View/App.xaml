@@ -11,11 +11,11 @@
             <Setter Property="Foreground" Value="White"/>
             <Style.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5" />
+                    <Setter Property="CornerRadius" Value="6" />
                 </Style>
             </Style.Resources>
         </Style>
-        
+
         <Style TargetType="Rectangle">
             <Setter Property="Stroke" Value="#FFF3F3F3"></Setter>
             <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
@@ -31,10 +31,10 @@
         </Style>
        
         <Style TargetType="TextBox">
-            <Setter Property="FontSize" Value="24"></Setter>
+            <!--<Setter Property="FontSize" Value="24"></Setter>-->
             <Style.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5" />
+                    <Setter Property="CornerRadius" Value="6" />
                 </Style>
             </Style.Resources>
         </Style>
@@ -50,8 +50,6 @@
                         <TranslateTransform/>
                     </TransformGroup>
                 </Setter.Value>
-
-
             </Setter>
         </Style>
         

@@ -39,7 +39,7 @@
             <!-- Row 1 -->
             <Label Content="Bouwtype:" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="24"/>
             <!--<TextBox Grid.Column="2" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="1" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="24"/>-->
-            <ComboBox x:Name="CbType" Grid.Column="2" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" FontSize="24" SelectionChanged="CbType_SelectionChanged">
+            <ComboBox x:Name="CbType" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Width="120" FontSize="24" SelectionChanged="CbType_SelectionChanged">
                 <ComboBoxItem>A-boten</ComboBoxItem>
                 <ComboBoxItem>B-boten</ComboBoxItem>
                 <ComboBoxItem>C-boten</ComboBoxItem>
@@ -56,11 +56,6 @@
 
             <Label Content="Scullen:" Grid.Column="1" HorizontalAlignment="Left" Margin="0,150,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="24"/>
             <CheckBox x:Name="ChbScull" Grid.Column="2" HorizontalAlignment="Center" Margin="0,170,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ChbScull_Click"/>
-
-
-
-
-
 
         </Grid>
         
@@ -100,13 +95,13 @@
         
         
         <Grid Grid.Row="0" Grid.Column="1" Margin="38,72,66,53" Grid.RowSpan="2">
-            <ListView  x:Name="LbBoats" d:ItemsSource="{d:SampleData ItemCount=50} " FontSize="16">
+            <ListView  x:Name="LbBoats" d:ItemsSource="{d:SampleData ItemCount=50} " FontSize="24" VerticalContentAlignment="Stretch">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Type" Width="auto" DisplayMemberBinding="{Binding type}" />
-                        <GridViewColumn Header="Naam" Width="150" DisplayMemberBinding="{Binding name}" />
-                        <GridViewColumn Header="Stuur" Width="50" DisplayMemberBinding="{Binding steer}" />
-                        <GridViewColumn Header="Scullen" Width="50" DisplayMemberBinding="{Binding sculling}" />
+                        <GridViewColumn Header="Type"  DisplayMemberBinding="{Binding type}" />
+                        <GridViewColumn Header="Naam" Width="auto" DisplayMemberBinding="{Binding name}" />
+                        <GridViewColumn Header="Stuur" Width="auto" DisplayMemberBinding="{Binding steer}" />
+                        <GridViewColumn Header="Scullen" Width="auto" DisplayMemberBinding="{Binding sculling}" />
                     </GridView>
                 </ListView.View>
             </ListView>
