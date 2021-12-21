@@ -22,6 +22,9 @@
     <Compile Update="Admin\AdminPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Admin\EditBoatWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="DefectPopup.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -64,6 +67,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Admin\AdminPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Admin\EditBoatWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DefectPopup.xaml">
