@@ -34,6 +34,7 @@ namespace View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var member = memberDAO.GetByUsername(TbUsername.Text);
+            if (member == null) MessageBox.Show("Het email adress en de gebruikers namen horen niet bij hetzelfde account!");
             if (member.email == TbEmail.Text)
             {
                 var newpass = RandomString(8);
@@ -44,6 +45,10 @@ namespace View
                         if (MainWindow.Mail.SendTempPassword(member, newpass)) MessageBox.Show("Tijdelijk wachtwoord succesvol verzonden!");
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Het email adress en de gebruikers namen horen niet bij hetzelfde account!");
             }
         }
 

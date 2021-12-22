@@ -46,6 +46,7 @@ namespace View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (ComboBoxDiplomas.SelectedValue == null || LvMember.SelectedItem == null) return;
             certDao.AddToMember((Member)LvMember.SelectedItem, new Certificate(ComboBoxDiplomas.SelectedValue.ToString()));
             ComboBoxDiplomas.Items.Clear();
             certDao.GetAvailableByMember((Member)LvMember.SelectedItem).ForEach(x => ComboBoxDiplomas.Items.Add(x.name));
