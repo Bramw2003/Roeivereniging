@@ -114,7 +114,7 @@ namespace Model
         {
             List<Boat> boats = new List<Boat>();
             string sql = "SELECT DISTINCT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling], (SELECT CASE WHEN EXISTS ( SELECT * FROM[brokenboat] WHERE boatID = boat.[ID]) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END) FROM [boat] LEFT JOIN reservations AS r ON r.boatID = boat.ID JOIN types ON types.ID = boat.typesID WHERE ((r.[date] != @date OR r.[date] IS NULL) OR(r.starttime NOT BETWEEN @starttime and @endtime) AND(r.endtime NOT BETWEEN @starttime and @endtime) OR(starttime is NULL AND endtime is null))";
-            string available = @"SELECT DISTINCT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling], (SELECT CASE WHEN EXISTS ( SELECT * FROM[brokenboat] WHERE boatID = boat.[ID]) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END)
+            string available = @"SELECT DISTINCT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling], (SELECT CASE WHEN EXISTS ( SELECT * FROM[brokenboat] WHERE boatID = boat.[ID]) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END), removed=(SELECT CASE WHEN deleted = 1 OR deleted IS NOT NULL THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END),[boat].[location]
                                 FROM boat 
                                 LEFT JOIN types on boat.typesID = types.ID
                                 LEFT JOIN types_certificate ON types.ID = types_certificate.typesID 
@@ -141,7 +141,7 @@ namespace Model
                 var a = command.ExecuteReader();
                 while (a.Read())
                 {
-                    Boat n = new Boat(a.GetInt32(0), a.GetString(1), a.GetInt32(2), a.GetInt32(3), a.GetBoolean(4),a.GetBoolean(5), " " ,a.GetBoolean(6));
+                    Boat n = new Boat(id: a.GetInt32(0), name: a.GetString(1),capacity: a.GetInt32(2), category: a.GetInt32(3), steer: a.GetBoolean(4), location: a.GetString(8), sculling: a.GetBoolean(5),defect: a.GetBoolean(6),deleted: a.GetBoolean(7));
                     list.Add(n);
                 }
                 command.Dispose();

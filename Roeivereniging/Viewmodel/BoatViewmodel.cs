@@ -43,7 +43,10 @@ namespace Viewmodel
             BoatDB.EditBoat(boat, name, type, Capacity, sculing, steer, location);
             BoatList = GetAllBoats();
         }
-
+        //public void AddBoat(Boat boat)
+        //{
+        //    AddBoat(boat.name,(int)boat.category,boat.capacity,boat.sculling,boat.steer);
+        //}
         public void DeleteBoat(Boat boat) {
             BoatDB.Delete(boat);
             BoatList = GetAllBoats();
