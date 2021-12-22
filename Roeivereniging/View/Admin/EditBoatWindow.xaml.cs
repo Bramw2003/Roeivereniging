@@ -46,10 +46,10 @@ namespace View.Admin
             {
                 cbSteering.SelectedIndex = 1;
             }
-            tbShed.Textbox.Text = boat.shed;
-            tbRow.Textbox.Text = boat.row;
-            tbColumn.Textbox.Text = boat.Column;
-            tbHeight.Textbox.Text = boat.Height;
+            tbShed.Textbox.Text = boat.shed.ToString();
+            tbRow.Textbox.Text = boat.row.ToString();
+            tbColumn.Textbox.Text = boat.Column.ToString();
+            tbHeight.Textbox.Text = boat.Height.ToString();
 
         }
 
@@ -87,6 +87,15 @@ namespace View.Admin
                 case 1:
                     steer = false;
                     break;
+            }
+            try
+            {
+                model.CheckShedSpace(location, Boat.id);
+            } 
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
             }
             model.EditBoat(Boat, tbName.Textbox.Text, cbType.SelectedIndex, Capacity, sculing, steer, location);
             this.Close();

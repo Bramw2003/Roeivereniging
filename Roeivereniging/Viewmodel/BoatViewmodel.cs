@@ -50,7 +50,55 @@ namespace Viewmodel
             ReservationDB.DeleteAllFutureReservationsByBoat(boat);
         }
 
-        
+        public void CheckShedSpace(string location, int boatID)
+        {
+            string[] locationInfo = location.Split("-");
+            int shed = int.Parse(locationInfo[0]);
+            int row = int.Parse(locationInfo[1]);
+            int Column = int.Parse(locationInfo[2]);
+            int Height = int.Parse(locationInfo[3]);
 
+            if (shed > 8 || shed < 1)
+            {
+                //error: Shed doesnt exist
+                throw new Exception("Deze loods bestaat niet. Waarde moet tussen de 1 en 8 zijn");
+            }
+            if (shed == 1 && row == 1 || row > 2 || row < 1)
+            {
+                //error: Row doesnt exist
+                throw new Exception("Deze Rij bestaat niet. Waarde moet tussen de 1 en 2 zijn");
+            }
+            if(Column > 2 || Column < 1)
+            {
+                //error: Column doesnt exist
+                throw new Exception("Deze Kolom bestaat niet. Waarde moet tussen de 1 en 2 zijn");
+            }
+            if(Height > 4 || Height < 0)
+            {
+                //error: height doesnt exist
+                throw new Exception("Deze Hoogte bestaat niet. Waarde moet tussen de 0 en 4 zijn");
+            }
+
+           var boatRow = BoatList.Where(x => x.shed == shed && x.row == row && x.Height == Height);
+            if(boatRow.Count() == 0)
+            {
+                //space found
+            } else if(boatRow.First().capacity >= 8 && boatRow.First().id != boatID)
+            {
+                //error: space ocupied
+                throw new Exception("Plek bezet");
+            } else if(boatRow.First().Column == Column && boatRow.First().id != boatID)
+            {
+                //error space ocupied
+                throw new Exception("Plek bezet");
+            }
+            else
+            {
+                //space found 
+            }
+
+
+            //shed - row - collum - height 
+        }
     }
 }

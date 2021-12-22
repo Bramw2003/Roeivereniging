@@ -16,10 +16,10 @@ namespace Model
         public bool defect { get; }
         public bool deleted { get; }
         //location info
-        public string shed { get; }
-        public string row { get; }
-        public string Column { get; }
-        public string Height { get; }
+        public int shed { get; }
+        public int row { get; }
+        public int Column { get; }
+        public int Height { get; }
 
         public Boat(int id, string name, int capacity, int category, bool steer, bool sculling, string location = "", bool defect = false, bool deleted = false)
         {
@@ -54,10 +54,10 @@ namespace Model
                 type += steer ? "+" : "";
             }
             string[] locationInfo = location.Split("-");
-            this.shed = locationInfo[0];
-            this.row = locationInfo[1];
-            this.Column = locationInfo[2];
-            this.Height = locationInfo[3]; 
+            this.shed = int.Parse(locationInfo[0]);
+            this.row = int.Parse(locationInfo[1]);
+            this.Column = int.Parse(locationInfo[2]);
+            this.Height = int.Parse(locationInfo[3]); 
             this.defect = defect;
             this.deleted = deleted;
         }
