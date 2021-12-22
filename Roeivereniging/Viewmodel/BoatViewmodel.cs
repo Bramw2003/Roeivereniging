@@ -99,9 +99,6 @@ namespace Viewmodel
             {
                 //space found 
             }
-
-
-            //shed - row - collum - height 
         }
     }
 }
