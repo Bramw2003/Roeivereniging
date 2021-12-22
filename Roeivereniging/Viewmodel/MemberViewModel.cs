@@ -1,12 +1,24 @@
-﻿using Model;
+﻿using MicroMvvm;
+using Model;
 using Model.DAO;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Viewmodel {
-    public static class MemberViewModel {
+    public class MemberViewModel : ObservableObject{
         private static MemberDAO MemberDB = new MemberDAO();
+        public List<Member> _MemberList = GetAllMembers();
+
+        public List<Member> MemberList{
+            get { return _MemberList; }
+            set { _MemberList = value; RaisePropertyChanged("BoatList"); }
+        }
+
+        private static List<Member> GetAllMembers()
+        {
+            return MemberDB.GetAll();
+        }
 
         public static bool MakeUser(string name, string username, DateTime date, string email, string password) {
             Member member = new Member(name, username, date, email);

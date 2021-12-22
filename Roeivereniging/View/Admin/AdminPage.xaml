@@ -26,7 +26,7 @@
         <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="20,20,20,20" Grid.Row="1" >
             <Label x:Name="label" Content="Leden" HorizontalAlignment="Center" FontSize="24"/>
             <Button x:Name="Button_Member_Add" Content="Toevoegen" Click="Button_Member_Add_Click"/>
-            <Button Content="Rechten aanpassen" />
+            <Button Content="Rechten aanpassen" Click="Button_Click" />
             <Button x:Name="button1" Content="Verwijderen"/>
             <Label x:Name="label1" Content="Booten" Margin="0,10,0,0" HorizontalAlignment="Center" FontSize="24"/>
             <Button x:Name="button2" Content="Toevoegen" Click="button2_Click"/>

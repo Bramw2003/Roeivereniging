@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using View.Admin;
 
 namespace View {
     /// <summary>
@@ -20,6 +21,7 @@ namespace View {
         private AddMemberPage AddMemberPage = new AddMemberPage();
         private AddBoatPage AddBoatPage = new AddBoatPage();
         private DeleteBoatPage DeleteBoatPage = new DeleteBoatPage();
+        private ManageMembersPage manageMembersPage = new ManageMembersPage();
         public AdminPage() {
             InitializeComponent();
         }
@@ -34,6 +36,11 @@ namespace View {
 
         private void Button_Boat_Delete_Click(object sender, RoutedEventArgs e) {
             AdminFrame.Content = DeleteBoatPage;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AdminFrame.Content = manageMembersPage;
         }
     }
 }
