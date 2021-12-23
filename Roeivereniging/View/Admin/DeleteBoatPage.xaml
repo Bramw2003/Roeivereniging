@@ -37,10 +37,10 @@
                     <DataGridTextColumn Header="Rij" Binding="{Binding row, Mode=OneWay}"/>
                     <DataGridTextColumn Header="Column" Binding="{Binding Column, Mode=OneWay}"/>
                     <DataGridTextColumn Header="Hoogte" Binding="{Binding Height, Mode=OneWay}"/>
-                    <DataGridTemplateColumn CanUserSort="False" Header="Aanpassen" IsReadOnly="True">
+                    <DataGridTemplateColumn CanUserSort="False" Header="Bewerken" IsReadOnly="True">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Aanpassen" Click="Edit_Boat_Button_Click"></Button>
+                                <Button Content="Bewerken" Click="Edit_Boat_Button_Click"></Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
