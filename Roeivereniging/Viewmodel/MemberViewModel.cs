@@ -46,5 +46,11 @@ namespace Viewmodel {
             MemberDB.Delete(ID);
             MemberList.Remove(MemberList.Where(x => x.id == ID).First());
         }
+
+        public void EditMember(Member member, string name, string username, string email, DateTime date, bool admin,bool examinator, bool repair)
+        {
+            MemberDB.Alter(member, date, admin, repair, examinator, username, name, email);
+            MemberList = GetAllMembers();
+        }
     }
 }

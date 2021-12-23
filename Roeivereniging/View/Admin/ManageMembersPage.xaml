@@ -29,6 +29,7 @@
             <DataGrid x:Name="dataGrid" Grid.Column="1" Grid.Row="1" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding MemberList}" ColumnWidth="*" HorizontalAlignment="Stretch" Margin="10,10,10,10" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Naam" Binding="{Binding name, Mode=OneWay}"/>
+                    <DataGridTextColumn Header="Gebruikersnaam" Binding="{Binding username, Mode=OneWay}"/>
                     <DataGridTextColumn Binding="{Binding email, Mode=OneWay}" Header="Mail"/>
                     <DataGridTextColumn Header="Geboortenaam" Binding="{Binding date, Mode=OneWay, StringFormat=\{0:d\}}"/>
                     <DataGridCheckBoxColumn Header="Beheerder" Binding="{Binding admin, Mode=OneWay}"/>
@@ -37,7 +38,7 @@
                     <DataGridTemplateColumn Header="Bewerken">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Bewerken"></Button>
+                                <Button x:Name="Edit_Member_Button" Content="Bewerken" Click="Edit_Member_Button_Click"></Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

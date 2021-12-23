@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Model;
 using Viewmodel;
 
 namespace View.Admin
@@ -30,6 +31,12 @@ namespace View.Admin
         {
             var AddMemberWindow = new AddMemberWindow(_MemberViewModel);
             AddMemberWindow.ShowDialog();
+        }
+
+        private void Edit_Member_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var EditMemberWindow = new EditMemberWindow(_MemberViewModel, (Member) dataGrid.SelectedItem);
+            EditMemberWindow.ShowDialog();
         }
     }
 }

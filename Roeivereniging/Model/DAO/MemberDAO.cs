@@ -149,7 +149,7 @@ namespace Model.DAO {
         /// <param name="username"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        public bool Alter(Member member, DateTime? date = null, bool? admin = null, bool? repair = null, bool? examinator = null, string username = null, string name = null)
+        public bool Alter(Member member, DateTime? date = null, bool? admin = null, bool? repair = null, bool? examinator = null, string username = null, string name = null, string email = null)
         {
 
             date = date ?? member.date;
@@ -158,9 +158,10 @@ namespace Model.DAO {
             examinator = examinator ?? member.examinator;
             username = username ?? member.username;
             name = name ?? member.name;
+            email = email ?? member.email;
 
             Database.Init();
-            string sql = "UPDATE [member] SET [name] = @name, [birthday] = @bday, [admin] = @admin, [repair] = @repair, [examinator] = @examinator, [username] = @username WHERE [ID] = @id";
+            string sql = "UPDATE [member] SET [name] = @name, [birthday] = @bday, [admin] = @admin, [repair] = @repair, [examinator] = @examinator, [username] = @username, [email] = @email WHERE [ID] = @id";
             bool result = false;
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("username", username);
@@ -169,6 +170,7 @@ namespace Model.DAO {
             command.Parameters.AddWithValue("admin", admin.Value);
             command.Parameters.AddWithValue("repair", repair.Value);
             command.Parameters.AddWithValue("examinator", examinator.Value);
+            command.Parameters.AddWithValue("email", email);
             command.Parameters.AddWithValue("id", member.GetId());
             if (Database.OpenConnection())
             {
