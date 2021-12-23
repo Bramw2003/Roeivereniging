@@ -19,9 +19,11 @@ namespace View.Admin
     /// </summary>
     public partial class AddBoatWindow : Window
     {
-        public AddBoatWindow()
+        BoatViewmodel model;
+        public AddBoatWindow(BoatViewmodel boatVM)
         {
             InitializeComponent();
+            model = boatVM;
         }
 
         private void Add_Boat_Button_Click(object sender, RoutedEventArgs e)
@@ -54,7 +56,8 @@ namespace View.Admin
                     break;
             }
 
-            BoatViewmodel.AddBoat(tbName.Textbox.Text, cbType.SelectedIndex, Capacity, sculing, steer, location);
+            model.AddBoat(tbName.Textbox.Text, cbType.SelectedIndex, Capacity, sculing, steer, location);
+            this.Close();
         }
 
         private void PreviewTextInput(object sender, TextCompositionEventArgs e)

@@ -13,9 +13,6 @@
     <Compile Update="Account\ChangePasswordPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Admin\AddBoatPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Admin\AddBoatWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -37,7 +34,7 @@
     <Compile Update="DefectsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Admin\DeleteBoatPage.xaml.cs">
+    <Compile Update="Admin\ManageBoatPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Events\EventsPage.xaml.cs">
@@ -69,9 +66,6 @@
     <Page Update="Account\ChangePasswordPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Admin\AddBoatPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Admin\AddBoatWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -93,7 +87,7 @@
     <Page Update="DefectsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Admin\DeleteBoatPage.xaml">
+    <Page Update="Admin\ManageBoatPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Events\EventsPage.xaml">

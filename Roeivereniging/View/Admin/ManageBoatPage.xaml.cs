@@ -36,7 +36,7 @@ namespace View {
 
         private void Add_Boat_Button_Click(object sender, RoutedEventArgs e)
         {
-            var AddBoatWindow = new Admin.AddBoatWindow();
+            var AddBoatWindow = new Admin.AddBoatWindow(_BoatViewModel);
             AddBoatWindow.ShowDialog();
         }
     }

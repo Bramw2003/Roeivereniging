@@ -19,7 +19,6 @@ namespace View {
     public partial class AdminPage : Page {
 
         private AddMemberPage AddMemberPage = new AddMemberPage();
-        private AddBoatPage AddBoatPage = new AddBoatPage();
         private ManageBoatPage DeleteBoatPage = new ManageBoatPage();
         private ManageMembersPage manageMembersPage = new ManageMembersPage();
         public AdminPage() {
@@ -28,10 +27,6 @@ namespace View {
 
         private void Button_Member_Add_Click(object sender, RoutedEventArgs e) {
             AdminFrame.Content = AddMemberPage;
-        }
-
-        private void button2_Click(object sender, RoutedEventArgs e) {
-            AdminFrame.Content = AddBoatPage;
         }
 
         private void Button_Boat_Delete_Click(object sender, RoutedEventArgs e) {
