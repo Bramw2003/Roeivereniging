@@ -17,10 +17,10 @@ namespace View {
     /// <summary>
     /// Interaction logic for DeleteBoatPage.xaml
     /// </summary>
-    public partial class DeleteBoatPage : Page {
+    public partial class ManageBoatPage : Page {
 
         BoatViewmodel _BoatViewModel;
-        public DeleteBoatPage() {
+        public ManageBoatPage() {
             InitializeComponent();
             _BoatViewModel = (BoatViewmodel)base.DataContext;
         }

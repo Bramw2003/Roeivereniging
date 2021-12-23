@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:View"
-      xmlns:Viewmodel="clr-namespace:Viewmodel;assembly=Viewmodel" x:Class="View.DeleteBoatPage"
+      xmlns:Viewmodel="clr-namespace:Viewmodel;assembly=Viewmodel" x:Class="View.ManageBoatPage"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DeleteBoatPage">
@@ -37,7 +37,7 @@
                     <DataGridTextColumn Header="Rij" Binding="{Binding row, Mode=OneWay}"/>
                     <DataGridTextColumn Header="Column" Binding="{Binding Column, Mode=OneWay}"/>
                     <DataGridTextColumn Header="Hoogte" Binding="{Binding Height, Mode=OneWay}"/>
-                    <DataGridTemplateColumn CanUserSort="False" Header="Bewerken" IsReadOnly="True">
+                    <DataGridTemplateColumn CanUserSort="False" Header="Aanpassen" IsReadOnly="True">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Content="Bewerken" Click="Edit_Boat_Button_Click"></Button>
@@ -53,7 +53,7 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="Add_Boat_Button" Content="Boot Toevoegen" HorizontalAlignment="Stretch" Margin="0,0,0,20" Grid.Column="1" Grid.Row="2" FontSize="18" Width="132" Grid.RowSpan="2" Height="30" VerticalAlignment="Stretch" Click="Add_Boat_Button_Click"/>
+            <Button x:Name="Add_Boat_Button" Content="Boot Toevoegen" HorizontalAlignment="Stretch" Margin="0,0,0,20" Grid.Column="1" Grid.Row="2" FontSize="18" Width="132" Grid.RowSpan="2" Height="30" VerticalAlignment="Stretch"/>
         </Grid>
         <Rectangle Margin="15,15,15,15" Grid.Column="0" Grid.Row="0" Panel.ZIndex="-1"/>
 

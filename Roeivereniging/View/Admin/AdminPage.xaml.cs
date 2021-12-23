@@ -20,7 +20,7 @@ namespace View {
 
         private AddMemberPage AddMemberPage = new AddMemberPage();
         private AddBoatPage AddBoatPage = new AddBoatPage();
-        private DeleteBoatPage DeleteBoatPage = new DeleteBoatPage();
+        private ManageBoatPage DeleteBoatPage = new ManageBoatPage();
         private ManageMembersPage manageMembersPage = new ManageMembersPage();
         public AdminPage() {
             InitializeComponent();
