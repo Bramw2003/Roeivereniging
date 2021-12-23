@@ -1,15 +1,13 @@
-﻿<Page x:Class="View.AddMemberPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:View"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddMemberPage">
-
+﻿<Window x:Class="View.Admin.AddMemberWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View.Admin"
+        mc:Ignorable="d"
+        Title="AddMemberWindow" Height="450" Width="800">
     <Grid>
-        <Grid>
+        <Grid Margin="0,0,0,-16">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -38,10 +36,7 @@
             <TextBox x:Name="tbEMail" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="6" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" FontSize="18"/>
             <Button x:Name="Add_Member_Button" Content="Toevoegen" Grid.Column="0" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="8" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="24" Click="Add_Member_Button_Click"/>
             <DatePicker x:Name="dpBirthDay" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="7" VerticalAlignment="Center" FontSize="18"/>
-            <Label x:Name="Notification" Content="Lid Toegevoegd" HorizontalAlignment="Center" Grid.Row="9" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="14" Visibility="Hidden" Foreground="#FF0DEC17"/>
         </Grid>
-        <Rectangle Margin="15,15,15,15" Grid.Column="0" Grid.Row="0" Panel.ZIndex="-1">
-        </Rectangle>
 
     </Grid>
-</Page>
+</Window>

@@ -29,14 +29,14 @@ namespace Viewmodel
         /// <summary>
         /// Adds boat to database and if types doesnt exits, also makes type
         /// </summary>
-        public static bool AddBoat(string name, int type, int capacity, bool sculling, bool steer, string location) {
+        public void AddBoat(string name, int type, int capacity, bool sculling, bool steer, string location) {
             int? typeID = BoatDB.FindTypeIDByDetails(capacity, type, steer, sculling);
             if(typeID == null) {
                 BoatDB.MakeTypeWithDetails(capacity, type, steer, sculling);
                 typeID = BoatDB.FindTypeIDByDetails(capacity, type, steer, sculling);
             }
             BoatDB.AddBoat(name, (BoatType)typeID, location);
-            return true;
+            BoatList = GetAllBoats();
         }
 
         public void EditBoat(Boat boat, string name, int type,int Capacity,bool sculing, bool steer, string location) {

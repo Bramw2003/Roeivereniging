@@ -13,10 +13,10 @@
     <Compile Update="Account\ChangePasswordPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Admin\AddBoatPage.xaml.cs">
+    <Compile Update="Admin\AddBoatWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Admin\AddMemberPage.xaml.cs">
+    <Compile Update="Admin\AddMemberWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Admin\AdminPage.xaml.cs">
@@ -25,13 +25,16 @@
     <Compile Update="Admin\EditBoatWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Admin\ManageMembersPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="DefectPopup.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="DefectsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Admin\DeleteBoatPage.xaml.cs">
+    <Compile Update="Admin\ManageBoatPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Events\EventsPage.xaml.cs">
@@ -63,10 +66,10 @@
     <Page Update="Account\ChangePasswordPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Admin\AddBoatPage.xaml">
+    <Page Update="Admin\AddBoatWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Admin\AddMemberPage.xaml">
+    <Page Update="Admin\AddMemberWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Admin\AdminPage.xaml">
@@ -75,13 +78,16 @@
     <Page Update="Admin\EditBoatWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Admin\ManageMembersPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="DefectPopup.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DefectsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Admin\DeleteBoatPage.xaml">
+    <Page Update="Admin\ManageBoatPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Events\EventsPage.xaml">
