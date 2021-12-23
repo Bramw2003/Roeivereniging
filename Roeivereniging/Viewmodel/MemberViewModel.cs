@@ -12,7 +12,7 @@ namespace Viewmodel {
 
         public List<Member> MemberList{
             get { return _MemberList; }
-            set { _MemberList = value; RaisePropertyChanged("BoatList"); }
+            set { _MemberList = value; RaisePropertyChanged("MemberList"); }
         }
 
         private static List<Member> GetAllMembers()
@@ -20,10 +20,10 @@ namespace Viewmodel {
             return MemberDB.GetAll();
         }
 
-        public static bool MakeUser(string name, string username, DateTime date, string email, string password) {
+        public void MakeUser(string name, string username, DateTime date, string email, string password) {
             Member member = new Member(name, username, date, email);
             MemberDB.insert(member, password);
-            return true;
+            MemberList = GetAllMembers();
         }
 
         public static bool EditUserRoles(int ID, bool admin, bool examinator, bool canRepair)

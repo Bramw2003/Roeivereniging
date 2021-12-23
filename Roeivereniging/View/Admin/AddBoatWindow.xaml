@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:View.Admin"
         xmlns:View="clr-namespace:View" x:Class="View.Admin.AddBoatWindow"
         mc:Ignorable="d"
-        Title="AddBoatWindow" Height="450" Width="800">
+        Title="AddBoatWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
 
         <Grid Margin="0,0,0,-16">
@@ -26,7 +26,6 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <Rectangle Margin="15,15,15,15" Grid.Column="0" Grid.Row="0" Grid.RowSpan="10" Grid.ColumnSpan="2"/>
 
             <Label x:Name="label5" Content="Boot Toevoegen" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Grid.ColumnSpan="2" Margin="0,0,0,0"/>
             <Button x:Name="Add_Boat_Button" Content="Toevoegen" Grid.Column="0" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="8" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="24" Click="Add_Boat_Button_Click"/>

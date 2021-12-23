@@ -18,15 +18,10 @@ namespace View {
     /// </summary>
     public partial class AdminPage : Page {
 
-        private AddMemberPage AddMemberPage = new AddMemberPage();
         private ManageBoatPage DeleteBoatPage = new ManageBoatPage();
         private ManageMembersPage manageMembersPage = new ManageMembersPage();
         public AdminPage() {
             InitializeComponent();
-        }
-
-        private void Button_Member_Add_Click(object sender, RoutedEventArgs e) {
-            AdminFrame.Content = AddMemberPage;
         }
 
         private void Button_Boat_Delete_Click(object sender, RoutedEventArgs e) {

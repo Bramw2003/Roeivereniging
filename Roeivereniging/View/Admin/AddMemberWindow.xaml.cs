@@ -8,28 +8,27 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Viewmodel;
 
 namespace View.Admin
 {
     /// <summary>
-    /// Interaction logic for ManageMembersPage.xaml
+    /// Interaction logic for AddMemberWindow.xaml
     /// </summary>
-    public partial class ManageMembersPage : Page
+    public partial class AddMemberWindow : Window
     {
-        MemberViewModel _MemberViewModel;
-        public ManageMembersPage()
+        MemberViewModel model;
+        public AddMemberWindow(MemberViewModel MemberVM)
         {
             InitializeComponent();
-            _MemberViewModel = (MemberViewModel)base.DataContext;
+            model = MemberVM;
         }
 
         private void Add_Member_Button_Click(object sender, RoutedEventArgs e)
         {
-            var AddMemberWindow = new AddMemberWindow(_MemberViewModel);
-            AddMemberWindow.ShowDialog();
+            model.MakeUser(tbName.Text, tbUserName.Text, (DateTime)dpBirthDay.SelectedDate, tbEMail.Text, tbPassWord.Text);
+            this.Close();
         }
     }
 }
