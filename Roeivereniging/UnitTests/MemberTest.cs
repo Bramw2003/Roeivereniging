@@ -8,27 +8,50 @@ namespace UnitTests
 {
     internal class MemberTest
     {
+        private MemberViewModel viewModel;
         [SetUp]
         public void Setup()
         {
             Database.catalog = "Roeivereniging_Test";
+            viewModel = new MemberViewModel();
         }
 
         [Test]
-        [TestCase(1)]
-        [TestCase(2)]
-        public void TestMemberID(int id)
+        public void A_TestMemberList_Empty(){
+            Assert.AreEqual(0, viewModel.MemberList.Count);
+        }
+
+        [Test]
+        public void B_MakeUser_GiveMemberDetails_ReturnMember()
         {
-            Model.Member member = new Model.Member(id, "", "", System.DateTime.Now, true, true, true,"admin@pizza.com");
-            Assert.AreEqual(id, member.GetId());
+            string name = "test";
+            string username = "test";
+            DateTime date = new DateTime(2500, 12, 31);
+            string email = "test@mail.com";
+            string password = "password";
+            Member result = viewModel.MakeUser(name, username, date, email, password);
+            Assert.AreEqual(name,result.name);
+            Assert.AreEqual(username,result.username);
+            Assert.AreEqual(date, result.date);
+            Assert.AreEqual(email,result.email);
+        }
+
+
+
+        [Test]
+        public void C_TestMemberID()
+        {
+            Member test = MemberViewModel.GetByUsername("test");
+            Member result = viewModel.GetByID(test.id);
+            Assert.AreEqual(test.id, result.id);
         }
 
         [Test]
-        public void Member_AddUser_MakeUser() {
-            DateTime date = new DateTime(2500, 12, 31);
-            MemberViewModel.MakeUser("test", "tester", date, "test@mail.com", "wachtwoord");
-            Member result = MemberViewModel.GetByUsername("tester");
-            Assert.AreEqual(date, result.GetBirthday());
+        public void D_DeleteMember_ID_RemoveMember()
+        {
+            Member test = MemberViewModel.GetByUsername("test");
+            viewModel.DeleteMember(test.id);
+            Assert.AreEqual(0, viewModel.MemberList.Count);
         }
 
 

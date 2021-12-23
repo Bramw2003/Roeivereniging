@@ -52,7 +52,15 @@ namespace Model.DAO {
         }
 
         public bool Delete(int memberID) {
-            throw new NotImplementedException();
+            Database.Init();
+            string sql = "DELETE from member WHERE ID = @id";
+            SqlCommand command = new SqlCommand(sql, Database.connection);
+            command.Parameters.AddWithValue("id", memberID);
+            if (Database.OpenConnection())
+            {
+                return command.ExecuteNonQuery() == 1;
+            }
+            return false;
         }
 
         public Member GetByUsername(string username) {

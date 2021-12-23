@@ -3,6 +3,7 @@ using Model;
 using Model.DAO;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Viewmodel {
@@ -20,10 +21,11 @@ namespace Viewmodel {
             return MemberDB.GetAll();
         }
 
-        public void MakeUser(string name, string username, DateTime date, string email, string password) {
+        public Member MakeUser(string name, string username, DateTime date, string email, string password) {
             Member member = new Member(name, username, date, email);
             MemberDB.insert(member, password);
             MemberList = GetAllMembers();
+            return member;
         }
 
         public static bool EditUserRoles(int ID, bool admin, bool examinator, bool canRepair)
@@ -35,8 +37,14 @@ namespace Viewmodel {
            return MemberDB.GetByUsername(name);
         }
 
-        public static Member GetByID(int ID) {
-            return MemberDB.GetById(ID);
+        public Member GetByID(int ID) {
+            return MemberList.Where(x => x.id == ID).First(); 
+        }
+
+        public void DeleteMember(int ID)
+        {
+            MemberDB.Delete(ID);
+            MemberList.Remove(MemberList.Where(x => x.id == ID).First());
         }
     }
 }

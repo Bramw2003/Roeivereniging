@@ -5,7 +5,7 @@ namespace Model
 {
     public class Member
     {
-        public int id { get; }
+        public int id { get; set; }
         public DateTime date { get; }
         public string name { get; }
         public bool admin { get; }
