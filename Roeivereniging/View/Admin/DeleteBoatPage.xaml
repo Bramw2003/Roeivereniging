@@ -53,7 +53,7 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="Add_Boat_Button" Content="Boot Toevoegen" HorizontalAlignment="Stretch" Margin="0,0,0,20" Grid.Column="1" Grid.Row="2" FontSize="18" Width="132" Grid.RowSpan="2" Height="30" VerticalAlignment="Stretch"/>
+            <Button x:Name="Add_Boat_Button" Content="Boot Toevoegen" HorizontalAlignment="Stretch" Margin="0,0,0,20" Grid.Column="1" Grid.Row="2" FontSize="18" Width="132" Grid.RowSpan="2" Height="30" VerticalAlignment="Stretch" Click="Add_Boat_Button_Click"/>
         </Grid>
         <Rectangle Margin="15,15,15,15" Grid.Column="0" Grid.Row="0" Panel.ZIndex="-1"/>
 

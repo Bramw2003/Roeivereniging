@@ -37,14 +37,14 @@
                     <DataGridTemplateColumn Header="Bewerken">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Bewerken" Click=""></Button>
+                                <Button Content="Bewerken"></Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTemplateColumn Header="Verwijderen">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Verwijderen" Click=""></Button>
+                                <Button Content="Verwijderen"></Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

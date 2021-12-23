@@ -16,6 +16,9 @@
     <Compile Update="Admin\AddBoatPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Admin\AddBoatWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Admin\AddMemberPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -67,6 +70,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Admin\AddBoatPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Admin\AddBoatWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Admin\AddMemberPage.xaml">
