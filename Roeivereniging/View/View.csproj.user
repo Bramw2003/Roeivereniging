@@ -31,6 +31,9 @@
     <Compile Update="Admin\ManageMembersPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="BoatMap.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="DefectPopup.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -85,6 +88,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Admin\ManageMembersPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="BoatMap.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DefectPopup.xaml">

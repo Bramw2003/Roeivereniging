@@ -21,10 +21,13 @@ namespace View
     /// </summary>
     public partial class ViewReservationsPage : Page
     {
+        private BoatMap map;
         public Model.Reservation reservation { get; set; }
         public ViewReservationsPage()
         {
             InitializeComponent();
+            map = new BoatMap();
+            Frame.Content = map;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

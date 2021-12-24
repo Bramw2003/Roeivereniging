@@ -9,7 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\boatDouble.png" />
+    <None Remove="Resources\boatSingle.png" />
     <None Remove="Resources\Logo.png" />
+    <None Remove="Resources\Map.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,9 +29,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\boatDouble.png" />
+    <Resource Include="Resources\boatSingle.png" />
     <Resource Include="Resources\Logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Map.png" />
   </ItemGroup>
 
   <ItemGroup>
