@@ -36,10 +36,27 @@ namespace UnitTests
             Assert.AreEqual(email,result.email);
         }
 
-
+        [Test]
+        public void C_GetByUsername_GivenName_ReturnMember()
+        {
+            Member test = MemberViewModel.GetByUsername("test");
+            Assert.AreEqual("test@mail.com", test.email);
+        }
 
         [Test]
-        public void C_TestMemberID()
+        public void C_GetByUsername_GivenEmptyString_ReturnNull()
+        {
+            Assert.IsNull(MemberViewModel.GetByUsername(""));
+        }
+
+        [Test]
+        public void C_GetByUsername_GivenFakeUsername_ReturnNull()
+        {
+            Assert.IsNull(MemberViewModel.GetByUsername("Henk"));
+        }
+
+        [Test]
+        public void D_GetById_GivenID_ReturnMember() // testen op member in plaats van id 
         {
             Member test = MemberViewModel.GetByUsername("test");
             Member result = viewModel.GetByID(test.id);
@@ -47,7 +64,13 @@ namespace UnitTests
         }
 
         [Test]
-        public void D_DeleteMember_ID_RemoveMember()
+        public void D_GetById_GivenZero_ReturnNull()
+        {
+            Assert.IsNull(viewModel.GetByID(0));
+        }
+
+        [Test]
+        public void E_DeleteMember_ID_RemoveMember()
         {
             Member test = MemberViewModel.GetByUsername("test");
             viewModel.DeleteMember(test.id);

@@ -34,7 +34,11 @@ namespace Viewmodel {
         }
 
         public static Member GetByUsername(string name) {
-           return MemberDB.GetByUsername(name);
+            if (String.IsNullOrWhiteSpace(name))
+            {
+                return null;
+            }
+            return MemberDB.GetByUsername(name);
         }
 
         public Member GetByID(int ID) {
