@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -29,6 +30,7 @@ namespace View
         private DefectsPage DefectsPage;
         private ExaminatorsPage ExaminatorsPage;
         private AccountPage AccountPage;
+        private Timer logOutTimer;
         IConfigurationRoot configuration;
         public MainWindow()
         {
@@ -46,7 +48,15 @@ namespace View
                 Mail = new Model.DAO.NoMail();
                 MessageBox.Show("Geen mail mogelijk... Stel user secrets in");
             }
+            logOutTimer = new Timer(300000); //300000ms == 5m
+            logOutTimer.Enabled = true;
+            logOutTimer.Elapsed += LogOutTimer_Elapsed;
             InitializeComponent();
+        }
+
+        private void LogOutTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            Logout();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -179,6 +189,15 @@ namespace View
         private void BtnAccount_Click(object sender, RoutedEventArgs e)
         {
             Frame.Content = AccountPage;
+        }
+
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            logOutTimer.Stop();
+            logOutTimer.Dispose();
+            logOutTimer = new Timer(300000);
+            logOutTimer.Elapsed += LogOutTimer_Elapsed;
+            logOutTimer.Start();
         }
     }
 }
