@@ -34,6 +34,7 @@ namespace View
                 if (Database.UserLogin(TbUsername.Text, PbPassword.Text))
                 {
                     MainWindow.currentMember = MemberViewModel.GetByUsername(TbUsername.Text);
+                    MainWindow.logOutTimer.Start();
                     this.DialogResult = true;
                     this.Close();
                 }

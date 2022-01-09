@@ -30,8 +30,7 @@ namespace View
         private DefectsPage DefectsPage;
         private ExaminatorsPage ExaminatorsPage;
         private AccountPage AccountPage;
-        private Timer logOutTimer;
-        private bool logOutTimerHasElapsed;
+        public static Timer logOutTimer;
         IConfigurationRoot configuration;
         public MainWindow()
         {
@@ -57,7 +56,10 @@ namespace View
 
         private void LogOutTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            logOutTimerHasElapsed = true;
+            Dispatcher.Invoke(() =>
+            {
+                Logout();
+            });
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -141,6 +143,7 @@ namespace View
 
         public void Logout()
         {
+            logOutTimer.Stop();
             currentMember = null;
             LoginWindow loginWindow = new LoginWindow();
             // Anti-Cheese
@@ -194,12 +197,6 @@ namespace View
 
         private void Window_MouseMove(object sender, MouseEventArgs e)
         {
-            if (logOutTimerHasElapsed)
-            {
-                logOutTimerHasElapsed = false;
-                Logout();
-                return;
-            }
             logOutTimer.Stop();
             logOutTimer.Dispose();
             logOutTimer = new Timer(300000);
