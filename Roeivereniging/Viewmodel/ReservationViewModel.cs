@@ -1,6 +1,7 @@
 ﻿using System;
 using Model.DAO;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Model;
 
@@ -13,6 +14,10 @@ namespace Viewmodel {
         }
 
         public static bool MakeReservation(Boat boat, DateTime date, DateTime endTime, Member member) {
+            if (GetAllByMember(member).Count(x => x.date > DateTime.Now) >= 2)
+            {
+                return false;
+            }
             return ReservationDB.ReserveBoat(boat, date, endTime, member);
         }
 
