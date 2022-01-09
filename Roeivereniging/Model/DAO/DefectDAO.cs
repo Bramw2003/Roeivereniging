@@ -15,13 +15,13 @@ namespace Model.DAO {
         /// <returns>List of Defects</returns>
         public List<Defect> GetAll() {
             Database.Init();
-            string sql = "SELECT [title], [description], [memberID], [boatID] FROM [brokenboat]";
+            string sql = "SELECT [title], [description], [memberID], [boatID], [seaworthy] FROM [brokenboat]";
             List<Defect> list = new List<Defect>();
             SqlCommand command = new SqlCommand(sql, Database.connection);
             if (Database.OpenConnection()) {
                 var a = command.ExecuteReader();
                 while (a.Read()) {
-                    Defect defect = new Defect(a.GetString(0), a.GetString(1), tempMemberDB.GetById(a.GetInt32(2)), tempBoatDB.GetBoatByID(a.GetInt32(3)));
+                    Defect defect = new Defect(a.GetString(0), a.GetString(1), tempMemberDB.GetById(a.GetInt32(2)), tempBoatDB.GetBoatByID(a.GetInt32(3)),a.GetBoolean(4));
                     list.Add(defect);
                 }
                 command.Dispose();
@@ -56,12 +56,13 @@ namespace Model.DAO {
         /// <returns></returns>
         public bool Add(Defect defect) {
             Database.Init();
-            string sql = "INSERT INTO brokenboat(title, description, memberID, boatID, [date]) VALUES (@title, @desc, @memberID, @boatID, GETDATE())";
+            string sql = "INSERT INTO brokenboat(title, description, memberID, boatID, [date], seaworthy) VALUES (@title, @desc, @memberID, @boatID, GETDATE(), @seaworthy)";
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("title", defect.title);
             command.Parameters.AddWithValue("desc", defect.description);
             command.Parameters.AddWithValue("memberID", defect.reporter.GetId());
             command.Parameters.AddWithValue("boatID", defect.boat.id);
+            command.Parameters.AddWithValue("seaworthy", defect.seaworthy);
             if (Database.OpenConnection()) {
                 return command.ExecuteNonQuery() == 1;
             }

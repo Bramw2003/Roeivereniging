@@ -62,7 +62,7 @@ namespace View
             defectPopup.ShowDialog();
             if ((bool)defectPopup.DialogResult && defectPopup.TbTitle.Text!=""&& defectPopup.TbDescription.Text!="")
             {
-                DefectViewModel.AddDefect(new Defect(defectPopup.TbTitle.Text, defectPopup.TbDescription.Text, MainWindow.currentMember, currentSelectedPerson.boat));
+                DefectViewModel.AddDefect(new Defect(defectPopup.TbTitle.Text, defectPopup.TbDescription.Text, MainWindow.currentMember, currentSelectedPerson.boat, (bool) !defectPopup.CBseaworthy.IsChecked));
                 var j = LvRervations.SelectedIndex;
                 LoadLvRervations();
                 LvRervations.SelectedIndex= j;
