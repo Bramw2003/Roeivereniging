@@ -44,6 +44,7 @@ namespace View
         private void LvRervations_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             currentSelectedPerson = (Reservation)LvRervations.SelectedItem;
+            if (currentSelectedPerson != null) map.SetSelectedBoat(currentSelectedPerson.boat);
         }
 
         private Reservation currentSelectedPerson;

@@ -19,59 +19,65 @@ namespace View
     /// </summary>
     public partial class BoatMap : Page
     {
-        private int shedStart = 35;
-        private int columnStart = 67;
+        private double shedStart = 38; //40
+        private double columnStart = 66;
 
-        private int shedSpacing = 502;
-        private int rowSpacing = 279;
-        private int columnSpacing = 468;
+        private double shedSpacing = 502;
+        private double rowSpacing = 280;
+        private double columnSpacing = 465;
 
-        private Boat selectedBoat = new Boat(102,"test",4,1,false,false,"2-1-1-1");
+        private Boat selectedBoat = new Boat(102,"test",4,1,false,false,"4-3-2-2");
 
-        private int imgSizeX = 4028;
-        private int imgSizeY = 1235;
+        private double imgSizeX = 4028;
+        //private double imgSizeY = 1235;
 
-        private int imgBoatSizeX = 134;
-        private int imgBoatSizeY = 426;
+        private double imgBoatSizeX = 134;
+        //private double imgBoatSizeY = 426;
+
+        public double desiredWidth = 1000;
 
         private double scale = 1.0;
+
+        private BitmapImage boatSingleImage = new BitmapImage(new Uri(@"Resources/boatSingle.png", UriKind.Relative));
+        private BitmapImage boatDoubleImage = new BitmapImage(new Uri(@"Resources/boatDouble.png", UriKind.Relative));
         public BoatMap()
         {
             
             InitializeComponent();
-            Background.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-            Background.Arrange(new Rect(0, 0, Background.DesiredSize.Width, Background.DesiredSize.Height));
 
-            SetImagesSizes();
             SetScale();
             SetSelectionPosition();
-           
+
+
         }
         
-        private void SetImagesSizes()
+        public void SetSelectedBoat(Boat boat)
         {
-            //Background.Height = page.ActualHeight;
-            //Background.Width = page.ActualWidth;
+            selectedBoat = boat;
+            if (boat.capacity == 8) Selected.Source = boatDoubleImage;
+            else Selected.Source = boatSingleImage;
+            SetSelectionPosition();
+
         }
 
         private void SetSelectionPosition()
         {
-            int posX = 100;
-            posX += (selectedBoat.shed * shedSpacing) + shedStart;
+            double posX = 0;
+            posX += (selectedBoat.shed-1) * shedSpacing + shedStart;
             if (selectedBoat.row == 2) posX += rowSpacing;
-            int posY = 100;
+            double posY = 0;
             posY += ((selectedBoat.Column - 1) * columnSpacing) + columnStart;
-            //Selected.Width = scale * imgBoatSizeX;
-            //Selected.Height = scale * imgBoatSizeY;
-            //Selected.Margin = new Thickness(posX * scale, posY * scale, 0, 0);
-            Selected.Margin = new Thickness(-500,-500 , 0, 0);
+
+            Canvas.SetLeft(Selected, posX * scale);
+            Canvas.SetTop(Selected, posY *scale);
 
         }
 
         private void SetScale()
         {
-            scale = Background.ActualWidth / (imgSizeX+0.0);
-            //testingLabel.Content = page.Width;
+            scale = desiredWidth / imgSizeX;
+            Background.Width = desiredWidth;
+            Selected.Width = (imgBoatSizeX / imgSizeX) * desiredWidth;
         }
 
     }
