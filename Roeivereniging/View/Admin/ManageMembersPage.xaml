@@ -45,7 +45,7 @@
                     <DataGridTemplateColumn Header="Verwijderen">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Verwijderen"></Button>
+                                <Button x:Name="Remove_Member_Button" Content="Verwijderen" Click="Remove_Member_Button_Click"></Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

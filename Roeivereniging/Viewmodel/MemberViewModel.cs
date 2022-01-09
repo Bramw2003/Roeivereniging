@@ -9,6 +9,7 @@ using System.Text;
 namespace Viewmodel {
     public class MemberViewModel : ObservableObject{
         private static MemberDAO MemberDB = new MemberDAO();
+        private static ReservationDAO ReservationDB = new ReservationDAO();
         public List<Member> _MemberList = GetAllMembers();
 
         public List<Member> MemberList{
@@ -47,6 +48,7 @@ namespace Viewmodel {
 
         public void DeleteMember(int ID)
         {
+            ReservationDB.DeleteAllReservations(ID);
             MemberDB.Delete(ID);
             MemberList.Remove(MemberList.Where(x => x.id == ID).First());
         }

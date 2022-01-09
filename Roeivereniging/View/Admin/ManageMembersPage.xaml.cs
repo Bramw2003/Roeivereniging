@@ -38,5 +38,11 @@ namespace View.Admin
             var EditMemberWindow = new EditMemberWindow(_MemberViewModel, (Member) dataGrid.SelectedItem);
             EditMemberWindow.ShowDialog();
         }
+
+        private void Remove_Member_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Member targetMember = (Member)dataGrid.SelectedItem;
+            _MemberViewModel.DeleteMember(targetMember.GetId());
+        }
     }
 }

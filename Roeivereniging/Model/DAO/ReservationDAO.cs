@@ -106,6 +106,22 @@ namespace Model.DAO {
             }
         }
 
+        public void DeleteAllReservations(int memberID)
+        {
+            Database.Init();
+            String sql = "DELETE FROM [reservations] WHERE memberID = @memberid";
+
+            using (SqlCommand command = new SqlCommand(sql, Database.connection))
+            {
+                command.Parameters.AddWithValue("memberid", memberID);
+                if (Database.OpenConnection())
+                {
+                    command.ExecuteNonQuery();
+                }
+                Database.connection.Close();
+            }
+        }
+
         public void DeleteAllFutureReservationsByBoat(Boat boat) {
             Database.Init();
             DateTime current = new DateTime();
