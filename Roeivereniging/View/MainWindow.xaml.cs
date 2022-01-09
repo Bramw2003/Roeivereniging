@@ -31,6 +31,7 @@ namespace View
         private ExaminatorsPage ExaminatorsPage;
         private AccountPage AccountPage;
         private Timer logOutTimer;
+        private bool logOutTimerHasElapsed;
         IConfigurationRoot configuration;
         public MainWindow()
         {
@@ -56,7 +57,7 @@ namespace View
 
         private void LogOutTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            Logout();
+            logOutTimerHasElapsed = true;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -193,6 +194,12 @@ namespace View
 
         private void Window_MouseMove(object sender, MouseEventArgs e)
         {
+            if (logOutTimerHasElapsed)
+            {
+                logOutTimerHasElapsed = false;
+                Logout();
+                return;
+            }
             logOutTimer.Stop();
             logOutTimer.Dispose();
             logOutTimer = new Timer(300000);
