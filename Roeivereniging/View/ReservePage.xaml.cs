@@ -119,6 +119,10 @@ namespace View
                 {
                     MainWindow.Mail.SendReservationConfirmation(new Reservation(date, end, (Boat)LbBoats.SelectedItem, MainWindow.currentMember));
                 }
+                else
+                {
+                    MessageBox.Show("Uw heeft al 2 reserveringen");
+                }
             }
         }
 

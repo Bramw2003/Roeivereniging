@@ -20,8 +20,9 @@
         <ListView x:Name="LvDefects" Grid.Column="0" Grid.Row="0" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="30,30,30,30">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Type" Width="50" DisplayMemberBinding="{Binding title}" />
-                    <GridViewColumn Header="Naam" Width="120" DisplayMemberBinding="{Binding boat.type}" />
+                    <GridViewColumn Header="Titel" Width="100" DisplayMemberBinding="{Binding title}" />
+                    <GridViewColumn Header="Naam" Width="100" DisplayMemberBinding="{Binding boat.name}" />
+                    <GridViewColumn Header="type" Width="50" DisplayMemberBinding="{Binding boat.type}" />
                 </GridView>
             </ListView.View>
         </ListView>
