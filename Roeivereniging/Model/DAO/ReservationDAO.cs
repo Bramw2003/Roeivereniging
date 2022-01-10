@@ -115,7 +115,7 @@ namespace Model.DAO {
         public void DeleteAllReservations(int memberID)
         {
             Database.Init();
-            String sql = "DELETE FROM [reservations] WHERE memberID = @memberid";
+            string sql = "DELETE FROM [reservations] WHERE memberID = @memberid";
 
             using (SqlCommand command = new SqlCommand(sql, Database.connection))
             {

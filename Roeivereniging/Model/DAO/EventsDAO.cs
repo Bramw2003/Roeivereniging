@@ -155,7 +155,8 @@ namespace Model.DAO
                 while (a.Read())
                 {
                     Member n = dao.GetById(a.GetInt32(0));
-                    list.Add(n);
+                    if (n != null)
+                        list.Add(n);
                 }
                 command.Dispose();
                 Database.connection.Close();
