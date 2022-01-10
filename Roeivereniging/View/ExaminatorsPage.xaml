@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="ExaminatorsPage" Initialized="Page_Initialized" Loaded="Page_Loaded">
 
     <Grid>
@@ -18,7 +18,7 @@
         <Rectangle Margin="15,15,15,15" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"/>
 
         <Grid Grid.Column="0" Grid.Row="0" Margin="40">
-            <ListView x:Name="LvMember" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="LvMember_SelectionChanged">
+            <ListView x:Name="LvMember"  FontSize="16" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="LvMember_SelectionChanged">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Naam" Width="auto" DisplayMemberBinding="{Binding name}" />
@@ -35,10 +35,10 @@
                 <RowDefinition Height="3*"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" Content="{Binding name}" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top"/>
-            <ComboBox Grid.Row="0" Margin="0,30,0,0" x:Name="ComboBoxDiplomas" VerticalAlignment="Top"></ComboBox>
-            <Button Grid.Row="0" Content="Toevoegen" Margin="0,60,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="Button_Click"/>
-            <ListView Grid.Row="1" x:Name="LvCerts" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <Label Grid.Row="0" Content="{Binding name}" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" FontSize="24"/>
+            <ComboBox Grid.Row="0" Margin="0,50,0,0" x:Name="ComboBoxDiplomas" VerticalAlignment="Top" FontSize="24"></ComboBox>
+            <Button Grid.Row="0" Content="Toevoegen" Margin="0,100,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="Button_Click" FontSize="24"/>
+            <ListView Grid.Row="1" FontSize="16" x:Name="LvCerts" d:ItemsSource="{d:SampleData ItemCount=5}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Behaalde Diplomas" Width="160" DisplayMemberBinding="{Binding name}"/>

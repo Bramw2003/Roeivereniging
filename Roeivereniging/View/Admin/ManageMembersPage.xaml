@@ -26,7 +26,7 @@
                 <RowDefinition Height="30*"/>
                 <RowDefinition Height="15*"/>
             </Grid.RowDefinitions>
-            <DataGrid x:Name="dataGrid" Grid.Column="1" Grid.Row="1" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding MemberList}" ColumnWidth="*" HorizontalAlignment="Stretch" Margin="10,10,10,10" AutoGenerateColumns="False">
+            <DataGrid x:Name="dataGrid" Grid.Column="1" Grid.Row="1" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding MemberList}" ColumnWidth="*" HorizontalAlignment="Stretch" Margin="10,10,10,10" AutoGenerateColumns="False" FontSize="16">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Naam" Binding="{Binding name, Mode=OneWay}"/>
                     <DataGridTextColumn Header="Gebruikersnaam" Binding="{Binding username, Mode=OneWay}"/>

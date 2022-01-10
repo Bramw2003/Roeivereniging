@@ -6,6 +6,7 @@
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       x:Class="View.ReservePage"
       mc:Ignorable="d"
+       d:DesignHeight="1080" d:DesignWidth="1920"
       Title="ReservePage">
     <!--Height="938" Width="1669"-->
 
@@ -35,7 +36,7 @@
                 <RowDefinition Height="4*" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
-            
+
             <!-- Row 1 -->
             <Label Content="Bouwtype:" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="24"/>
             <!--<TextBox Grid.Column="2" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="1" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="24"/>-->
@@ -48,17 +49,33 @@
             </ComboBox>
             <Label Content="Aantal roeiers:" Grid.Column="1" HorizontalAlignment="Left" Margin="0,50,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="24"/>
             <TextBox x:Name="TbPersons" PreviewTextInput="NumberValidationTextBox" Grid.Column="2" HorizontalAlignment="Center" Margin="0,50,0,0" Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="24" TextChanged="TbPersons_TextChanged"/>
-    
-            
+
+
             <Label Content="Met stuur:" Grid.Column="1" HorizontalAlignment="Left" Margin="0,100,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="24"/>
-            <CheckBox x:Name="ChbSteer" Grid.Column="2" HorizontalAlignment="Center" Margin="0,120,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ChbSteer_Click"/>
-
-
+            <CheckBox x:Name="ChbSteer" Grid.Column="2" HorizontalAlignment="Center" Margin="0,120,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ChbSteer_Click" RenderTransformOrigin="0.5,0.5">
+                <CheckBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="0" Y="0"/>
+                    </TransformGroup>
+                </CheckBox.RenderTransform>
+            </CheckBox>
             <Label Content="Scullen:" Grid.Column="1" HorizontalAlignment="Left" Margin="0,150,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="24"/>
-            <CheckBox x:Name="ChbScull" Grid.Column="2" HorizontalAlignment="Center" Margin="0,170,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ChbScull_Click"/>
+            <CheckBox x:Name="ChbScull" Grid.Column="2" HorizontalAlignment="Center" Margin="0,170,0,0" Grid.Row="1" VerticalAlignment="Top" Click="ChbScull_Click" RenderTransformOrigin="0.5,0.5">
+                <CheckBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="0" Y="0"/>
+                    </TransformGroup>
+                </CheckBox.RenderTransform>
+            </CheckBox>
 
         </Grid>
-        
+
 
         <Grid Grid.Row="1" Margin="15,15,15,30">
             <Grid.ColumnDefinitions>
@@ -84,16 +101,16 @@
             <xctk:TimePicker x:Name="StartTime" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" ValueChanged="StartTime_ValueChanged"></xctk:TimePicker>
             <Label Grid.Row="1" Grid.Column="2" Content="Eind tijd"></Label>
             <xctk:TimePicker x:Name="EndTime" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" ValueChanged="EndTime_ValueChanged"></xctk:TimePicker>
-         
+
 
 
 
 
 
         </Grid>
-        
-        
-        
+
+
+
         <Grid Grid.Row="0" Grid.Column="1" Margin="38,72,66,53" Grid.RowSpan="2">
             <ListView  x:Name="LbBoats" d:ItemsSource="{d:SampleData ItemCount=50} " FontSize="24" VerticalContentAlignment="Stretch">
                 <ListView.View>
