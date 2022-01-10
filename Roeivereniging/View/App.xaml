@@ -25,7 +25,7 @@
             <Setter Property="Fill" Value="White"></Setter>
             <Setter Property="Effect">
                 <Setter.Value>
-                    <DropShadowEffect BlurRadius="30" Color="#000000" ShadowDepth="0" Opacity="0.3"/>
+                    <DropShadowEffect BlurRadius="30" Color="#000000" ShadowDepth="0" Opacity="0.2"/>
                 </Setter.Value>
             </Setter>
         </Style>

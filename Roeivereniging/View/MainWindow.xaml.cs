@@ -89,15 +89,17 @@ namespace View
             // Add default header buttons like reserve and history
             Button ReserveBtn = new Button();
             ReserveBtn.Content = "Reserveer";
-            ReserveBtn.MinWidth = 100;
-            ReserveBtn.Margin = new Thickness(10, 0, 0, 0);
+            ReserveBtn.MinWidth = 120;
+            ReserveBtn.Margin = new Thickness(10, 10, 0, 0);
             ReserveBtn.Click += BtnReserveer_Click;
+            ReserveBtn.FontSize = 16;
             this.Header.Children.Add(ReserveBtn);
             Button HistoryBtn = new Button();
             HistoryBtn.Content = "Geschiedenis";
-            HistoryBtn.MinWidth = 100;
-            HistoryBtn.Margin = new Thickness(10, 0, 0, 0);
+            HistoryBtn.MinWidth = 120;
+            HistoryBtn.Margin = new Thickness(10, 10, 0, 0);
             HistoryBtn.Click += BtnReserveringen_Click;
+            HistoryBtn.FontSize = 16;
             this.Header.Children.Add(HistoryBtn);
 
             // Add user specific buttons
@@ -105,27 +107,30 @@ namespace View
             {
                 Button adminButton = new Button();
                 adminButton.Content = "admin";
-                adminButton.MinWidth = 100;
-                adminButton.Margin = new Thickness(10, 0, 0, 0);
+                adminButton.MinWidth = 120;
+                adminButton.Margin = new Thickness(10, 10, 0, 0);
                 adminButton.Click += AdminButton_Click;
+                adminButton.FontSize = 16;
                 this.Header.Children.Add(adminButton);
             }
             if (currentMember.IsRepair())
             {
                 Button defectsBtn = new Button();
                 defectsBtn.Content = "Defecte boten";
-                defectsBtn.MinWidth = 100;
-                defectsBtn.Margin = new Thickness(10, 0, 0, 0);
+                defectsBtn.MinWidth = 120;
+                defectsBtn.Margin = new Thickness(10, 10, 0, 0);
                 defectsBtn.Click += DefectsButton_Click;
+                defectsBtn.FontSize = 16;
                 this.Header.Children.Add(defectsBtn);
             }
             if (currentMember.IsExaminator())
             {
                 Button examBtn = new Button();
                 examBtn.Content = "Examinator";
-                examBtn.MinWidth = 100;
-                examBtn.Margin = new Thickness(10, 0, 0, 0);
+                examBtn.MinWidth = 120;
+                examBtn.Margin = new Thickness(10, 10, 0, 0);
                 examBtn.Click += ExaminatorButton_Click;
+                examBtn.FontSize = 16;
                 this.Header.Children.Add(examBtn);
             }
 

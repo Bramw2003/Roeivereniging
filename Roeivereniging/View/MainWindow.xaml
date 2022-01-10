@@ -8,12 +8,18 @@
         Title="MainWindow" Height="450" Width="800" ResizeMode="CanResize" WindowState="Maximized" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" x:Name="Header" Orientation="Horizontal" Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
-        <Button Grid.Row="0" x:Name="BtnAccount" Content="Account" MinWidth="100" Margin="10,0,120,0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Click="BtnAccount_Click"></Button>
-        <Button Grid.Row="0" x:Name="BtnLogout" Content="Uitloggen" MinWidth="100" Margin="10,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Click="BtnLogout_Click"></Button>
         <Frame Grid.Row="1" Margin="15,15,15,15" Name="Frame" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden"/>
+        
+        <Rectangle Grid.Row="0" RadiusX="0" RadiusY="0" Height="70" Fill="#FF6BB0E8" Margin="0,0,0,10" StrokeThickness="0">
+            <Rectangle.Effect>
+                <DropShadowEffect BlurRadius="30" Color="#000000" ShadowDepth="0" Opacity="0.5"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <StackPanel Grid.Row="0" x:Name="Header" Orientation="Horizontal" Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+        <Button Grid.Row="0" x:Name="BtnAccount" Content="Account" MinWidth="100" Margin="10,10,120,20" HorizontalAlignment="Right" VerticalAlignment="Stretch" Click="BtnAccount_Click"></Button>
+        <Button Grid.Row="0" x:Name="BtnLogout" Content="Uitloggen" MinWidth="100" Margin="10,10,10,20" HorizontalAlignment="Right" VerticalAlignment="Stretch" Click="BtnLogout_Click"></Button>
     </Grid>
 </Window>
