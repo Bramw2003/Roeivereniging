@@ -5,9 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:fa="http://schemas.fontawesome.io/icons/"
       xmlns:local="clr-namespace:View"
+      xmlns:Viewmodel="clr-namespace:Viewmodel;assembly=Viewmodel"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="720" d:DesignWidth="1280"
       Title="EventsPage">
+    <Page.DataContext>
+        <Viewmodel:EventsViewModel/>
+    </Page.DataContext>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -25,17 +29,17 @@
                 <RowDefinition Height="1*"></RowDefinition>
                 <RowDefinition Height="50"></RowDefinition>
             </Grid.RowDefinitions>
-            <ListView x:Name="LvEvents" Grid.Row="0" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Stretch">
+            <ListView x:Name="LvEvents" SelectionChanged="LvEvents_SelectionChanged" Grid.Row="0" ItemsSource="{Binding events}" SelectedIndex="0" HorizontalAlignment="Stretch">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Naam" Width="auto" DisplayMemberBinding="{Binding name}" />
-                        <GridViewColumn Header="Afstand" Width="auto" DisplayMemberBinding="{Binding username}" />
-                        <GridViewColumn Header="Leden" Width="auto" DisplayMemberBinding="{Binding admin}" />
-                        <GridViewColumn Header="Datum" Width="auto" DisplayMemberBinding="{Binding admin}" />
+                        <GridViewColumn Header="Max leden" Width="auto" DisplayMemberBinding="{Binding maxMembers}" />
+                        <GridViewColumn Header="Start datum" Width="auto" DisplayMemberBinding="{Binding start}" />
+                        <GridViewColumn Header="Eind datum" Width="auto" DisplayMemberBinding="{Binding end}" />
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Button Content="Toevoegen" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" MinHeight="40" Margin="0,10,0,0"/>
+            <Button Content="Toevoegen" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" MinHeight="40" Margin="0,10,0,0" Click="Button_Click"/>
         </Grid>
 
         <Rectangle Grid.Column="1" Margin="20" >
@@ -43,44 +47,56 @@
                 <DropShadowEffect BlurRadius="30" Color="#000000" ShadowDepth="0" Opacity="0.3"/>
             </Rectangle.Effect>
         </Rectangle>
-        <Grid Grid.Column="1" Margin="40">
+        <Grid Grid.Column="1" Margin="40" DataContext="{Binding ElementName=LvEvents, Path=SelectedItem}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="1*"></RowDefinition>
             </Grid.RowDefinitions>
             <Label Content="Naam" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Height="26" Width="42"></Label>
+            <Label Content="{Binding name}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="42,0,0,0" Height="26"></Label>
             <Label Content="Type" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0" Height="26" Width="35"></Label>
+            <Label Content="{Binding type}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,20,0,0" Height="26"></Label>
             <Label Content="Datum" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,40,0,0" Height="26" Width="46"></Label>
-            <Button x:Name="BtnEdit" fa:Awesome.Content="Edit" HorizontalAlignment="Right" VerticalAlignment="Top" MinWidth="30" MinHeight="30" Height="30" Width="30"></Button>
+            <Label Content="{Binding start}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="46,40,0,0" Height="26"></Label>
+            <Button x:Name="BtnEdit" fa:Awesome.Content="Edit" HorizontalAlignment="Right" VerticalAlignment="Top" MinWidth="30" MinHeight="30" Height="30" Width="30" Click="BtnEdit_Click"></Button>
             <TabControl VerticalAlignment="Stretch" Margin="0,20,0,0" Grid.Row="1">
                 <TabItem Header="Boten">
                     <Grid Background="#FFE5E5E5">
-                        <ListView x:Name="LvBoats" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Type" Width="auto" DisplayMemberBinding="{Binding username}" />
-                                    <GridViewColumn Header="Naam" Width="auto" DisplayMemberBinding="{Binding name}" />
-                                    <GridViewColumn Header="Reserveer knop" Width="auto" DisplayMemberBinding="{Binding admin}" />
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
+                        <DataGrid x:Name="LvBoats" SelectionChanged="LvBoats_SelectionChanged" ItemsSource="{Binding ElementName=LvEvents, Path=SelectedItem.availableBoats}" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Naam" Width="auto" Binding="{Binding name, Mode=OneWay}" />
+                                <DataGridTextColumn Header="Type" Width="auto" Binding="{Binding type, Mode=OneWay}" />
+                                <DataGridTextColumn Header="Location" Width="auto" Binding="{Binding location, Mode=OneWay}" />
+                                <DataGridTemplateColumn x:Name="ReserveColumn" CanUserSort="False" Header="Reserveren" IsReadOnly="True">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Reserveren" Click="ReserveBoat_Button_Click"></Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+
+                        </DataGrid>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Leden">
                     <Grid Background="#FFE5E5E5">
-                        <ListView x:Name="LvMembers" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Naam" Width="auto" DisplayMemberBinding="{Binding name}" />
-                                    <GridViewColumn Header="Email" Width="auto" DisplayMemberBinding="{Binding username}" />
-                                    <GridViewColumn Header="Datum" Width="auto" DisplayMemberBinding="{Binding admin}" />
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
+                        <DataGrid x:Name="LvMembers" AutoGenerateColumns="False" ItemsSource="{Binding ElementName=LvEvents, Path=SelectedItem.members}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Naam" Width="auto" Binding="{Binding name, Mode=OneWay}" />
+                                <DataGridTextColumn Header="Email" Width="auto" Binding="{Binding email, Mode=OneWay}" />
+                                <DataGridTextColumn Header="Datum" Width="auto" Binding="{Binding date, Mode=OneWay}" />
+                            </DataGrid.Columns>
+
+                        </DataGrid>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Locatie">
-                    <Grid Background="#FFE5E5E5"/>
+                    <Grid Background="#FFE5E5E5">
+                        <Image x:Name="Map" ImageFailed="Map_ImageFailed"></Image>
+                    </Grid>
+
                 </TabItem>
             </TabControl>
 

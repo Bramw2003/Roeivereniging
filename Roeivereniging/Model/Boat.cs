@@ -20,6 +20,9 @@ namespace Model
         public int row { get; }
         public int Column { get; }
         public int Height { get; }
+        public string location {
+            get { return $"{shed}-{row}-{Column}-{Height}"; } 
+        }
 
         public Boat(int id, string name, int capacity, int category, bool steer, bool sculling, string location = "", bool defect = false, bool deleted = false)
         {

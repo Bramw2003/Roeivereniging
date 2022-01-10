@@ -22,6 +22,21 @@
     <Compile Update="DefectsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Admin\ManageBoatPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Events\EditEventWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Events\EditMapWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Events\EventsManageBoat.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Events\EventsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="ExaminatorsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -55,6 +70,21 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DefectsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Admin\ManageBoatPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Events\EditEventWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Events\EditMapWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Events\EventsManageBoat.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Events\EventsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ExaminatorsPage.xaml">

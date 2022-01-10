@@ -1,0 +1,45 @@
+﻿<Window x:Class="View.EventsManageBoat"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        mc:Ignorable="d"
+        Title="EventsManageBoat" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+
+            <ListView x:Name="AvailableBoats" d:ItemsSource="{d:SampleData ItemCount=5}"  Grid.ColumnSpan="2">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding name}"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding type}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <Grid Grid.Column="2">
+
+            <ListView x:Name="EventsBoats" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="2">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding name}"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding type}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <Grid Grid.Column="1" Margin="5,0,5,0">
+            <Button x:Name="MoveToSelection" Content=">" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,-125,0,0" Click="MoveToSelection_Click"/>
+            <Button x:Name="MoveAllToSelection" Content=">>" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,-75,0,0" Click="MoveAllToSelection_Click"/>
+            <Button x:Name="MoveAllFromSelection" Content="&lt;&lt;" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,25,0,0" Click="MoveAllFromSelection_Click"/>
+            <Button x:Name="MoveFromSelection" Content="&lt;" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,75,0,0" Click="MoveFromSelection_Click"/>
+        </Grid>
+
+    </Grid>
+</Window>

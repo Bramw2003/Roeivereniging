@@ -30,6 +30,7 @@ namespace View
         private DefectsPage DefectsPage;
         private ExaminatorsPage ExaminatorsPage;
         private AccountPage AccountPage;
+        private EventsPage EventsPage;
         public static Timer logOutTimer;
         IConfigurationRoot configuration;
         public MainWindow()
@@ -48,7 +49,7 @@ namespace View
                 Mail = new Model.DAO.NoMail();
                 MessageBox.Show("Geen mail mogelijk... Stel user secrets in");
             }
-            logOutTimer = new Timer(300000); //300000ms == 5m
+            logOutTimer = new Timer(30000000); //300000ms == 5m
             logOutTimer.Enabled = true;
             logOutTimer.Elapsed += LogOutTimer_Elapsed;
             InitializeComponent();
@@ -82,6 +83,8 @@ namespace View
             Frame.Content = ReservePage;
             ReservePage.LbBoats.ItemsSource = a;
             AddHeaderBtns();
+            //var b = new EventsManageBoat(a,new List<Boat>());
+            //b.ShowDialog();
         }
 
         private void AddHeaderBtns()
@@ -101,6 +104,12 @@ namespace View
             HistoryBtn.Click += BtnReserveringen_Click;
             HistoryBtn.FontSize = 16;
             this.Header.Children.Add(HistoryBtn);
+            Button EventsBtn = new Button();
+            EventsBtn.Content = "Evenementen";
+            EventsBtn.MinWidth = 100;
+            EventsBtn.Margin = new Thickness(10, 0, 0, 0);
+            EventsBtn.Click += BtnEvents_Click;
+            this.Header.Children.Add(EventsBtn);
 
             // Add user specific buttons
             if (currentMember.IsAdmin())
@@ -144,6 +153,7 @@ namespace View
             DefectsPage = new DefectsPage();
             ExaminatorsPage = new ExaminatorsPage();
             AccountPage = new AccountPage(this);
+            EventsPage = new EventsPage();
         }
 
         public void Logout()
@@ -204,9 +214,14 @@ namespace View
         {
             logOutTimer.Stop();
             logOutTimer.Dispose();
-            logOutTimer = new Timer(300000);
+            logOutTimer = new Timer(30000000);
             logOutTimer.Elapsed += LogOutTimer_Elapsed;
             logOutTimer.Start();
+        }
+
+        private void BtnEvents_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = EventsPage;
         }
     }
 }

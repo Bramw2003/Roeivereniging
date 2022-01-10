@@ -24,7 +24,7 @@ namespace Model.DAO {
 
         public List<Boat> GetAll() {
             Database.Init();
-            String sql = "SELECT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling],[boat].[location], (SELECT CASE WHEN EXISTS ( SELECT * FROM[brokenboat] WHERE boatID = boat.[ID]) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END), removed=(SELECT CASE WHEN deleted = 1 OR deleted IS NOT NULL THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END) FROM [boat] JOIN[types] ON[types].[ID] =[boat].[typesID]";
+            String sql = "SELECT [boat].[ID], [boat].[name], [types].[capacity],[types].[category],[types].[steer],[types].[sculling],[boat].[location], (SELECT CASE WHEN EXISTS ( SELECT * FROM[brokenboat] WHERE boatID = boat.[ID]) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END), removed=(SELECT CASE WHEN deleted = 1 THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END) FROM [boat] JOIN[types] ON[types].[ID] =[boat].[typesID]";
             List<Boat> list = new List<Boat>();
             SqlCommand command = new SqlCommand(sql, Database.connection);
             if (Database.OpenConnection()) {

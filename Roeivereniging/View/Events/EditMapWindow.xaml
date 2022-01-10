@@ -1,0 +1,36 @@
+﻿<Window x:Class="View.EditMapWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        mc:Ignorable="d"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        Title="EditMapWindow" Height="1080" Width="1920">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" x:Name="Header" Orientation="Horizontal" Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <Button x:Name="Trash" fa:Awesome.Content="Trash" FontSize="40" Width="60" Margin="10,0,0,0" Click="Trash_Click"></Button>
+            <Button x:Name="Done" fa:Awesome.Content="CheckCircle" FontSize="40" Width="60" Margin="10,0,0,0" Click="Button_Click"></Button>
+        </StackPanel>
+
+
+        <InkCanvas Grid.Row="1" x:Name="InkCanvas" Width="1340" Height="936" x:FieldModifier="public" Opacity="1" EditingMode="Ink" ForceCursor="True" Cursor="Pen">
+            <InkCanvas.DefaultDrawingAttributes>
+                <DrawingAttributes Color="Red" Width="7" Height="7" />
+            </InkCanvas.DefaultDrawingAttributes>
+            <InkCanvas.Background>
+                <ImageBrush>
+                    <ImageBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="2" ScaleY="2"/>
+                        </TransformGroup>
+                    </ImageBrush.RelativeTransform>
+                </ImageBrush>
+            </InkCanvas.Background>
+        </InkCanvas>
+    </Grid>
+</Window>

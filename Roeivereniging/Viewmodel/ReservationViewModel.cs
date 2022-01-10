@@ -13,10 +13,10 @@ namespace Viewmodel {
             return ReservationDB.GetAll();
         }
 
-        public static bool MakeReservation(Boat boat, DateTime date, DateTime endTime, Member member) {
+        public static int MakeReservation(Boat boat, DateTime date, DateTime endTime, Member member) {
             if (GetAllByMember(member).Count(x => x.date > DateTime.Now) >= 2)
             {
-                return false;
+                return -1;
             }
             return ReservationDB.ReserveBoat(boat, date, endTime, member);
         }

@@ -52,9 +52,9 @@ namespace Model.DAO {
         /// <param name="endTime">End time</param>
         /// <param name="member">Member making the reservation</param>
         /// <returns>True if a reservation was added to the database</returns>
-        public bool ReserveBoat(Boat boat, DateTime date, DateTime endTime, Member member) {
+        public int ReserveBoat(Boat boat, DateTime date, DateTime endTime, Member member, bool cancelable=true) {
             Database.Init();
-            String sql = "INSERT INTO [reservations] (starttime, boatID, endtime, memberID, [date]) VALUES (@starttime, @boatid, @endtime, @memberid, @date)";
+            String sql = "INSERT INTO [reservations] (starttime, boatID, endtime, memberID, [date], [cancelable]) output inserted.ID VALUES (@starttime, @boatid, @endtime, @memberid, @date, @cancelable)";
 
             using (SqlCommand command = new SqlCommand(sql, Database.connection)) {
                 command.Parameters.AddWithValue("starttime", date.ToString("HH:mm:ss"));
@@ -62,15 +62,17 @@ namespace Model.DAO {
                 command.Parameters.AddWithValue("endtime", endTime.ToString("HH:mm:ss"));
                 command.Parameters.AddWithValue("memberid", member.GetId());
                 command.Parameters.AddWithValue("date", date.Date);
-                bool result = false;
+                command.Parameters.AddWithValue("cancelable", cancelable);
+                int result = -1;
                 if (Database.OpenConnection()) {
                     try
                     {
-                        result = (int)command.ExecuteNonQuery() == 1;
+                        result = (int)command.ExecuteScalar();
+                        
                     }
                     catch (Exception ex)
                     {
-                        return false;
+                        return -1;
                     }
                 }
                 Database.connection.Close();
@@ -87,7 +89,6 @@ namespace Model.DAO {
         /// <param name="endTime">End time</param>
         /// <param name="member">Member from who the reservation is</param>
         /// <returns></returns>
-
         public void DeleteReservation(Boat boat, DateTime date, DateTime startTime, DateTime endTime, Member member) {
             Database.Init();
             String sql = "DELETE FROM [reservations] WHERE starttime = @starttime AND boatID = @boatid AND endtime = @endtime AND memberID = @memberid AND date = @date";
@@ -104,6 +105,11 @@ namespace Model.DAO {
                 }
                 Database.connection.Close();
             }
+        }
+
+        public void DeleteReservation(Reservation reservation)
+        {
+            DeleteReservation(reservation.boat, reservation.date, reservation.startTime, reservation.endTime, reservation.member);
         }
 
         public void DeleteAllReservations(int memberID)

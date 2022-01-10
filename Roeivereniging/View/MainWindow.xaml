@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" ResizeMode="CanResize" WindowState="Maximized" Loaded="Window_Loaded">
     <Grid>
@@ -19,7 +20,8 @@
             </Rectangle.Effect>
         </Rectangle>
         <StackPanel Grid.Row="0" x:Name="Header" Orientation="Horizontal" Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
-        <Button Grid.Row="0" x:Name="BtnAccount" Content="Account" MinWidth="100" Margin="10,10,120,20" HorizontalAlignment="Right" VerticalAlignment="Stretch" Click="BtnAccount_Click"></Button>
-        <Button Grid.Row="0" x:Name="BtnLogout" Content="Uitloggen" MinWidth="100" Margin="10,10,10,20" HorizontalAlignment="Right" VerticalAlignment="Stretch" Click="BtnLogout_Click"></Button>
+        <Button Grid.Row="0" x:Name="BtnAccount" fa:Awesome.Content="UserCircle" FontSize="40" MinWidth="100" Margin="10,0,120,0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Click="BtnAccount_Click"></Button>
+        <Button Grid.Row="0" x:Name="BtnLogout" fa:Awesome.Content="SignOut" FontSize="40" MinWidth="100" Margin="10,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Click="BtnLogout_Click"></Button>
+        <Frame Grid.Row="1" Margin="15,15,15,15" Name="Frame" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

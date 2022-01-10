@@ -115,13 +115,13 @@ namespace View
                 DateTime date = (DateTime)Date.SelectedDate.Value.Date + a;
                 TimeSpan b = new TimeSpan(endTime.Hour, endTime.Minute, endTime.Second);
                 DateTime end = (DateTime)Date.SelectedDate.Value.Date + b;
-                if(ReservationViewModel.MakeReservation((Boat)LbBoats.SelectedItem, date, end, MainWindow.currentMember))
+                if(ReservationViewModel.MakeReservation((Boat)LbBoats.SelectedItem, date, end, MainWindow.currentMember)!=-1)
                 {
                     MainWindow.Mail.SendReservationConfirmation(new Reservation(date, end, (Boat)LbBoats.SelectedItem, MainWindow.currentMember));
                 }
                 else
                 {
-                    MessageBox.Show("Uw heeft al 2 reserveringen");
+                    MessageBox.Show("U heeft al 2 reserveringen");
                 }
             }
         }
