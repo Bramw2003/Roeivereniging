@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
 using System.Linq;
+using System.IO;
+using System.Drawing;
 
 namespace Model.DAO
 {
@@ -11,7 +13,7 @@ namespace Model.DAO
         public List<Event> GetAll()
         {
             Database.Init();
-            String sql = "SELECT [maxMembers],[creator],[start],[end],[name],[type],[ID],[map], DATALENGTH(map) FROM [Events]";
+            String sql = "SELECT [maxMembers],[creator],[start],[end],[name],[type],[ID],[map], DATALENGTH(map),description FROM [Events]";
             IMember MemberD = new MemberDAO();
             List<Event> list = new List<Event>();
             SqlCommand command = new SqlCommand(sql, Database.connection);
@@ -36,7 +38,7 @@ namespace Model.DAO
                         Data = new byte[length];
                         a.GetBytes(8, 0, Data, 0, (int)length);
                     }
-                    Event n = new Event(a.GetInt32(0), MemberD.GetById(a.GetInt32(1)), a.GetDateTime(2), a.GetDateTime(3),a.GetString(4),a.GetString(5),a.GetInt32(6),Data);
+                    Event n = new Event(a.GetInt32(0), MemberD.GetById(a.GetInt32(1)), a.GetDateTime(2), a.GetDateTime(3),a.GetString(4),a.GetString(5),a.GetInt32(6),Data,a.GetString(9));
                     n.availableBoats = GetAvailableBoatsByEventID(n.Id);
                     n.members = GetMembersByEventID(n.Id);
                     list.Add(n);
@@ -155,7 +157,8 @@ namespace Model.DAO
                 while (a.Read())
                 {
                     Member n = dao.GetById(a.GetInt32(0));
-                    list.Add(n);
+                    if (n != null)
+                        list.Add(n);
                 }
                 command.Dispose();
                 Database.connection.Close();
@@ -281,6 +284,8 @@ namespace Model.DAO
             command.Parameters.AddWithValue("type", @event.type);
             command.Parameters.AddWithValue("maxMembers", @event.maxMembers);
             command.Parameters.AddWithValue("eventid", @event.Id);
+            command.Parameters.AddWithValue("start", @event.start.ToString("HH:mm:ss"));
+            command.Parameters.AddWithValue("eind", @event.end.ToString("HH:mm:ss"));
 
             if (Database.OpenConnection())
             {
@@ -288,6 +293,67 @@ namespace Model.DAO
             }
             return false;
         }
-        
+
+        public int CreateEvent(Event @event)
+        {
+            Database.Init();
+            String sql = @"INSERT INTO[dbo].[Events]
+                            (
+                                [start]
+                                ,[end]
+                                ,[maxMembers]
+                                ,[creator]
+                                ,[name]
+                                ,[type]
+                                ,[map]
+                                ,[description]
+                            )
+                            output inserted.ID
+                            VALUES
+                            (   
+                                @start
+                                ,@end
+                                ,@maxMembers
+                                ,@creator
+                                ,@name
+                                ,@type
+                                ,@map
+                                ,@description)";
+
+            using (SqlCommand command = new SqlCommand(sql, Database.connection))
+            {
+                command.Parameters.AddWithValue("start", @event.start.Date);
+                command.Parameters.AddWithValue("end", @event.end.Date);
+                command.Parameters.AddWithValue("maxMembers", @event.maxMembers);
+                command.Parameters.AddWithValue("creator", @event.creator.GetId());
+                command.Parameters.AddWithValue("name", @event.name);
+                command.Parameters.AddWithValue("type", @event.type);
+                command.Parameters.AddWithValue("map", ImageToByte2(@event.map));
+                command.Parameters.AddWithValue("description", @event.description);
+                int result = -1;
+                if (Database.OpenConnection())
+                {
+                    try
+                    {
+                        result = (int)command.ExecuteScalar();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        return -1;
+                    }
+                }
+                Database.connection.Close();
+                return result;
+            }
+        }
+        public byte[] ImageToByte2(Image img)
+        {
+            using (var stream = new MemoryStream())
+            {
+                img.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+                return stream.ToArray();
+            }
+        }
     }
 }

@@ -30,14 +30,14 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Naam" Binding="{Binding name, Mode=OneWay}"/>
                     <DataGridTextColumn Header="Type" Binding="{Binding category, Mode=OneWay}"/>
-                    <DataGridTextColumn Header="capaciteit" Binding="{Binding capacity, Mode=OneWay}"/>
+                    <DataGridTextColumn Header="Capaciteit" Binding="{Binding capacity, Mode=OneWay}"/>
                     <DataGridCheckBoxColumn Header="Stuur" Binding="{Binding steer, Mode=OneWay}"/>
                     <DataGridCheckBoxColumn Header="Scullen" Binding="{Binding sculling, Mode=OneWay}"/>
                     <DataGridTextColumn Header="Loods" Binding="{Binding shed, Mode=OneWay}"/>
                     <DataGridTextColumn Header="Rij" Binding="{Binding row, Mode=OneWay}"/>
-                    <DataGridTextColumn Header="Column" Binding="{Binding Column, Mode=OneWay}"/>
+                    <DataGridTextColumn Header="Kolom" Binding="{Binding Column, Mode=OneWay}"/>
                     <DataGridTextColumn Header="Hoogte" Binding="{Binding Height, Mode=OneWay}"/>
-                    <DataGridTemplateColumn CanUserSort="False" Header="Aanpassen" IsReadOnly="True">
+                    <DataGridTemplateColumn CanUserSort="False" Header="Bewerken" IsReadOnly="True">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Content="Bewerken" Click="Edit_Boat_Button_Click"></Button>

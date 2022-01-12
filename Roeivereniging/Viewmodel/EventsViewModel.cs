@@ -54,5 +54,9 @@ namespace Viewmodel
         {
             return EventsDAO.UpdateEvent(@event);
         }
+        public int CreateEvent(Event @event)
+        {
+            return EventsDAO.CreateEvent(@event);
+        }
     }
 }

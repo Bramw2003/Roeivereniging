@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Linq;
 namespace View
 {
     /// <summary>
@@ -64,6 +64,14 @@ namespace View
                 {
                     ReserveColumn.Visibility = Visibility.Visible;
                 }
+                if (selectedEvent.members.Where(x => x.GetId() == MainWindow.currentMember.GetId()).Count() == 1 || selectedEvent.maxMembers == selectedEvent.members.Count)
+                {
+                    BtnJoin.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    BtnJoin.Visibility = Visibility.Visible;
+                }
             }
         }
 
@@ -110,8 +118,26 @@ namespace View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            EditEventWindow NewEventDialog = new EditEventWindow(new Model.Event(MainWindow.currentMember));
+            EditEventWindow NewEventDialog = new EditEventWindow(new Model.Event(MainWindow.currentMember),true);
             NewEventDialog.ShowDialog();
+            if (DataContext.GetType() == typeof(Viewmodel.EventsViewModel))
+            {
+                var EventsViewModel = (Viewmodel.EventsViewModel)DataContext;
+                int id = EventsViewModel.CreateEvent(NewEventDialog.@event);
+                NewEventDialog.@event.Id = id;
+                EventsViewModel.AddBoatsToEvent(NewEventDialog.@event.availableBoats, NewEventDialog.@event);
+                EventsViewModel.AddMember(NewEventDialog.@event, MainWindow.currentMember);
+            }
+            Refresh();
+        }
+
+        private void JoinEventBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataContext.GetType() == typeof(Viewmodel.EventsViewModel))
+            {
+                var EventsViewModel = (Viewmodel.EventsViewModel)DataContext;
+                EventsViewModel.AddMember((Model.Event)LvEvents.SelectedItem, MainWindow.currentMember);
+            }
             Refresh();
         }
     }

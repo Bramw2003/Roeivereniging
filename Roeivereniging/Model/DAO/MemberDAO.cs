@@ -9,7 +9,7 @@ namespace Model.DAO {
         public List<Member> GetAll()
         {
             Database.Init();
-            string sql = "SELECT [ID],[name],[birthday],[admin],[repair],[examinator],[email],[username]FROM[member]";
+            string sql = "SELECT [ID],[name],[birthday],[admin],[repair],[examinator],[email],[username],[disabled]FROM[member]";
             List<Member> list = new List<Member>();
             SqlCommand command = new SqlCommand(sql, Database.connection);
             if (Database.OpenConnection())
@@ -17,8 +17,11 @@ namespace Model.DAO {
                 var a = command.ExecuteReader();
                 while (a.Read())
                 {
-                    Member member = new Member(a.GetInt32(0), a.GetString(1), a.GetString(7), a.GetDateTime(2), a.GetBoolean(3), a.GetBoolean(4), a.GetBoolean(5), a.GetString(6));
-                    list.Add(member);
+                    if (a.IsDBNull(8) || !a.GetBoolean(8))
+                    {
+                        Member member = new Member(a.GetInt32(0), a.GetString(1), a.GetString(7), a.GetDateTime(2), a.GetBoolean(3), a.GetBoolean(4), a.GetBoolean(5), a.GetString(6));
+                        list.Add(member);
+                    }
                 }
                 command.Dispose();
                 Database.connection.Close();
@@ -31,7 +34,7 @@ namespace Model.DAO {
         /// </summary>
         public bool insert(Member member, string password) {
             Database.Init();
-            String sql = "INSERT INTO member(username,password,name,birthday,admin,repair,examinator,email) VALUES( @username, PWDENCRYPT(@password), @name, @birthday, 0, 0, 0,@email)";
+            String sql = "INSERT INTO member(username,password,name,birthday,admin,repair,examinator,email,disabled) VALUES( @username, PWDENCRYPT(@password), @name, @birthday, 0, 0, 0,@email,false)";
             bool result = false;
             SqlCommand command = new SqlCommand(sql, Database.connection);
             {
@@ -53,7 +56,7 @@ namespace Model.DAO {
 
         public bool Delete(int memberID) {
             Database.Init();
-            string sql = "DELETE from member WHERE ID = @id";
+            string sql = "UPDATE [member] SET [disabled] = 1 WHERE [ID] = @id";
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("id", memberID);
             if (Database.OpenConnection())
@@ -84,16 +87,15 @@ namespace Model.DAO {
 
         public Member GetById(int id) {
             Database.Init();
-            string sql = "SELECT TOP(1)[ID],[name],[birthday],[admin],[repair],[examinator],[username],[email]FROM[member] WHERE ID = @id";
+            string sql = "SELECT TOP(1)[ID],[name],[birthday],[admin],[repair],[examinator],[username],[email],[disabled]FROM[member] WHERE ID = @id";
             Member member = null;
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("id", id);
             if (Database.OpenConnection()) {
                 var a = command.ExecuteReader(System.Data.CommandBehavior.SingleResult);
-                while (a.Read()) {
-                    member = new Member(a.GetInt32(0), a.GetString(1), a.GetString(6), a.GetDateTime(2), a.GetBoolean(3), a.GetBoolean(4), a.GetBoolean(5), a.GetString(7));
-
-                }
+                while (a.Read())
+                    if (a.IsDBNull(8) || !a.GetBoolean(8))
+                        member = new Member(a.GetInt32(0), a.GetString(1), a.GetString(6), a.GetDateTime(2), a.GetBoolean(3), a.GetBoolean(4), a.GetBoolean(5), a.GetString(7));
                 command.Dispose();
                 Database.connection.Close();
             }

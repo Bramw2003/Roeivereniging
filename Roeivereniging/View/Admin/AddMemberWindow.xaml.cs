@@ -27,8 +27,15 @@ namespace View.Admin
 
         private void Add_Member_Button_Click(object sender, RoutedEventArgs e)
         {
-            model.MakeUser(tbName.Text, tbUserName.Text, (DateTime)dpBirthDay.SelectedDate, tbEMail.Text, tbPassWord.Text);
-            this.Close();
+            if (tbEMail.Text != "" && tbName.Text != "" && tbPassWord.Text != "" && tbUserName.Text != "")
+            {
+                model.MakeUser(tbName.Text, tbUserName.Text, (DateTime)dpBirthDay.SelectedDate, tbEMail.Text, tbPassWord.Text);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Niet alle gegevens zijn ingevuld!");
+            }
         }
     }
 }

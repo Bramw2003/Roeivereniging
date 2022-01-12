@@ -21,7 +21,7 @@ namespace Model
         public List<Member> members { get; set; }
         public Bitmap map { get; set; }
 
-        public Event(int maxMembers, Member creator, DateTime start, DateTime end, string name, string type, int id, byte[] map)
+        public Event(int maxMembers, Member creator, DateTime start, DateTime end, string name, string type, int id, byte[] map, string description)
         {
             if (map != null)
             {
@@ -41,8 +41,9 @@ namespace Model
             this.type = type;
             this.Id = id;
             this.creator = creator;
+            this.description = description;
         }
-        public Event(Member creator):this(50,creator,DateTime.Now,DateTime.Now,"","",-1,null)
+        public Event(Member creator):this(50,creator,DateTime.Now,DateTime.Now,"","",-1,null,"")
         {
             
         }

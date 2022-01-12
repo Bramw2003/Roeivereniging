@@ -31,10 +31,10 @@
                     <DataGridTextColumn Header="Naam" Binding="{Binding name, Mode=OneWay}"/>
                     <DataGridTextColumn Header="Gebruikersnaam" Binding="{Binding username, Mode=OneWay}"/>
                     <DataGridTextColumn Binding="{Binding email, Mode=OneWay}" Header="Mail"/>
-                    <DataGridTextColumn Header="Geboortenaam" Binding="{Binding date, Mode=OneWay, StringFormat=\{0:d\}}"/>
+                    <DataGridTextColumn Header="Geboortedatum" Binding="{Binding date, Mode=OneWay, StringFormat=\{0:d\}}"/>
                     <DataGridCheckBoxColumn Header="Beheerder" Binding="{Binding admin, Mode=OneWay}"/>
                     <DataGridCheckBoxColumn Header="Examinator" Binding="{Binding examinator, Mode=OneWay}"/>
-                    <DataGridCheckBoxColumn Header="Reperatuer" Binding="{Binding repair, Mode=OneWay}"/>
+                    <DataGridCheckBoxColumn Header="Reparateur" Binding="{Binding repair, Mode=OneWay}"/>
                     <DataGridTemplateColumn Header="Bewerken">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

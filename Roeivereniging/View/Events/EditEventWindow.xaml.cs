@@ -21,21 +21,28 @@ namespace View
     public partial class EditEventWindow : Window
     {
         public Event @event;
+        private bool @new;
         public EditEventWindow(Event @event, bool @new = false)
         {
             InitializeComponent();
+            this.@event = @event;
+            this.DataContext = @event;
+            this.@new = @new;
             if (!@new)
             {
-                this.@event = @event;
-                this.DataContext = @event;
                 StartDatePicker.SelectedDate = @event.start;
                 EndDatePicker.SelectedDate = @event.end;
+                if (@event.type.ToLower().Contains("wed"))
+                {
+                    TypeBox.SelectedIndex = 0;
+                }
+                else
+                {
+                    TypeBox.SelectedIndex = 1;
+                }
             }
-            else
-            {
-                
-            }
-            
+
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -44,14 +51,18 @@ namespace View
             Model.DAO.EventsDAO eventDao = new Model.DAO.EventsDAO();
             var editBoatWindow = new EventsManageBoat(boatDao.GetAll().Where(x => @event.availableBoats.All(x2 => x2.id != x.id) && eventDao.GetAllBoatsByEventID(@event.Id).All(x2 => x2.id != x.id)).ToList(), @event.availableBoats);
             editBoatWindow.ShowDialog();
-            if (editBoatWindow.boats != null)
+
+            if (editBoatWindow.boats != null && !@new)
             {
                 var newItems = editBoatWindow.boats.Where(x => @event.availableBoats.All(x2 => x2.id != x.id)).ToList();
                 eventDao.AddBoatsToEvent(newItems, @event);
 
                 var removedItems = @event.availableBoats.Where(x => editBoatWindow.EventsBoats.Items.OfType<Boat>().All(x2 => x2.id == x.id)).ToList();
                 eventDao.RemoveBoatsFromEvent(removedItems, @event);
-
+            }
+            else
+            {
+                @event.availableBoats = editBoatWindow.boats;
             }
         }
 
@@ -65,6 +76,14 @@ namespace View
         {
             @event.description = DescriptionBox.Text;
             @event.name = Title.Text;
+            if (TypeBox.SelectedIndex == 1)
+            {
+                @event.type = "Tourtocht";
+            }
+            else
+            {
+                @event.type = "Wedstrijd";
+            }
         }
     }
 }

@@ -24,7 +24,7 @@ namespace View
     {
         public static Member currentMember { get; set; }
         public static IMail Mail;
-        private ReservePage ReservePage;
+        public static ReservePage ReservePage;
         private ViewReservationsPage ViewReservationsPage;
         private AdminPage AdminPage;
         private DefectsPage DefectsPage;
@@ -49,7 +49,7 @@ namespace View
                 Mail = new Model.DAO.NoMail();
                 MessageBox.Show("Geen mail mogelijk... Stel user secrets in");
             }
-            logOutTimer = new Timer(30000000); //300000ms == 5m
+            logOutTimer = new Timer(300000); //300000ms == 5m
             logOutTimer.Enabled = true;
             logOutTimer.Elapsed += LogOutTimer_Elapsed;
             InitializeComponent();
@@ -98,7 +98,7 @@ namespace View
             ReserveBtn.FontSize = 16;
             this.Header.Children.Add(ReserveBtn);
             Button HistoryBtn = new Button();
-            HistoryBtn.Content = "Geschiedenis";
+            HistoryBtn.Content = "Reserveringen";
             HistoryBtn.MinWidth = 120;
             HistoryBtn.Margin = new Thickness(10, 10, 0, 0);
             HistoryBtn.Click += BtnReserveringen_Click;
@@ -106,8 +106,9 @@ namespace View
             this.Header.Children.Add(HistoryBtn);
             Button EventsBtn = new Button();
             EventsBtn.Content = "Evenementen";
-            EventsBtn.MinWidth = 100;
-            EventsBtn.Margin = new Thickness(10, 0, 0, 0);
+            EventsBtn.MinWidth = 120;
+            EventsBtn.Margin = new Thickness(10, 10, 0, 0);
+            EventsBtn.FontSize = 16;
             EventsBtn.Click += BtnEvents_Click;
             this.Header.Children.Add(EventsBtn);
 
@@ -115,7 +116,7 @@ namespace View
             if (currentMember.IsAdmin())
             {
                 Button adminButton = new Button();
-                adminButton.Content = "admin";
+                adminButton.Content = "Admin";
                 adminButton.MinWidth = 120;
                 adminButton.Margin = new Thickness(10, 10, 0, 0);
                 adminButton.Click += AdminButton_Click;
@@ -187,7 +188,7 @@ namespace View
             Frame.Content = ViewReservationsPage;
         }
 
-        private void BtnReserveer_Click(object sender, RoutedEventArgs e)
+        public void BtnReserveer_Click(object sender, RoutedEventArgs e)
         {
             Frame.Content = ReservePage;
         }
@@ -214,7 +215,7 @@ namespace View
         {
             logOutTimer.Stop();
             logOutTimer.Dispose();
-            logOutTimer = new Timer(30000000);
+            logOutTimer = new Timer(300000);
             logOutTimer.Elapsed += LogOutTimer_Elapsed;
             logOutTimer.Start();
         }

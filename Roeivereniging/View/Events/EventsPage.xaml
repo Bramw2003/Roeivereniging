@@ -58,6 +58,8 @@
             <Label Content="{Binding type}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,20,0,0" Height="26"></Label>
             <Label Content="Datum" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,40,0,0" Height="26" Width="46"></Label>
             <Label Content="{Binding start}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="46,40,0,0" Height="26"></Label>
+
+            <Button x:Name="BtnJoin" Content="Aanmelden" HorizontalAlignment="Left" Margin="387,10,0,0" Width="96" Click="JoinEventBtn_Click"/>
             <Button x:Name="BtnEdit" fa:Awesome.Content="Edit" HorizontalAlignment="Right" VerticalAlignment="Top" MinWidth="30" MinHeight="30" Height="30" Width="30" Click="BtnEdit_Click"></Button>
             <TabControl VerticalAlignment="Stretch" Margin="0,20,0,0" Grid.Row="1">
                 <TabItem Header="Boten">
@@ -66,7 +68,7 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Naam" Width="auto" Binding="{Binding name, Mode=OneWay}" />
                                 <DataGridTextColumn Header="Type" Width="auto" Binding="{Binding type, Mode=OneWay}" />
-                                <DataGridTextColumn Header="Location" Width="auto" Binding="{Binding location, Mode=OneWay}" />
+                                <DataGridTextColumn Header="Locatie" Width="auto" Binding="{Binding location, Mode=OneWay}" />
                                 <DataGridTemplateColumn x:Name="ReserveColumn" CanUserSort="False" Header="Reserveren" IsReadOnly="True">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
@@ -99,6 +101,7 @@
 
                 </TabItem>
             </TabControl>
+            <TextBox HorizontalAlignment="Left" Text="{Binding description}" Margin="180,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" Height="56" IsReadOnly="True"/>
 
         </Grid>
     </Grid>

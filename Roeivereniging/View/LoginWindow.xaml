@@ -58,7 +58,7 @@
                 </TransformGroup>
             </TextBox.RenderTransform>
         </TextBox>
-        <Button x:Name="BtnLogin" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="200" Click="BtnLogin_Click" RenderTransformOrigin="0.5,0.5">
+        <Button x:Name="BtnLogin" Content="Inloggen" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="200" Click="BtnLogin_Click" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
