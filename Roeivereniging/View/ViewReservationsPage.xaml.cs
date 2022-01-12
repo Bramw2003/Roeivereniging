@@ -43,17 +43,23 @@ namespace View
 
         private void LvRervations_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            currentSelectedPerson = (Reservation)LvRervations.SelectedItem;
-            if (currentSelectedPerson != null) map.SetSelectedBoat(currentSelectedPerson.boat);
+            currentSelectedReservation = (Reservation)LvRervations.SelectedItem;
+            if (currentSelectedReservation != null)
+            {
+                map.SetSelectedBoat(currentSelectedReservation.boat);
+                CancelReservation.IsEnabled = currentSelectedReservation.date > DateTime.Now;
+
+            }
+
         }
 
-        private Reservation currentSelectedPerson;
+        private Reservation currentSelectedReservation;
         public Reservation CurrentSelectedPerson
         {
-            get { return currentSelectedPerson; }
+            get { return currentSelectedReservation; }
             set
             {
-                currentSelectedPerson = value;
+                currentSelectedReservation = value;
             }
         }
 
@@ -61,12 +67,12 @@ namespace View
         {
             DefectPopup defectPopup = new DefectPopup();
             defectPopup.ShowDialog();
-            if ((bool)defectPopup.DialogResult && defectPopup.TbTitle.Text!=""&& defectPopup.TbDescription.Text!="")
+            if ((bool)defectPopup.DialogResult && defectPopup.TbTitle.Text != "" && defectPopup.TbDescription.Text != "")
             {
-                DefectViewModel.AddDefect(new Defect(defectPopup.TbTitle.Text, defectPopup.TbDescription.Text, MainWindow.currentMember, currentSelectedPerson.boat, (bool) !defectPopup.CBseaworthy.IsChecked));
+                DefectViewModel.AddDefect(new Defect(defectPopup.TbTitle.Text, defectPopup.TbDescription.Text, MainWindow.currentMember, currentSelectedReservation.boat, (bool)!defectPopup.CBseaworthy.IsChecked));
                 var j = LvRervations.SelectedIndex;
                 LoadLvRervations();
-                LvRervations.SelectedIndex= j;
+                LvRervations.SelectedIndex = j;
             }
         }
 
@@ -76,13 +82,13 @@ namespace View
             if (selectedReservation != null)
             {
                 if ((selectedReservation.member.id == MainWindow.currentMember.id) ||
-                MessageBox.Show($"U staat op het punt de reservering van {selectedReservation.member.name} te anuleren, weet u het zeker dat u deze wilt anuleren?", "Zeker weten", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                MessageBox.Show($"U staat op het punt de reservering van {selectedReservation.member.name} te annuleren, weet u het zeker dat u deze wilt annuleren?", "Zeker weten", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     MainWindow.Mail.SendReservationCancelation(selectedReservation, MainWindow.currentMember);
                     ReservationViewModel.DeleteReservation(selectedReservation);
                     LoadLvRervations();
                 }
-            }  
+            }
         }
 
         private bool showAll = false; //used to deterime which method should be used to get the reservation in the LoadLvRervations() method

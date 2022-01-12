@@ -75,11 +75,14 @@ namespace View
 
         private void StartTime_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            EndTime.Minimum = (DateTime)e.NewValue;
-            EndTime.Maximum = ((DateTime)e.NewValue).AddHours(6);
-            EndTime.ClipValueToMinMax = true;
-            UpdateDuration();
-            UpdateLbBoats();
+            if (e.NewValue != null)
+            {
+                EndTime.Minimum = (DateTime)e.NewValue;
+                EndTime.Maximum = ((DateTime)e.NewValue).AddHours(6);
+                EndTime.ClipValueToMinMax = true;
+                UpdateDuration();
+                UpdateLbBoats();
+            }
         }
 
         private void EndTime_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
@@ -117,6 +120,11 @@ namespace View
                 DateTime end = (DateTime)Date.SelectedDate.Value.Date + b;
                 if(ReservationViewModel.MakeReservation((Boat)LbBoats.SelectedItem, date, end, MainWindow.currentMember)!=-1)
                 {
+                    Button_Click_1(null, null);
+                    Date.SelectedDate = DateTime.Now;
+                    StartTime.Value = null;
+                    EndTime.Value = null;
+                    MessageBox.Show("Uw reservering is gelukt!");
                     MainWindow.Mail.SendReservationConfirmation(new Reservation(date, end, (Boat)LbBoats.SelectedItem, MainWindow.currentMember));
                 }
                 else
@@ -161,7 +169,11 @@ namespace View
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            
+            TbPersons.Text = "";
+            CbType.SelectedIndex = 4;
+            ChbSteer.IsChecked = false;
+            ChbScull.IsChecked = false;
+            UpdateLbBoats();
         }
     }
 }

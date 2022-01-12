@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="DefectPopup" Height="290" Width="294">
     <Grid>
-        <TextBox x:Name="TbTitle" HorizontalAlignment="Left" Margin="43,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TbTitle" HorizontalAlignment="Left" Margin="43,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="TbDescription" HorizontalAlignment="Left" Margin="10,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272" MaxLength="500" AutomationProperties.IsRequiredForForm="True" Height="125"/>
         <Label Content="Titel:" HorizontalAlignment="Left" Margin="8,6,0,0" VerticalAlignment="Top"/>
         <Label Content="Beschrijving van het probleem:" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top"/>

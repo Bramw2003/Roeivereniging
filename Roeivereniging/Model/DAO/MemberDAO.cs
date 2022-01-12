@@ -56,7 +56,7 @@ namespace Model.DAO {
 
         public bool Delete(int memberID) {
             Database.Init();
-            string sql = "UPDATE [member] SET [disabled] = true WHERE [ID] = @id";
+            string sql = "UPDATE [member] SET [disabled] = 1 WHERE [ID] = @id";
             SqlCommand command = new SqlCommand(sql, Database.connection);
             command.Parameters.AddWithValue("id", memberID);
             if (Database.OpenConnection())

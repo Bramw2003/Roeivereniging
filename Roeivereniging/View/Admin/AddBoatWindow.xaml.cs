@@ -28,36 +28,43 @@ namespace View.Admin
 
         private void Add_Boat_Button_Click(object sender, RoutedEventArgs e)
         {
-            int Capacity = int.Parse(tbCapacity.Textbox.Text);
-            bool sculing = false;
-            bool steer = false;
-            string location = tbShed.Textbox.Text + "-" + tbRow.Textbox.Text + "-" + tbColumn.Textbox.Text + "-" + tbHeight.Textbox.Text;
-            switch (cbSculling.SelectedIndex)
+            if (tbName.Textbox.Text != "" && tbCapacity.Textbox.Text != "" && tbShed.Textbox.Text != "" && tbRow.Textbox.Text != "" && tbColumn.Textbox.Text != "" && tbHeight.Textbox.Text != "")
             {
-                case -1:
-                    return;
-                case 0:
-                    sculing = true;
-                    break;
-                case 1:
-                    sculing = false;
-                    break;
-            }
+                int Capacity = int.Parse(tbCapacity.Textbox.Text);
+                bool sculing = false;
+                bool steer = false;
+                string location = tbShed.Textbox.Text + "-" + tbRow.Textbox.Text + "-" + tbColumn.Textbox.Text + "-" + tbHeight.Textbox.Text;
+                switch (cbSculling.SelectedIndex)
+                {
+                    case -1:
+                        return;
+                    case 0:
+                        sculing = true;
+                        break;
+                    case 1:
+                        sculing = false;
+                        break;
+                }
 
-            switch (cbSteering.SelectedIndex)
+                switch (cbSteering.SelectedIndex)
+                {
+                    case -1:
+                        return;
+                    case 0:
+                        steer = true;
+                        break;
+                    case 1:
+                        steer = false;
+                        break;
+                }
+
+                model.AddBoat(tbName.Textbox.Text, cbType.SelectedIndex, Capacity, sculing, steer, location);
+                this.Close();
+            }
+            else
             {
-                case -1:
-                    return;
-                case 0:
-                    steer = true;
-                    break;
-                case 1:
-                    steer = false;
-                    break;
+                MessageBox.Show("Vul de gegevens in");
             }
-
-            model.AddBoat(tbName.Textbox.Text, cbType.SelectedIndex, Capacity, sculing, steer, location);
-            this.Close();
         }
 
         private void PreviewTextInput(object sender, TextCompositionEventArgs e)

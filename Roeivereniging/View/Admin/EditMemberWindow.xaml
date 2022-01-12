@@ -30,7 +30,7 @@
             <DatePicker x:Name="dpBirthDay" Grid.Column="1" HorizontalAlignment="Left" Margin="15,0,0,0" Grid.Row="5" VerticalAlignment="Center" FontSize="18" Width="150"/>
             <CheckBox x:Name="cbExaminator" Content="Examinator" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="6" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="18"/>
             <CheckBox x:Name="cbAdmin" Content="Beheerder" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="6" VerticalAlignment="Center" FontSize="18"/>
-            <CheckBox x:Name="cbRepair" Content="Reperateur" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="6" VerticalAlignment="Center" Grid.Column="1" FontSize="18"/>
+            <CheckBox x:Name="cbRepair" Content="Reparateur" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="6" VerticalAlignment="Center" Grid.Column="1" FontSize="18"/>
             <View:TextboxWithPlaceholder x:Name="tbName" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="2" VerticalAlignment="Center" Width="400" Height="45" Grid.ColumnSpan="2" FontSize="18"/>
             <View:TextboxWithPlaceholder x:Name="tbUsername" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="3" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="400" Height="45" FontSize="18"/>
             <View:TextboxWithPlaceholder x:Name="tbEmail" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="4" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="400" Height="45" FontSize="18"/>
