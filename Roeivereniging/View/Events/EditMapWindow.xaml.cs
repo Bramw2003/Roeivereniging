@@ -77,7 +77,7 @@ namespace View
             //btm.Save("C:\\Users\\bwdes\\Desktop\\test.jpg", jpegCodec, encoderParams);
             MemoryStream stream = new MemoryStream();
             btm.Save(stream, jpegCodec, encoderParams);
-            btm.Save("C:\\Users\\bwdes\\Desktop\\test.jpg", jpegCodec, encoderParams);
+            //btm.Save("C:\\Users\\bwdes\\Desktop\\test.jpg", jpegCodec, encoderParams);
             if (!eventDao.UpdateMap(stream.ToArray(), @event))
             {
                 MessageBox.Show("Watt");

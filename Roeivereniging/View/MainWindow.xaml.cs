@@ -172,6 +172,7 @@ namespace View
             currentMember = null;
             LoginWindow loginWindow = new LoginWindow();
             // Anti-Cheese
+            Frame.Content = ReservePage;
             if (!(bool)loginWindow.ShowDialog())
             {
                 this.Close();
@@ -180,7 +181,6 @@ namespace View
             if (currentMember == null) { this.Close(); return; }
 
             ResetPages();
-            Frame.Content = ReservePage;
 
             // Clear the header
             Header.Children.Clear();

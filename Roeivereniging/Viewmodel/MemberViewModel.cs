@@ -10,14 +10,19 @@ namespace Viewmodel {
     public class MemberViewModel : ObservableObject{
         private static MemberDAO MemberDB = new MemberDAO();
         private static ReservationDAO ReservationDB = new ReservationDAO();
-        public List<Member> _MemberList = GetAllMembers();
+
+        public MemberViewModel()
+        {
+            _MemberList = GetAllMembers();
+        }
+        public List<Member> _MemberList;
 
         public List<Member> MemberList{
             get { return _MemberList; }
             set { _MemberList = value; RaisePropertyChanged("MemberList"); }
         }
 
-        private static List<Member> GetAllMembers()
+        public List<Member> GetAllMembers()
         {
             return MemberDB.GetAll();
         }

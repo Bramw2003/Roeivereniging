@@ -43,6 +43,7 @@ namespace View.Admin
         {
             Member targetMember = (Member)dataGrid.SelectedItem;
             _MemberViewModel.DeleteMember(targetMember.GetId());
+            _MemberViewModel.MemberList = _MemberViewModel.GetAllMembers();
         }
     }
 }
