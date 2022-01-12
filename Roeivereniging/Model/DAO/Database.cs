@@ -39,9 +39,10 @@ namespace Model
         {
             try
             {
+                connection.Close();
                 connection.Open();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 Console.WriteLine("DB unavailable");
                 return false;
@@ -150,7 +151,7 @@ namespace Model
                 command.Dispose();
                 connection.Close();
             }
-             return list;
+            return list;
         }
 
         /// <summary>

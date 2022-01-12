@@ -35,13 +35,14 @@ namespace View
         public static Timer logOutTimer;
         IConfigurationRoot configuration;
         SshClient sshClient;
+        ForwardedPortLocal portFwld;
         public MainWindow()
         {
             PasswordConnectionInfo connectionInfo = new PasswordConnectionInfo("145.44.233.142", "student", "#7mBzd*EN");
             connectionInfo.Timeout = TimeSpan.FromSeconds(30);
             sshClient = new SshClient(connectionInfo);
             sshClient.Connect();
-            ForwardedPortLocal portFwld = new ForwardedPortLocal("127.0.0.1", Convert.ToUInt32(1433), "localhost", Convert.ToUInt32(1433)); sshClient.AddForwardedPort(portFwld);
+            portFwld = new ForwardedPortLocal("127.0.0.1", Convert.ToUInt32(1433), "localhost", Convert.ToUInt32(1433)); sshClient.AddForwardedPort(portFwld);
             portFwld.Start();
             try
             {
