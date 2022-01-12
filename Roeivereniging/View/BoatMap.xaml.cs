@@ -66,7 +66,9 @@ namespace View
             posX += (selectedBoat.shed-1) * shedSpacing + shedStart;
             if (selectedBoat.row == 2) posX += rowSpacing;
             double posY = 0;
-            posY += ((selectedBoat.Column - 1) * columnSpacing) + columnStart;
+            int column = 0;
+            if (selectedBoat.capacity != 8) column = selectedBoat.Column - 1;
+            posY += (column * columnSpacing) + columnStart;
 
             Canvas.SetLeft(Selected, posX * scale);
             Canvas.SetTop(Selected, posY *scale);
