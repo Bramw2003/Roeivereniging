@@ -34,7 +34,7 @@ namespace Model.DAO {
         /// </summary>
         public bool insert(Member member, string password) {
             Database.Init();
-            String sql = "INSERT INTO member(username,password,name,birthday,admin,repair,examinator,email,disabled) VALUES( @username, PWDENCRYPT(@password), @name, @birthday, 0, 0, 0,@email,false)";
+            String sql = "INSERT INTO member(username,password,name,birthday,admin,repair,examinator,email,disabled) VALUES( @username, PWDENCRYPT(@password), @name, @birthday, 0, 0, 0,@email,0)";
             bool result = false;
             SqlCommand command = new SqlCommand(sql, Database.connection);
             {
