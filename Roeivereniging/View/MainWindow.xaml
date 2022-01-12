@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:View"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="None" Loaded="Window_Loaded">
+        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize" Closing="Window_Closing" WindowState="Maximized" WindowStyle="None" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
